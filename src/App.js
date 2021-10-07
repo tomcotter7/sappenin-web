@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import NavBar from './components/layout/NavBar'
+import Home from './components/home/Home'
+import Map from './components/map/Map'
+import Calendar from './components/calendar/Calendar'
+import CreateDeal from './components/deals/CreateDeal'
+import CreateBusiness from './components/business/CreateBusiness'
+import DealPage from './components/deals/DealPage'
+import SignIn from './components/auth/SignIn'
+import SignUp from './components/auth/SignUp'
+import NewsHome from './components/news/NewsHome'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/map' component={Map} />
+          <Route path='/calendar' component={Calendar} />
+          <Route path='/new-deal' component={CreateDeal} />
+          <Route path='/new-business' component={CreateBusiness} />
+          <Route path='/deals/:id' component={DealPage} />
+          <Route path='/sign-in' component={SignIn} />
+          <Route path='/sign-up' component={SignUp} />
+          <Route path='/news' component={NewsHome} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

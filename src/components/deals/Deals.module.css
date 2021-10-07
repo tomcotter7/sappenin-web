@@ -1,0 +1,17 @@
+.dealDiv {
+  border: 0.1vh solid purple;
+  background-color: black;
+  border-radius: 2vh;
+  text-align: left;
+  padding-left: 1vh;
+  margin-bottom: 0.5vh;
+}
+
+
+.dealDiv h3 {
+  color: white;
+}
+
+.dealDiv p {
+  color: white;
+}
