@@ -4,7 +4,7 @@ const renderNoti = (noti) => {
   const data = noti.data;
 
   return (
-    <div className="card-panel purple">
+    <div className="card-panel purple" key={data.id}>
       <p> {data.content} </p>
       <h5 className="center"> {data.name} </h5>
     </div>

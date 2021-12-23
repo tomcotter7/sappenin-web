@@ -12,7 +12,7 @@ class DealsContainer extends Component {
     return (
       <div style={{backgroundColor: 'black'}}>
 
-					<h3 style={{color: 'white', textAlign: 'center'}}> Nearby Deals Tonight </h3>
+					<h3 className="white-text center"> Nearby Deals Tonight </h3>
 					{deals && deals.map(deal => {
             return (
               <Link key={deal['id']} to={'/deals/' + deal['id']}>

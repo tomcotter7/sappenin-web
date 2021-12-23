@@ -14,8 +14,8 @@ class NewsHome extends Component {
 
     return (
       <div>
-        <h2 className="white-text center"> News & Upcoming Events </h2>
-        <div className="col s12 m5 offset-m1">
+        <h2 className="white-text center"> News </h2>
+        <div className="col s12 m12">
           <Notifications notis={notis} />
         </div>
       </div>

@@ -32,14 +32,15 @@ const CreateBusiness = (props) => {
 
   return (
     <div className="container">
-      <form onSubmit={handleSubmit} className="white">
-        <h5 className="grey-text text-darken-3"> Create new business </h5>
-        <div className="input-field">
-          <input type="text" id="name" onChange={handleChange} />
-          <label htmlFor="name"> Business Name </label>
+      <form onSubmit={handleSubmit} className="black">
+        <h5 className="grey-text text-lighten-1 center"> Create new business </h5>
+        <br />
+        <div className="input-field col s6">
+          <input style={{color: 'white'}} type="text" id="name" onChange={handleChange} />
+          <label htmlFor="name" className="active"> Business Name </label>
         </div>
         <div className="input-field">
-          <textarea id="description" className="materialize-textarea" onChange={handleChange}></textarea>
+          <textarea id="description" className="materialize-textarea" style={{color:'white'}} onChange={handleChange}></textarea>
           <label htmlFor="description"> Business Description </label>
         </div>
         <div className="input-field">
@@ -51,7 +52,7 @@ const CreateBusiness = (props) => {
           <label htmlFor="longitude"> Business longitude </label>
         </div>
         <div className="input-field">
-          <button className="btn pink lighten-1"> Create </button>
+          <button className="btn purple lighten-1"> Create </button>
         </div>
       </form>
     </div>

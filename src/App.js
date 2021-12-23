@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './components/layout/NavBar'
 import Home from './components/home/Home'
-import Map from './components/map/Map'
+import Map from './components/location/Map'
 import Calendar from './components/calendar/Calendar'
 import CreateDeal from './components/deals/CreateDeal'
 import CreateBusiness from './components/business/CreateBusiness'

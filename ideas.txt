@@ -1,7 +1,7 @@
 IDEAS:
 
-  - Consistent styling throughout webpage.
-  - Change where the notifications are shown, maybe a NEWS tab
+  - Consistent styling throughout webpage DONE
+  - Change where the notifications are shown, maybe a NEWS tab DONE
   - Search bar on homepage to change current location
     - To do this we probably need to have the current location stored in a state,
       so GeoFirestoreConnect HOC can just access the location.
@@ -19,3 +19,4 @@ IDEAS:
       - creation
       - active deals
   - improve on creation screens
+  - deals / notifications need to auto-delete after expiration
