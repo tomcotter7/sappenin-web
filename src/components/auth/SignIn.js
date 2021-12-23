@@ -1,3 +1,9 @@
+/*
+* Author: Thomas Cotter
+* A react component for signing a user into the sappenin application
+*/
+
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'

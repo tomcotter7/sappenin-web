@@ -5,13 +5,10 @@ const initState = {
 const dealReducer = (state = initState, action) => {
   switch (action.type) {
     case 'CREATE_DEAL':
-      console.log('created deal', action.deal)
       return state;
     case 'CREATE_DEAL_ERROR':
-      console.log('create deal error', action.err);
       return state;
     case 'NEARBY_DEALS':
-      console.log('nearby deals returned:', action.deals.docs);
       const deals = action.deals.docs.map((doc) => ({
         id: doc.id,
         data: doc.data()
@@ -19,6 +16,8 @@ const dealReducer = (state = initState, action) => {
       return {
         deals: deals
       };
+    case 'NO_NEARBY_DEALS':
+      return initState
     default:
       return state;
   }

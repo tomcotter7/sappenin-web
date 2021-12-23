@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component for the nav bar
+*/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SignedOutLinks from './SignedOutLinks'
@@ -10,7 +15,7 @@ const NavBar = (props) => {
   return (
     <nav className="nav-wrapper purple">
       <div className="container">
-        <Link to='/' className="brand-logo"> Sappenin </Link>
+        <Link to='/' className="brand-logo"> Sappenin' </Link>
         { auth.isLoaded && links }
       </div>
     </nav>

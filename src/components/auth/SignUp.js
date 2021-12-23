@@ -1,3 +1,9 @@
+/*
+* Author: Thomas Cotter
+* A react component to add a new user to the sappenin application
+*/
+
+
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'

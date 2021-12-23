@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component for the Map section of the sappenin application
+*/
+
 import React, { Component } from 'react';
 
 class Map extends Component {

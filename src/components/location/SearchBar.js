@@ -1,12 +1,82 @@
+/*
+* Author: Thomas Cotter
+* A react component for auto-complete places search bar to update the users location
+*/
+
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete'
+import { useState } from 'react'
+import { connect } from 'react-redux'
+import { updateLocationSearch } from '../../store/actions/locationActions'
 
 
-const SearchBar = () => {
+
+const SearchBar = (props) => {
+
+  const [address, setAddress] = useState("");
+
+  const handleChange = (address) => {
+    setAddress(address);
+  };
+
+  const handleSelect = (address) => {
+    geocodeByAddress(address)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => {
+        console.log('Success', latLng);
+        props.updateLocation(address, latLng);})
+      .catch(error => console.error('Error', error));
+  };
+
 
   return (
-    <div className="container black">
-      <h3 className="white-text center"> Search for location </h3>
-    </div>
+    <PlacesAutocomplete
+      value={address}
+      onChange={handleChange}
+      onSelect={handleSelect}>
+
+      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        <div>
+          <input
+            {...getInputProps({
+              placeholder: 'Search Places ...',
+              className: 'location-search-input black white-text',
+            })}
+          />
+          <div className="autocomplete-dropdown-container">
+            {loading && <div>Loading...</div>}
+            {suggestions.map(suggestion => {
+              const className = suggestion.active
+                ? 'suggestion-item--active'
+                : 'suggestion-item';
+              // inline style for demonstration purpose
+              const style = suggestion.active
+                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                : { backgroundColor: '#ffffff', cursor: 'pointer' };
+              return (
+                <div
+                    {...getSuggestionItemProps(suggestion, {
+                    className,
+                    style,
+                  })}
+                >
+                  <span>{suggestion.description}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </PlacesAutocomplete>
   )
 }
 
-export default SearchBar
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateLocation: (address, loc) => dispatch(updateLocationSearch(address, loc))
+  }
+}
+
+export default connect(null,mapDispatchToProps)(SearchBar)

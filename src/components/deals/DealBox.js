@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component to display the deal information on the home page
+*/
+
 import React from 'react';
 import styles from './Deals.module.css'
 import moment from 'moment'

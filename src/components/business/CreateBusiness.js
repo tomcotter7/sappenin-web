@@ -1,3 +1,9 @@
+/*
+* Author: Thomas Cotter
+* A react component to handle the creation of a new business
+*/
+
+
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { createBusiness } from '../../store/actions/businessActions'

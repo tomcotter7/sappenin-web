@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component to show links to user when they are signed in
+*/
+
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -26,7 +31,6 @@ const SignedInLinks = (props) => {
 
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     profile: state.firebase.profile
   }

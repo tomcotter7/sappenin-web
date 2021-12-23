@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A higher-order react component for the access of firestore using geo-location queries
+*/
+
 import React, { Component } from 'react'
 import { GeoFirestore } from '../config/firebaseConfig'
 import firebase from 'firebase/app'
@@ -28,6 +33,14 @@ export const geoFirestoreConnect = (data) => {
       }
     }
 
+		const mapStateToProps = (state) => {
+			return {
+				type: state.location.type,
+				lat: state.location.lat,
+				lon: state.location.lon
+			}
+		}
+
     class newComponent extends Component {
       constructor(props) {
         super(props);
@@ -40,42 +53,54 @@ export const geoFirestoreConnect = (data) => {
       }
 
       componentDidMount() {
-        this.interval = setInterval(() => this.tick(), 60000);
+				console.log("component did mount")
+        this.interval = setInterval(() => this.tick(), 10000);
         var thus = this;
-        if (navigator.geolocation) {
+        if (navigator.geolocation && this.props.type === 'Device') {
           navigator.permissions.query({ name: "geolocation" }).then(function (result) {
             if (result.state === "granted") {
               //If granted then you can directly call your function here
               navigator.geolocation.getCurrentPosition((pos) => {
                 var crd = pos.coords;
-                console.log(crd);
                 thus.setState({userLoc: new firebase.firestore.GeoPoint(crd.latitude, crd.longitude)}, () => {
                   thus.tick();
                 });
               });
               } else if (result.state === "prompt") {
                 navigator.geolocation.getCurrentPosition((pos) => {
-                  console.log("success:", pos)
                   var crd = pos.coords;
                   thus.setState({userLoc: new firebase.firestore.GeoPoint(crd.latitude, crd.longitude)})
                   thus.tick();
                 }, errors, options);
               } else if (result.state === "denied") {
-                console.log("denied");
+								alert('Please allow location services or use built-in search bar')
                 //If denied then you have to show instructions to enable location
+								this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)})
+								this.tick();
               }
               result.onchange = function () {console.log(result.state);};
           });
         } else {
-          alert("Sorry Not available!");
+					this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)}, () => {
+						this.tick();
+					})
         }
       }
+
+			componentDidUpdate(prevProps) {
+				console.log("GeoFirestore props", this.props)
+				if (prevProps.lat !== this.props.lat && prevProps.lon !== this.props.lon) {
+					this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)}, () => {
+						this.tick();
+					});
+				}
+			}
+
       tick() {
-				console.log(this.state.userLoc);
-        const query = (this.state.geoCollection).near({ center: this.state.userLoc, radius: 100});
+        const query = (this.state.geoCollection).near({ center: this.state.userLoc, radius: 5});
         query.get().then((snapshot) => {
           const ids = snapshot.docs.map((doc) => doc.id);
-					console.log("gf connect", ids);
+					console.log("returned ids", ids)
           this.props.getDeals(ids);
 					this.props.getNotis(ids);
         })
@@ -90,7 +115,7 @@ export const geoFirestoreConnect = (data) => {
       }
     }
 
-    return connect(null, mapDispatchToProps)(newComponent);
+    return connect(mapStateToProps, mapDispatchToProps)(newComponent);
   }
 
   return transformComponent

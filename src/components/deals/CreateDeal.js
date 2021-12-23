@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component to handle the creation of a deal
+*/
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'

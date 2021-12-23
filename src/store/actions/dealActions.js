@@ -16,13 +16,11 @@ export const createDeal = (deal) => {
 };
 
 export const getDeals = (places) => {
-  console.log("Deal:", places);
   if (places.length > 0) {
     return (dispatch, getState, { getFirestore, getFirebase }) => {
       const firestore = getFirestore();
       const query = firestore.collection('deals').where('placeID', 'in', places);
       query.get().then((result) => {
-        console.log("result", result);
         dispatch({ type: 'NEARBY_DEALS', deals: result});
       }).catch((err) => {
         dispatch({ type: 'NEARBY_DEALS_ERROR', err: err});
@@ -30,7 +28,7 @@ export const getDeals = (places) => {
     }
   } else {
     return (dispatch, getState, { getFirestore, getFirebase}) => {
-      dispatch({type: 'NEARBY_DEALS_ERROR', err: 'No Nearby Places'});
+      dispatch({type: 'NO_NEARBY_DEALS', err: 'No Nearby Places'});
     }
   }
 }

@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* The react component for the news part of the sappenin application
+*/
+
 import Notifications from './Notifications'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
@@ -10,11 +15,11 @@ class NewsHome extends Component {
 
   render() {
 
-    const { notis } = this.props;
+    const notis = this.props.notis;
 
     return (
       <div>
-        <h2 className="white-text center"> News </h2>
+        <h3 className="white-text center"> News </h3>
         <div className="col s12 m12">
           <Notifications notis={notis} />
         </div>
@@ -24,15 +29,5 @@ class NewsHome extends Component {
 
 }
 
-const mapStateToProps = (state) => {
-  return {
-    notis: state.notifications.notis,
-  }
-}
 
-export default compose(
-  connect(mapStateToProps),
-  geoFirestoreConnect({
-    collection: 'places'
-  })
-)(NewsHome)
+export default NewsHome

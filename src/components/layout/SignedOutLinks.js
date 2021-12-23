@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A component for the links displayed when the user is not signed in
+*/
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 

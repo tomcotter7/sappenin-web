@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component to handle the display of a specific deal which takes up the entire page
+*/
+
 import { firestoreConnect } from 'react-redux-firebase'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'

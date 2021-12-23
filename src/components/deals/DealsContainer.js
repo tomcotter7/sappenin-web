@@ -1,3 +1,8 @@
+/*
+* Author: Thomas Cotter
+* A react component to hold all the deal boxes
+*/
+
 import React, { Component } from 'react'
 import DealBox from './DealBox'
 import { Link } from 'react-router-dom'

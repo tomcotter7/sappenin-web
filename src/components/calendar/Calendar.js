@@ -1,3 +1,9 @@
+/*
+* Author: Thomas Cotter
+* A react component to display to the calendar section of the sappenin application
+*/
+
+
 import React, { Component } from 'react';
 
 class Calendar extends Component {
