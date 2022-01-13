@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NavBar from './components/layout/NavBar'
+import MyNavBar from './components/layout/MyNavBar'
 import Home from './components/home/Home'
 import Map from './components/location/Map'
 import Calendar from './components/calendar/Calendar'
@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar />
+        <MyNavBar />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/map' component={Map} />

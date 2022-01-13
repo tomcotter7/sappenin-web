@@ -27,19 +27,19 @@ class Home extends Component {
     console.log("Home", notis)
 
     return (
-      <div className="container black">
-        <h3 className="white-text center">{add}</h3>
+      <div class="container mx-auto bg-indigo-500">
+        <h3 class="white-text center">{add}</h3>
         <br />
-        <div className="row">
-          <div className="col s12 m12">
+        <div class="container mx-auto">
+          <div class="conatiner mx-auto bg-indigo-500">
             <SearchBar />
           </div>
         </div>
-        <div className="row">
-          <div className="col s8 m8">
+        <div class="container mx-auto">
+          <div class="container mx-auto bg-indigo-500">
             <DealsContainer deals={deals} />
           </div>
-          <div className="col s4 m4" >
+          <div class1="container mx-auto" >
             <NewsHome notis={notis}/>
           </div>
         </div>

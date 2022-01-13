@@ -1,16 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './store/reducers/rootReducer.js';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
-import firebaseConfig from './config/firebaseConfig';
-import firebase from './config/firebaseConfig';
+import React from 'react'
+import ReactDOM from 'react-dom'
+//import './index.css'
+import App from './App'
+import reportWebVitals from './reportWebVitals'
+import { createStore, applyMiddleware, compose } from 'redux'
+import rootReducer from './store/reducers/rootReducer.js'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-firestore'
+import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
+import firebaseConfig from './config/firebaseConfig'
+import firebase from './config/firebaseConfig'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './assets/app.scss'
 
 const store = createStore(
   rootReducer,

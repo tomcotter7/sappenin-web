@@ -4,28 +4,27 @@
 */
 
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-import { firestoreConnect } from 'react-redux-firebase'
+//import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
 
 const SignedInLinks = (props) => {
-
   const { profile } = props;
 
   return (
-    <div>
-      <ul className="right">
-        <li><NavLink to='/map'> Map </NavLink></li>
-        <li><NavLink to='/calendar'> Calendar </NavLink></li>
-        <li><NavLink to='/new-deal'> New Deal </NavLink></li>
-        <li><NavLink to='/new-business'> New Business </NavLink></li>
-        <li><NavLink to='/news'> News </NavLink></li>
-        <li><a onClick={props.signOut}>Log Out</a></li>
-        <li><NavLink to='/' className="btn btn-floating white lighten-1 black-text">{profile.initials}</NavLink></li>
-      </ul>
-    </div>
+
+    <Nav className="me-auto">
+      <Nav.Link href="/map">Map</Nav.Link>
+      <Nav.Link href="/calendar">Calendar</Nav.Link>
+      <Nav.Link href="/new-deal">New Deal</Nav.Link>
+      <Nav.Link href="/new-business">New Business</Nav.Link>
+      <Nav.Link href="/news">News</Nav.Link>
+      <Button class="btn btn-danger navbar-btn" onClick={props.signOut}>Log Out</Button>
+      <Button class="btn btn-danger navbar-btn">{profile.initials}</Button>
+    </Nav>
   )
 }
 
