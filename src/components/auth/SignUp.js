@@ -8,6 +8,11 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class SignUp extends Component {
   state = {
@@ -30,33 +35,39 @@ class SignUp extends Component {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/' />
     return (
-      <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Sign Up</h5>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id='password' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id='firstName' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id='lastName' onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Sign Up</button>
-          </div>
-          <div className="red-text center">
-            { authError ? <p> { authError } </p> : null }
-          </div>
-        </form>
-      </div>
+
+      <Container className="bg-dark" fluid>
+        <br />
+        <Row className="justify-content-md-center">
+          <Col xs lg="2" style={{height: " 100vh "}}>
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label className="text-light">Email Address:</Form.Label>
+              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Text className="text-muted">
+                Don't worry, We'll never share your email with anyone else.
+              </Form.Text>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label className="text-light">Password:</Form.Label>
+              <Form.Control type="password" placeholder="Password" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicFName">
+              <Form.Label className="text-light">First Name:</Form.Label>
+              <Form.Control type="text" placeholder="First Name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicLName">
+              <Form.Label className="text-light">Last Name:</Form.Label>
+              <Form.Control type="text" placeholder="Last Name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicCheck">
+              <Form.Check type="checkbox" label="Would you like to receive emails about your local area?" className="text-light"/>
+            </Form.Group>
+            <Button variant="sap" type="submit">Submit</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
     )
   }
 }

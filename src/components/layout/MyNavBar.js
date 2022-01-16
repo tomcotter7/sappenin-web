@@ -15,7 +15,7 @@ const MyNavBar = (props) => {
   const { auth } = props;
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
   return (
-    <Navbar bg="info" expand="lg">
+    <Navbar bg="sap" expand="lg">
       <Container>
       <Navbar.Brand href="/"> Sappenin </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>

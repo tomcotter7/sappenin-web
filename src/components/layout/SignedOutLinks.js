@@ -4,17 +4,14 @@
 */
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Nav, Button } from 'react-bootstrap/'
+import Nav from 'react-bootstrap/Nav'
 
 const SignedOutLinks = () => {
   return (
-
-      <Nav className="me-auto">
-          <Nav.link href="/sign-in">Sign In</Nav.link>
-          <Nav.link href="/sign-up">Sign Up</Nav.link>
+      <Nav className="ms-auto">
+          <Nav.Link href="/sign-in">Sign In</Nav.Link>
+          <Nav.Link href="/sign-up">Sign Up</Nav.Link>
       </Nav>
-
     )
 }
 
