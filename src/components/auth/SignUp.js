@@ -41,26 +41,26 @@ class SignUp extends Component {
         <Row className="justify-content-md-center">
           <Col xs lg="2" style={{height: " 100vh "}}>
             <Form onSubmit={this.handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3" controlId="email" onChange={this.handleChange}>
               <Form.Label className="text-light">Email Address:</Form.Label>
               <Form.Control type="email" placeholder="Enter email" />
               <Form.Text className="text-muted">
                 Don't worry, We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group className="mb-3" controlId="password" onChange={this.handleChange}>
               <Form.Label className="text-light">Password:</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicFName">
+            <Form.Group className="mb-3" controlId="firstName" onChange={this.handleChange}>
               <Form.Label className="text-light">First Name:</Form.Label>
               <Form.Control type="text" placeholder="First Name" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicLName">
+            <Form.Group className="mb-3" controlId="lastName" onChange={this.handleChange}>
               <Form.Label className="text-light">Last Name:</Form.Label>
               <Form.Control type="text" placeholder="Last Name" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheck">
+            <Form.Group className="mb-3" controlId="check">
               <Form.Check type="checkbox" label="Would you like to receive emails about your local area?" className="text-light"/>
             </Form.Group>
             <Button variant="sap" type="submit">Submit</Button>
