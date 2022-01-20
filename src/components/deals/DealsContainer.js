@@ -15,14 +15,12 @@ class DealsContainer extends Component {
     const deals = this.props.deals;
 
     return (
-      <div style={{backgroundColor: 'black'}}>
+      <div className="bg-dark">
 
-					<h3 className="white-text center"> Nearby Deals Tonight </h3>
+					<h3 className="text-light" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
 					{deals && deals.map(deal => {
             return (
-              <Link key={deal['id']} to={'/deals/' + deal['id']}>
-                <DealBox key={deal['id']} data={deal['data']} />
-              </Link>
+              <DealBox key={deal['id']} data={deal['data']} id={deal['id']} />
             )
           })}
 			</div>

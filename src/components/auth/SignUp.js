@@ -65,6 +65,9 @@ class SignUp extends Component {
             </Form.Group>
             <Button variant="sap" type="submit">Submit</Button>
           </Form>
+          <div className="text-danger">
+            { authError ? <p> { authError } </p>: null}
+          </div>
         </Col>
       </Row>
     </Container>

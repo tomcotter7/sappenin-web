@@ -4,33 +4,21 @@
 */
 
 import React from 'react'
+import Card from 'react-bootstrap/Card'
 
-const renderNoti = (noti) => {
-  const data = noti.data;
 
-  return (
-    <div className="card-panel purple" key={data.id}>
-      <p> {data.content} </p>
-      <h5 className="center"> {data.name} </h5>
-    </div>
-  )
+const Notifications = (noti) => {
 
-}
-
-const Notifications = (props) => {
-
-  const { notis } = props;
+  const { data } = noti
 
   return (
-    <div className="section black">
-      <div className="card z-depth-0 black">
-        <div className="card-content">
-          <ul className="online-users">
-            { notis && notis.map(renderNoti) }
-          </ul>
-        </div>
-      </div>
-    </div>
+
+    <Card border="sap rounded" className="bg-dark">
+      <Card.Body>
+        <Card.Title className="text-light"> {data.name} </Card.Title>
+        <Card.Text className="text-light"> {data.content} </Card.Text>
+      </Card.Body>
+    </Card>
   )
 }
 

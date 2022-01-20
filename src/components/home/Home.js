@@ -10,6 +10,10 @@ import NewsHome from '../news/NewsHome'
 import SearchBar from '../location/SearchBar'
 import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect.js';
 import { compose } from 'redux';
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class Home extends Component {
 
@@ -24,26 +28,28 @@ class Home extends Component {
   render() {
 
     const { deals, notis, add } = this.props;
-    console.log("Home", notis)
+    console.log("Home", add)
 
     return (
-      <div class="container mx-auto bg-indigo-500">
-        <h3 class="white-text center">{add}</h3>
+      <Container className="bg-dark" fluid>
         <br />
-        <div class="container mx-auto">
-          <div class="conatiner mx-auto bg-indigo-500">
+        <Row className="justify-content-md-center">
+          <Col xs lg="2">
+            <h3 class="text-light"> { add } </h3>
+            <br />
             <SearchBar />
-          </div>
-        </div>
-        <div class="container mx-auto">
-          <div class="container mx-auto bg-indigo-500">
+          </Col>
+        </Row>
+        <br />
+        <Row className="justify-content-md-center">
+          <Col style={{height: "100vh"}}>
             <DealsContainer deals={deals} />
-          </div>
-          <div class1="container mx-auto" >
-            <NewsHome notis={notis}/>
-          </div>
-        </div>
-      </div>
+          </Col>
+          <Col>
+            <NewsHome notis={notis} />
+          </Col>
+        </Row>
+      </Container>
     )
   }
 }

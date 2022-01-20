@@ -11,18 +11,18 @@ import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect'
 
 class NewsHome extends Component {
 
-
-
   render() {
 
     const notis = this.props.notis;
 
     return (
-      <div>
-        <h3 className="white-text center"> News </h3>
-        <div className="col s12 m12">
-          <Notifications notis={notis} />
-        </div>
+      <div className="bg-dark">
+        <h3 className="text-light" style={{textAlign : "center"}}> News </h3>
+          {notis && notis.map(noti => {
+            return (
+              <Notifications key={noti['id']} data={noti['data']} />
+            )
+          })}
       </div>
     )
   }
