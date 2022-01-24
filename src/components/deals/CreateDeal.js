@@ -11,6 +11,12 @@ import { Redirect } from 'react-router-dom'
 import { firestoreConnect } from 'react-redux-firebase'
 import Select from 'react-select'
 
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 function convertPlaces(places) {
   var newPlaces = []
   for (var place in places) {
@@ -96,36 +102,39 @@ class CreateDeal extends Component {
     if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
     return (
-      <div class="container">
-        <form onSubmit={this.handleSubmit} class="black">
-          <h5 className="grey-text text-lighten-1 center"> Create new deal </h5>
-          <br />
-          <div className="input-field col s6">
-            <input style={{color: 'white'}} type="text" id="title" onChange={this.handleChange} />
-            <label for="title" className="active"> Title </label>
-          </div>
-          <div className="input-field">
-            <textarea id="description" className="materialize-textarea" style={{color: 'white'}} onChange={this.handleChange}></textarea>
-            <label for="description" className="active"> Deal Description </label>
-          </div>
-          <div className="input-field">
-            <Select
-                id="business"
-                options={places}
-                isMulti
-                styles={selectStyles}
-                name="business"
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder="Select a business"
-                onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <button className="btn purple lighten-1"> Create </button>
-          </div>
-        </form>
-      </div>
+
+      <Container className="bg-dark" fluid>
+        <br />
+        <Row className="justify-content-md-center">
+          <h5 className="text-light text-center">Create new deal</h5>
+          <Col xs lg="2" style={{height : "100vh"}}>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group className="mb-3" controlId="title" onChange={this.handleChange}>
+                <Form.Label className="text-light">Title:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Deal Title" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="description" onChange={this.handleChange}>
+                <Form.Label className="text-light">Description:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Deal Description" />
+              </Form.Group>
+              <Select
+                  id="business"
+                  options={places}
+                  isMulti
+                  styles={selectStyles}
+                  name="business"
+                  className="basic-multi-select"
+                  classNamePrefix="select"
+                  placeholder="Select a business"
+                  onChange={this.handleChange}
+                />
+              <br/>
+              <Button variant="sap" type="submit">Submit</Button>
+            </Form>
+          </Col>
+        </Row>
+
+      </Container>
     )
   }
 }

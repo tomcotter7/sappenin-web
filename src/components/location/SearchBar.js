@@ -39,13 +39,13 @@ const SearchBar = (props) => {
 
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
-          <input
+          <input style={{width: '60vh'}}
             {...getInputProps({
               placeholder: 'Search Places ...',
-              className: 'location-search-input black white-text',
+              className: 'location-search-input bg-light',
             })}
           />
-          <div className="autocomplete-dropdown-container">
+        <div className="autocomplete-dropdown-container">
             {loading && <div>Loading...</div>}
             {suggestions.map(suggestion => {
               const className = suggestion.active
@@ -53,8 +53,8 @@ const SearchBar = (props) => {
                 : 'suggestion-item';
               // inline style for demonstration purpose
               const style = suggestion.active
-                ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                ? { backgroundColor: '#6500b2', cursor: 'pointer' }
+                : { backgroundColor: '#6500b2', cursor: 'pointer' };
               return (
                 <div
                     {...getSuggestionItemProps(suggestion, {

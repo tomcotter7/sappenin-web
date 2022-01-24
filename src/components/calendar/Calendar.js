@@ -5,14 +5,18 @@
 
 
 import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 class Calendar extends Component {
 
   render() {
     return (
-      <div className="container black">
-        <h3 style={{color: 'white'}}> Calendar </h3>
-      </div>
+
+      <Container className="bg-dark fluid text-light">
+        <h3> Calendar </h3>
+      </Container>  
     )
   }
 }

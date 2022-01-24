@@ -34,7 +34,7 @@ class Home extends Component {
       <Container className="bg-dark" fluid>
         <br />
         <Row className="justify-content-md-center">
-          <Col xs lg="2">
+          <Col className="text-center">
             <h3 class="text-light"> { add } </h3>
             <br />
             <SearchBar />
@@ -45,7 +45,7 @@ class Home extends Component {
           <Col style={{height: "100vh"}}>
             <DealsContainer deals={deals} />
           </Col>
-          <Col>
+          <Col lg="4">
             <NewsHome notis={notis} />
           </Col>
         </Row>
