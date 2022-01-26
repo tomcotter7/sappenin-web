@@ -9,6 +9,11 @@ import { connect } from 'react-redux'
 import { createBusiness } from '../../store/actions/businessActions'
 import { Redirect } from 'react-router-dom'
 
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const CreateBusiness = (props) => {
   const initState = {
@@ -37,31 +42,33 @@ const CreateBusiness = (props) => {
   if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit} className="black">
-        <h5 className="grey-text text-lighten-1 center"> Create new business </h5>
-        <br />
-        <div className="input-field col s6">
-          <input style={{color: 'white'}} type="text" id="name" onChange={handleChange} />
-          <label htmlFor="name" className="active"> Business Name </label>
-        </div>
-        <div className="input-field">
-          <textarea id="description" className="materialize-textarea" style={{color:'white'}} onChange={handleChange}></textarea>
-          <label htmlFor="description"> Business Description </label>
-        </div>
-        <div className="input-field">
-          <input type="text" id="latitude" onChange={handleChange} />
-          <label htmlFor="latitude"> Business latitude </label>
-        </div>
-        <div className="input-field">
-          <input type="text" id="longitude" onChange={handleChange} />
-          <label htmlFor="longitude"> Business longitude </label>
-        </div>
-        <div className="input-field">
-          <button className="btn purple lighten-1"> Create </button>
-        </div>
-      </form>
-    </div>
+    <Container className="bg-dark" fluid>
+      <br />
+      <Row className="justify-content-md-center">
+        <h5 className="text-light text-center"> Create new business </h5>
+        <Col xs lg="2" style={{height:"100vh"}}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="name" onChange={handleChange}>
+              <Form.Label className="text-light">Business Name:</Form.Label>
+              <Form.Control type="text" placeholder="Enter Business Name"/>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="description" onChange={handleChange}>
+              <Form.Label className="text-light">Business Description:</Form.Label>
+              <Form.Control type="text" placeholder="Enter Business Description" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="latitude" onChange={handleChange}>
+              <Form.Label className="text-light">Business Latitude:</Form.Label>
+              <Form.Control type="text" placeholder="Enter Business Latitude" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="longitude" onChange={handleChange}>
+              <Form.Label className="text-light">Business Longitude:</Form.Label>
+              <Form.Control type="text" placeholder="Enter Business Longitude" />
+            </Form.Group>
+            <Button variant="sap" type="submit">Submit</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
