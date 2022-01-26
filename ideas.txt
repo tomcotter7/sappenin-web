@@ -1,15 +1,7 @@
 IDEAS:
 
-  - Consistent styling throughout webpage DONE
-  - Change where the notifications are shown, maybe a NEWS tab DONE
-  - Search bar on homepage to change current location DONE
-    - To do this we probably need to have the current location stored in a state,
-      so GeoFirestoreConnect HOC can just access the location.
-    - What's the best way to do the users actual location?
-      Maybe don't use the actual location for the web app, force the user to search first before continuing.
-    - So we could have something that checks if there has been a location searched,
-      If not, so 'splash screen'.
-      If yes, so main homepage, ??which search bar??
+  - Improved CSS - CONSTANT JOB
+  - Add Splash Screen if not logged in
   - Difference between users and business ownners.
     - users
       - map
@@ -20,3 +12,5 @@ IDEAS:
       - active deals
   - improve on creation screens
   - deals / notifications need to auto-delete after expiration
+  - MAP
+  - CALENDAR
