@@ -8,6 +8,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+
+import Select from 'react-select'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -20,11 +22,19 @@ class SignUp extends Component {
     password: '',
     firstName: '',
     lastName: '',
+    userType: ''
   }
   handleChange = (e) => {
-    this.setState({
-      [e.target.id]: e.target.value
-    })
+    console.log(this.state)
+    try {
+      this.setState({
+        [e.target.id]: e.target.value
+      })
+    } catch {
+      this.setState({
+        userType: e.value
+      })
+    }
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +73,13 @@ class SignUp extends Component {
             <Form.Group className="mb-3" controlId="check">
               <Form.Check type="checkbox" label="Would you like to receive emails about your local area?" className="text-light"/>
             </Form.Group>
+            <Select id="userType"
+                    options={[{value: "User", label: "User"}, {value: "Owner", label: "Business Owner"}]}
+                    className="basic-single"
+                    classNamePrefix="select"
+                    onChange={this.handleChange}
+                    />
+            <br />
             <Button variant="sap" type="submit">Submit</Button>
           </Form>
           <div className="text-danger">

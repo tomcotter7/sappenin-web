@@ -81,11 +81,11 @@ class CreateDeal extends Component {
     e.preventDefault();
     var title = this.state.title;
     var description = this.state.description;
-    for (var id in this.state.placeIDs) {
+    for (let id in this.state.placeIDs) {
       var deal = {
         title: title,
         description: this.state.description,
-        placeId: id
+        placeId: this.state.placeIDs[id]
       }
       this.props.createDeal(deal)
     }
@@ -99,6 +99,7 @@ class CreateDeal extends Component {
     } else {
       places = convertPlaces(places);
     }
+    console.log(places);
     if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
     return (
