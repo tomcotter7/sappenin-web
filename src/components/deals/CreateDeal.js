@@ -84,7 +84,7 @@ class CreateDeal extends Component {
     for (let id in this.state.placeIDs) {
       var deal = {
         title: title,
-        description: this.state.description,
+        description: description,
         placeId: this.state.placeIDs[id]
       }
       this.props.createDeal(deal)
@@ -94,7 +94,7 @@ class CreateDeal extends Component {
 
   render() {
     var { auth, places } = this.props;
-    if (places == undefined) {
+    if (places === undefined) {
       places = {}
     } else {
       places = convertPlaces(places);

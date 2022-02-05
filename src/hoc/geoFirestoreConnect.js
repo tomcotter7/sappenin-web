@@ -53,7 +53,6 @@ export const geoFirestoreConnect = (data) => {
       }
 
       componentDidMount() {
-				console.log("component did mount")
         this.interval = setInterval(() => this.tick(), 10000);
         var thus = this;
         if (navigator.geolocation && this.props.type === 'Device') {
@@ -88,7 +87,6 @@ export const geoFirestoreConnect = (data) => {
       }
 
 			componentDidUpdate(prevProps) {
-				console.log("GeoFirestore props", this.props)
 				if (prevProps.lat !== this.props.lat && prevProps.lon !== this.props.lon) {
 					this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)}, () => {
 						this.tick();
@@ -100,7 +98,6 @@ export const geoFirestoreConnect = (data) => {
         const query = (this.state.geoCollection).near({ center: this.state.userLoc, radius: 5});
         query.get().then((snapshot) => {
           const ids = snapshot.docs.map((doc) => doc.id);
-					console.log("returned ids", ids)
           this.props.getDeals(ids);
 					this.props.getNotis(ids);
         })

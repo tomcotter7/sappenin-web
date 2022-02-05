@@ -4,45 +4,34 @@
 */
 
 import React from 'react'
-import { connect } from 'react-redux'
-import { signOut } from '../../store/actions/authActions'
-//import { firestoreConnect } from 'react-redux-firebase'
+import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+import { connect } from 'react-redux'
+import OwnerSignedInLinks from './OwnerSignedInLinks'
+import UserSignedInLinks from './UserSignedInLinks'
 
 const SignedInLinks = (props) => {
-  const { profile } = props;
 
-  return (
+  const { user, user_id } = props;
+  var user_details = user ? user[user_id] : "None"
+  const links = user_details.userType == "Owner" ? <OwnerSignedInLinks /> : <UserSignedInLinks />
+  return (links)
 
-    <Nav className="ms-auto">
-      <Nav.Link href="/map">Map</Nav.Link>
-      <Nav.Link href="/calendar">Calendar</Nav.Link>
-      <Nav.Link href="/new-deal">New Deal</Nav.Link>
-      <Nav.Link href="/new-business">New Business</Nav.Link>
-      <Nav.Link href="/news">News</Nav.Link>
-      <NavDropdown title={profile.initials} id="basic-nav-dropdown">
-        <NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item onClick={() => props.signOut()}>Sign Out</NavDropdown.Item>
-      </NavDropdown>
-
-    </Nav>
-  )
 }
 
-
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    profile: state.firebase.profile
+    user: state.firestore.data.users,
+    user_id: ownProps.id
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signOut: () => dispatch(signOut())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignedInLinks)
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect((props) => [
+    {
+      collection: "users",
+      doc: props.id
+    }
+  ])
+)(SignedInLinks);

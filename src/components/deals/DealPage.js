@@ -11,14 +11,11 @@ import { Redirect } from 'react-router-dom'
 import fb  from '../../config/firebaseConfig'
 import firebase from 'firebase/app'
 
-function getPlaceData(placeID) {
-
-  const query = fb.doc("places").where(firebase.firestore.FieldPath.documentId(), '==', placeID);
-  query.get().then((result) => {
-    console.log(result);
-  })
-
-}
+import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Carousel from 'react-bootstrap/Carousel'
 
 
 const DealPage = (props) => {
@@ -29,10 +26,39 @@ const DealPage = (props) => {
   if (deal) {
     var loadedDeal = deal[props.match.params.id];
     return(
-      <div className="container black">
-        <p style={{ color: "white" }}> {loadedDeal.title} </p>
-        <p style={{ color: "white "}}> {loadedDeal.description} </p>
-      </div>
+      <Container className="bg-dark" fluid>>
+        <br />
+        <Row className="justify-content-md-center">
+          <h3 className="text-light text-center">{loadedDeal.title}</h3>
+          <p className="text-light text-center">{loadedDeal.description}</p>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Carousel>
+            <Carousel.Item interval={10000}>
+              <img
+                className="d-block w-100"
+                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.mandysam.com%2Fimg%2Frandom.jpg&f=1&nofb=1"
+                alt="First slide"
+                />
+              <Carousel.Caption>
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item interval={10000}>
+              <img
+                className="d-block w-100"
+                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.mandysam.com%2Fimg%2Frandom.jpg&f=1&nofb=1"
+                alt="Second slide"
+              />
+              <Carousel.Caption>
+                <h3>Second slide label</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+          </Carousel>
+        </Row>
+      </Container>
     )
 
   } else {
@@ -47,7 +73,6 @@ const DealPage = (props) => {
 
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     deal: state.firestore.data.deals,
     auth: state.firebase.auth

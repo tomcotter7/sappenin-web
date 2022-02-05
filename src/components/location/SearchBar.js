@@ -10,6 +10,10 @@ import PlacesAutocomplete, {
 import { useState } from 'react'
 import { connect } from 'react-redux'
 import { updateLocationSearch } from '../../store/actions/locationActions'
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+import OutlinedInput from '@mui/material/OutlinedInput';
+
 
 
 
@@ -25,7 +29,6 @@ const SearchBar = (props) => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        console.log('Success', latLng);
         props.updateLocation(address, latLng);})
       .catch(error => console.error('Error', error));
   };
@@ -39,10 +42,10 @@ const SearchBar = (props) => {
 
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
-          <input style={{width: '60vh'}}
+          <OutlinedInput style={{width: '60vh', border: "none", borderBottom: "1px solid"}} endAdornment={<InputAdornment position="end"><SearchIcon style={{color: "white"}}/></InputAdornment>}
             {...getInputProps({
               placeholder: 'Search Places ...',
-              className: 'location-search-input bg-light',
+              className: 'location-search-input bg-dark text-light',
             })}
           />
         <div className="autocomplete-dropdown-container">

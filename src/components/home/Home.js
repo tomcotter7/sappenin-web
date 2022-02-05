@@ -18,7 +18,6 @@ import Col from 'react-bootstrap/Col'
 class Home extends Component {
 
   componentDidUpdate(prevProps) {
-    console.log("Home props", this.props)
     if (prevProps.deals !== this.props.deals && prevProps.notis !== this.props.notis) {
 
       this.forceUpdate();
@@ -28,12 +27,11 @@ class Home extends Component {
   render() {
 
     const { deals, notis, add } = this.props;
-    console.log("Home", add)
 
     return (
       <Container className="bg-dark" fluid>
         <br />
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-md-center position-sticky">
           <Col className="text-center">
             <h3 class="text-light"> { add } </h3>
             <br />
@@ -55,7 +53,6 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("current state:", state)
   return {
     deals: state.deal.deals,
     notis: state.notifications.notis,
