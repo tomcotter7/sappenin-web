@@ -9,7 +9,8 @@ import DealPage from './components/deals/DealPage'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import NewsHome from './components/news/NewsHome'
-import SplashScreen from './components/home/SplashScreen'
+import MainHome from './components/home/MainHome'
+import OwnerBusinesses from './components/business/OwnerBusinesses'
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <div className="App">
         <MyNavBar />
         <Switch>
-          <Route exact path='/' component={SplashScreen} />
+          <Route exact path='/' component={MainHome} />
           <Route path='/home' component={Home} />
           <Route path='/map' component={Map} />
           <Route path='/calendar' component={Calendar} />
@@ -28,6 +29,7 @@ function App() {
           <Route path='/sign-in' component={SignIn} />
           <Route path='/sign-up' component={SignUp} />
           <Route path='/news' component={NewsHome} />
+          <Route path='/owner-businesses' componet={OwnerBusinesses} />
         </Switch>
       </div>
     </BrowserRouter>

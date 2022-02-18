@@ -99,7 +99,7 @@ class CreateDeal extends Component {
     } else {
       places = convertPlaces(places);
     }
-    console.log(places);
+
     if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
     if (Object.keys(places).length == 0) {
@@ -111,7 +111,7 @@ class CreateDeal extends Component {
           </Row>
         </Container>
       )
-    } 
+    }
 
     return (
 
@@ -152,7 +152,6 @@ class CreateDeal extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("Create Deal State:", state);
   return {
     auth: state.firebase.auth,
     places: state.firestore.data.places

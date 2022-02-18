@@ -15,6 +15,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Loader from '../layout/Loader'
 
 class Home extends Component {
 
@@ -29,7 +30,7 @@ class Home extends Component {
 
   render() {
 
-    const { deals, notis, add, auth } = this.props;
+    const { deals, dealFound, notis, notisFound, add, auth } = this.props;
 
     if (!auth.uid) return <Redirect to="/"/>
 
@@ -38,18 +39,16 @@ class Home extends Component {
         <br />
         <Row className="justify-content-md-center position-sticky">
           <Col className="text-center">
-            <h3 class="text-light"> { add } </h3>
-            <br />
             <SearchBar />
           </Col>
         </Row>
         <br />
         <Row className="justify-content-md-center">
           <Col style={{height: "100vh"}}>
-            <DealsContainer deals={deals} />
+            {dealFound ? <DealsContainer deals={deals} /> : <Loader />}
           </Col>
           <Col xs="4" lg="4">
-            <NewsHome notis={notis} />
+            {notisFound ? <NewsHome notis={notis} /> : <Loader />}
           </Col>
         </Row>
       </Container>
@@ -60,7 +59,9 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     deals: state.deal.deals,
+    dealFound: state.deal.dealsFound,
     notis: state.notifications.notis,
+    notisFound: state.notifications.notisFound,
     add: state.location.name,
     auth: state.firebase.auth
   }

@@ -1,5 +1,6 @@
 const initState = {
-  deals: []
+  deals: [],
+  dealsFound: false
 }
 
 const dealReducer = (state = initState, action) => {
@@ -11,13 +12,17 @@ const dealReducer = (state = initState, action) => {
     case 'NEARBY_DEALS':
       const deals = action.deals.docs.map((doc) => ({
         id: doc.id,
-        data: doc.data()
+        data: doc.data(),
       }));
       return {
-        deals: deals
+        deals: deals,
+        dealsFound: true
       };
     case 'NO_NEARBY_DEALS':
-      return initState
+      return {
+        deals: [],
+        dealsFound: false
+      }
     default:
       return state;
   }
