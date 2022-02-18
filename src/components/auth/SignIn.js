@@ -34,7 +34,7 @@ class SignIn extends Component {
 
     const { authError, auth } = this.props;
 
-    if (auth.uid) return <Redirect to='/' />
+    if (auth.uid) return <Redirect to='/home' />
 
     return (
       <Container className="bg-dark" fluid>

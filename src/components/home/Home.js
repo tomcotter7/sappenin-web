@@ -10,6 +10,7 @@ import NewsHome from '../news/NewsHome'
 import SearchBar from '../location/SearchBar'
 import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect.js';
 import { compose } from 'redux';
+import { Redirect } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
@@ -24,9 +25,13 @@ class Home extends Component {
     }
   }
 
+
+
   render() {
 
-    const { deals, notis, add } = this.props;
+    const { deals, notis, add, auth } = this.props;
+
+    if (!auth.uid) return <Redirect to="/"/>
 
     return (
       <Container className="bg-dark" fluid>
@@ -56,7 +61,8 @@ const mapStateToProps = (state) => {
   return {
     deals: state.deal.deals,
     notis: state.notifications.notis,
-    add: state.location.name
+    add: state.location.name,
+    auth: state.firebase.auth
   }
 }
 

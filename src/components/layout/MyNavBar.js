@@ -20,7 +20,7 @@ const MyNavBar = (props) => {
   return (
     <Navbar bg="sap" expand="lg" sticky="top">
       <Container>
-      <Navbar.Brand href="/"> Sappenin </Navbar.Brand>
+      <Navbar.Brand href="/home"> Sappenin </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {auth.isLoaded && links}

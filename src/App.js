@@ -9,6 +9,7 @@ import DealPage from './components/deals/DealPage'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import NewsHome from './components/news/NewsHome'
+import SplashScreen from './components/home/SplashScreen'
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <div className="App">
         <MyNavBar />
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' component={SplashScreen} />
+          <Route path='/home' component={Home} />
           <Route path='/map' component={Map} />
           <Route path='/calendar' component={Calendar} />
           <Route path='/new-deal' component={CreateDeal} />
