@@ -16,6 +16,7 @@ const UserSignedInLinks = (props) => {
       <Nav.Link href="/map">Map</Nav.Link>
       <Nav.Link href="/calendar">Calendar</Nav.Link>
       <Nav.Link href="/news">News</Nav.Link>
+      <Nav.Link href="/scan-qr">Scan A QR Code</Nav.Link>
       <NavDropdown title={profile.initials} id="basic-nav-dropdown">
         <NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
         <NavDropdown.Divider />

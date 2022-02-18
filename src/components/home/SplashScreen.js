@@ -24,9 +24,10 @@ const SplashScreen = (props) => {
             <SearchBar />
           </Col>
         </Row>
+        <br />
         <Row className="justify-content-md-center bg-dark">
-          <Col stlye={{height: "100vh"}} className="bg-dark">
-            <Carousel>
+          <Col className="bg-dark" xs="4">
+            <Carousel fade>
               <Carousel.Item>
                 <img
                   className = "d-block w-100"

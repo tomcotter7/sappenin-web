@@ -102,6 +102,17 @@ class CreateDeal extends Component {
     console.log(places);
     if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
+    if (Object.keys(places).length == 0) {
+      return (
+        <Container className="bg-dark" fluid>
+          <br />
+          <Row className="justify-content-md-center" style={{height: "100vh"}}>
+            <h4 className="text-light text-center">Please create a business first !</h4>
+          </Row>
+        </Container>
+      )
+    } 
+
     return (
 
       <Container className="bg-dark" fluid>

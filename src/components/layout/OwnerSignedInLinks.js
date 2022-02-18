@@ -22,7 +22,6 @@ const OwnerSignedInLinks = (props) => {
       <Nav.Link href="/new-business">New Business</Nav.Link>
       <Nav.Link href="/owner-businesses">Current Businesses</Nav.Link>
       <Nav.Link href="/owner-deals">Upcoming Deals</Nav.Link>
-      <Nav.Link href="/scan-qr">Scan A QR Code</Nav.Link>
       <NavDropdown title={profile.initials} id="basic-nav-dropdown">
         <NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
         <NavDropdown.Divider />
