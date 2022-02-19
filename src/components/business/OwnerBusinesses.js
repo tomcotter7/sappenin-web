@@ -2,9 +2,17 @@
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Loader from '../layout/Loader'
+import BusinessBox from './businessBox.js'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
+
 
 
 const OwnerBusinesses = (props) => {
+
+  const { businesses } = props
 
   return (
 
@@ -16,4 +24,24 @@ const OwnerBusinesses = (props) => {
   )
 }
 
-export default OwnerBusinesses
+const mapStateToProps = (state, ownProps) => {
+  return {
+    businesses : state.firestore.data.places
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect((props) => [
+    {
+      collection: "places",
+      where : [
+        [
+          'owner',
+          '==',
+          props.match.params.uid
+        ]
+      ]
+    }
+  ])
+)(OwnerBusinesses)

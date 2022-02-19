@@ -13,15 +13,18 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
 const OwnerSignedInLinks = (props) => {
-  const { profile } = props;
+  const { profile, auth } = props;
+
+  console.log(auth.uid)
+
 
   return (
 
     <Nav className="ms-auto">
       <Nav.Link href="/new-deal">New Deal</Nav.Link>
       <Nav.Link href="/new-business">New Business</Nav.Link>
-      <Nav.Link href="/owner-businesses">Current Businesses</Nav.Link>
-      <Nav.Link href="/owner-deals">Upcoming Deals</Nav.Link>
+      <Nav.Link href={'/owner-businesses/' + auth.uid}>Current Businesses</Nav.Link>
+      <Nav.Link href={'/owner-deals/' + auth.uid}>Upcoming Deals</Nav.Link>
       <NavDropdown title={profile.initials} id="basic-nav-dropdown">
         <NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
         <NavDropdown.Divider />
@@ -35,7 +38,8 @@ const OwnerSignedInLinks = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    auth : state.firebase.auth
   }
 }
 

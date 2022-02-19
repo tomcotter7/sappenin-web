@@ -29,7 +29,7 @@ function App() {
           <Route path='/sign-in' component={SignIn} />
           <Route path='/sign-up' component={SignUp} />
           <Route path='/news' component={NewsHome} />
-          <Route path='/owner-businesses' component={OwnerBusinesses} />
+          <Route path='/owner-businesses/:uid' component={OwnerBusinesses} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -3,14 +3,9 @@
 * A react component to display the deal information on the home page
 */
 
-import React from 'react';
-import styles from './Deals.module.css'
-import moment from 'moment'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-
-// moment(date).calendar()
 
 const DealBox = (deal) => {
 
