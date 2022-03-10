@@ -41,3 +41,17 @@ exports.newPlace = functions.firestore
 
     return createNotification(notification);
 });
+
+
+exports.removeExpiredDeals = functions.pubsub.schedule("every 1 hours").onRun(async (context) => {
+  const db = admin.firestore();
+  const now = firestore.Timestamp.now()
+
+  const deals = await db.collection("deals").where("expiresAt", <, now).get();
+  let promises = []
+  deals.forEach((deal) => {
+    promises.push(deal.ref.delete());
+  });
+
+  return Promise.all(promise)
+})
