@@ -10,7 +10,7 @@ import { createDeal } from '../../store/actions/dealActions'
 import { Redirect } from 'react-router-dom'
 import { firestoreConnect } from 'react-redux-firebase'
 import Select from 'react-select'
-
+import MyDateTime from '../forms/MyDateTime'
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
@@ -47,7 +47,7 @@ const selectStyles = {
   }),
   placeholder: (base, state) => ({
     ...base,
-    fontSize: '2vh'
+    fontSize: '0.75vh'
   })
 
 }
@@ -58,22 +58,40 @@ class CreateDeal extends Component {
   state = {
     title: '',
     description: '',
+    expiry_date: '',
+    expiry_time: '',
+    start_date: '',
+    start_time: '',
+    startNow: false,
     placeIDs: [],
   }
 
+  handleDateTimeChange = (expiry, date, time) => {
+    if (expiry) {
+      this.setState({expiry_date: date, expiry_time: time})
+    } else {
+      this.setState({start_date: date, start_time: time})
+    }
+  }
+
   handleChange = (e) => {
-    try {
-      this.setState({
-        [e.target.id] : e.target.value
-      })
-    } catch {
-      var selectedPlaces = []
-      for (var place in e) {
-        selectedPlaces.push(e[place].value);
+    if (e.target.id == "startNow") {
+      this.setState({[e.target.id]: e.target.checked})
+
+    } else {
+      try {
+        this.setState({
+          [e.target.id] : e.target.value
+        })
+      } catch {
+        var selectedPlaces = []
+        for (var place in e) {
+          selectedPlaces.push(e[place].value);
+        }
+        this.setState({
+          placeIDs: selectedPlaces
+        });
       }
-      this.setState({
-        placeIDs: selectedPlaces
-      });
     }
   }
 
@@ -127,7 +145,16 @@ class CreateDeal extends Component {
               </Form.Group>
               <Form.Group className="mb-3" controlId="description" onChange={this.handleChange}>
                 <Form.Label className="text-light">Description:</Form.Label>
-                <Form.Control type="text" placeholder="Enter Deal Description" />
+                <Form.Control as="textarea" rows={3} placeholder="Enter Deal Description" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="startNow" onChange={this.handleChange}>
+                <Form.Label className="text-light">Start Date/Time:</Form.Label>
+                <Form.Check type="checkbox" label="Start now" />
+                {this.state.startNow ? null : <MyDateTime expiry={false} formOnChange={this.handleDateTimeChange} /> }
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="expiry_date">
+                <Form.Label className="text-light">Expiry Date/Time:</Form.Label>
+                <MyDateTime expiry={true} formOnChange={this.handleDateTimeChange} />
               </Form.Group>
               <Select
                   id="business"
