@@ -1,5 +1,6 @@
 export const createDeal = (deal) => {
   return (dispatch, getState, { getFirestore, getFirebase }) => {
+    console.log(deal)
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const ownerID = getState().firebase.auth.uid;

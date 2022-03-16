@@ -2,25 +2,25 @@ import DatePicker from 'sassy-datepicker'
 import TimePicker from 'react-time-picker'
 import React, { useState } from 'react'
 
-const MyDateTime = (expiry, formOnChange) => {
+const MyDateTime = (props) => {
 
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
 
-  function handleDateChange(date) {
-    setDate(date)
-    formOnChange(date, time)
+  const handleDateChange = (selectedDate) => {
+    setDate(selectedDate);
+    props.formOnChange(props.expiry, selectedDate, time)
   }
 
-  function handleTimeChange(time) {
-    setTime(time)
-    formOnChange(expiry, date, time)
+  const handleTimeChange = (selectedTime) => {
+    setTime(selectedTime);
+    props.formOnChange(props.expiry, date, selectedTime)
   }
 
   return (
     <>
-      <DatePicker onChange={() => handleDateChange} />
-      <TimePicker onChange={() => handleTimeChange} />
+      <DatePicker onChange={handleDateChange} />
+      <TimePicker onChange={handleTimeChange} />
     </>
   )
 

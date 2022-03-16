@@ -67,6 +67,7 @@ class CreateDeal extends Component {
   }
 
   handleDateTimeChange = (expiry, date, time) => {
+    console.log("CreateDeal:", date)
     if (expiry) {
       this.setState({expiry_date: date, expiry_time: time})
     } else {
@@ -75,14 +76,19 @@ class CreateDeal extends Component {
   }
 
   handleChange = (e) => {
-    if (e.target.id == "startNow") {
-      this.setState({[e.target.id]: e.target.checked})
-
-    } else {
       try {
-        this.setState({
-          [e.target.id] : e.target.value
-        })
+        if (e.target.id == "startNow") {
+          this.setState({[e.target.id]: e.target.checked})
+          if (e.target.checked) {
+              const current = new Date();
+              this.setState({start_date : current.getDate(), start_time: current.getTime()})
+          }
+        } else {
+          console.log(e)
+          this.setState({
+            [e.target.id] : e.target.value
+          })
+        }
       } catch {
         var selectedPlaces = []
         for (var place in e) {
@@ -93,7 +99,6 @@ class CreateDeal extends Component {
         });
       }
     }
-  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -103,6 +108,10 @@ class CreateDeal extends Component {
       var deal = {
         title: title,
         description: description,
+        start_time: this.state.start_time,
+        start_date: this.state.start_date,
+        expiry_date: this.state.expiry_date,
+        expiry_time: this.state.expiry_time,
         placeId: this.state.placeIDs[id]
       }
       this.props.createDeal(deal)
@@ -112,15 +121,14 @@ class CreateDeal extends Component {
 
   render() {
     var { auth, places } = this.props;
-    if (places === undefined) {
-      places = {}
-    } else {
+    if (places != undefined) {
       places = convertPlaces(places);
     }
 
     if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
-    if (Object.keys(places).length == 0) {
+
+    if (places && Object.keys(places).length == 0){
       return (
         <Container className="bg-dark" fluid>
           <br />
@@ -150,11 +158,11 @@ class CreateDeal extends Component {
               <Form.Group className="mb-3" controlId="startNow" onChange={this.handleChange}>
                 <Form.Label className="text-light">Start Date/Time:</Form.Label>
                 <Form.Check type="checkbox" label="Start now" />
-                {this.state.startNow ? null : <MyDateTime expiry={false} formOnChange={this.handleDateTimeChange} /> }
+                {this.state.startNow ? null : <MyDateTime expiry={false} formOnChange={(expiry, date, time) => this.handleDateTimeChange(expiry, date, time)} /> }
               </Form.Group>
               <Form.Group className="mb-3" controlId="expiry_date">
                 <Form.Label className="text-light">Expiry Date/Time:</Form.Label>
-                <MyDateTime expiry={true} formOnChange={this.handleDateTimeChange} />
+                <MyDateTime expiry={true} formOnChange={(expiry, date, time) => this.handleDateTimeChange(expiry, date, time)} />
               </Form.Group>
               <Select
                   id="business"
