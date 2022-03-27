@@ -4,8 +4,8 @@ import React, { useState } from 'react'
 
 const MyDateTime = (props) => {
 
-  const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
+  const [date, setDate] = useState()
+  const [time, setTime] = useState("0:00")
 
   const handleDateChange = (selectedDate) => {
     setDate(selectedDate);
@@ -14,13 +14,13 @@ const MyDateTime = (props) => {
 
   const handleTimeChange = (selectedTime) => {
     setTime(selectedTime);
-    props.formOnChange(props.expiry, date, selectedTime)
+    selectedTime ? props.formOnChange(props.expiry, date, selectedTime.split(":")) : props.formOnChange(props.expiry, date, selectedTime)
   }
 
   return (
     <>
       <DatePicker onChange={handleDateChange} />
-      <TimePicker onChange={handleTimeChange} />
+      {date ? <> <p> Select a time: </p> <TimePicker onChange={handleTimeChange} disableClock={true}/> </> : null }
     </>
   )
 
