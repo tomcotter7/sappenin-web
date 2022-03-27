@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { createDeal } from '../../store/actions/dealActions'
-
+import TagsInput from './TagsInput'
 
 const selectStyles = {
   option: (provided, state) => ({
@@ -29,7 +29,7 @@ const selectStyles = {
   }),
   placeholder: (base, state) => ({
     ...base,
-    fontSize: '0.75vh'
+    fontSize: '1.25vh'
   })
 
 }
@@ -118,6 +118,17 @@ const CreateDealForm = (props) => {
             <Form.Group className="mb-3" controlId="expiry_date">
               <Form.Label className="text-light">Expiry Date/Time:</Form.Label>
               <MyDateTime expiry={true} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="type">
+              <Form.Label className="text-light">Food or Drink?</Form.Label>
+              <Form.Select>
+                <option>Food</option>
+                <option>Drink</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="tags">
+              <Form.Label className="text-light">Add some tags</Form.Label>
+              <TagsInput />
             </Form.Group>
             <Select
                 id="business"
