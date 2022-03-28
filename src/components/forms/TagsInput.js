@@ -47,7 +47,6 @@ const TagsInput = (props) => {
         console.group("Value Added")
         console.log(value)
         console.groupEnd()
-
         setValue([...value, createOption(inputValue)])
         setInputValue('')
         event.preventDefault()

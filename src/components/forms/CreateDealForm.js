@@ -59,6 +59,7 @@ const CreateDealForm = (props) => {
   }
 
   const handleChange = (e) => {
+    console.log(startNow)
     try {
       switch (e.target.id) {
         case "title":
@@ -110,7 +111,7 @@ const CreateDealForm = (props) => {
               <Form.Label className="text-light">Description:</Form.Label>
               <Form.Control as="textarea" rows={3} placeholder="Enter Deal Description" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="startNow" onChange={setStartNow}>
+            <Form.Group className="mb-3" controlId="startNow" onChange={(e) => setStartNow(e.target.checked)}>
               <Form.Label className="text-light">Start Date/Time:</Form.Label>
               <Form.Check type="checkbox" label="Start now" />
               {startNow ? null : <MyDateTime expiry={false} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} /> }
