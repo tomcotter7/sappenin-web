@@ -21,7 +21,7 @@ const CreateBusinessForm = (props) => {
       <br />
       <Row className="justify-content-md-center">
         <h4 className="text-light text-center"> Create a new business </h4>
-          <Col sm={12}>
+          <Col sm={6}>
             <Tab.Container id="business-form" defaultActiveKey="first">
               <Row>
                 <Tab.Content>
@@ -40,13 +40,13 @@ const CreateBusinessForm = (props) => {
               <Row>
                 <Nav variant="pills" className="justify-content-end">
                   <Nav.Item>
-                    <Nav.Link className="text-light" eventKey="first"> Personal Information </Nav.Link>
+                    <Nav.Link className="text-light border border-sap" eventKey="first"> Personal Information </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link className="text-light" eventKey="second"> Business Information </Nav.Link>
+                    <Nav.Link className="text-light border border-sap" eventKey="second"> Business Information </Nav.Link>
                   </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link className="text-light" eventKey="third">Confirm & Submit</Nav.Link>
+                      <Nav.Link className="text-light border border-sap" eventKey="third">Confirm & Submit</Nav.Link>
                     </Nav.Item>
                 </Nav>
               </Row>

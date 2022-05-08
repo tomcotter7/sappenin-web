@@ -137,7 +137,7 @@ const CreateDealForm = (props) => {
                 isMulti
                 styles={selectStyles}
                 name="business"
-                className="basic-multi-select"
+                className="form-control"
                 classNamePrefix="select"
                 placeholder="Select a business"
                 onChange={handleChange}
