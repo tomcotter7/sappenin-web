@@ -18,13 +18,34 @@ const CreateBusinessForm = (props) => {
       <br />
       <Row className="justify-content-md-center">
         <h4 className="text-light text-center"> Create a new business </h4>
-        <Tabs defaultActiveKey="personal" id="business-form" className="mb-3">
-          <Tab eventKey="personal" title="Personal Infomation">
-            <h4 className="text-light"> testing </h4>
-          </Tab>
-          <Tab eventKey="business" title="Business Information">
-          </Tab>
-        </Tabs>
+        <Col sm={12}>
+          <Tabs.Container id="business-form" defaultActiveKey="first">
+            <Row>
+              <Tab.Content>
+                <Tab.Pane eventKey="first">
+                  <h4 class="text-light">Test</h4>
+                </Tab.Pane>
+                <Tab.Pane eventKey="second">
+                  <h4 class="text-light">Test</h4>
+                </Tab.Pane>
+              </Tab.Content>
+            </Row>
+              <Nav className="justify-content-end">
+                <Nav.Item>
+                  <Nav.Link eventKey="first"> Personal Information </Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="second"> Business Information </Nav.Link>
+                </Nav.Item>
+              </Nav>
+
+            <Row>
+
+            </Row>
+          </Tabs.Container>
+        </Col>
+
+
       </Row>
     </Container>
   )

@@ -46,35 +46,33 @@ const CreateBusiness = (props) => {
 
   return (
 
-    <CreateBusinessForm />
-
-  /*<Container className="bg-dark" fluid>
-      <br />
-      <Row className="justify-content-md-center">
-        <h5 className="text-light text-center"> Create new business </h5>
-        <Col xs lg="2" style={{height:"100vh"}}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="name" onChange={handleChange}>
-              <Form.Label className="text-light">Business Name:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Business Name"/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="description" onChange={handleChange}>
-              <Form.Label className="text-light">Business Description:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Business Description" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="latitude" onChange={handleChange}>
-              <Form.Label className="text-light">Business Latitude:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Business Latitude" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="longitude" onChange={handleChange}>
-              <Form.Label className="text-light">Business Longitude:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Business Longitude" />
-            </Form.Group>
-            <Button variant="sap" type="submit">Submit</Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>*/
+    <Container className="bg-dark" fluid>
+        <br />
+        <Row className="justify-content-md-center">
+          <h5 className="text-light text-center"> Create new business </h5>
+          <Col xs lg="2" style={{height:"100vh"}}>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group className="mb-3" controlId="name" onChange={handleChange}>
+                <Form.Label className="text-light">Business Name:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Business Name"/>
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="description" onChange={handleChange}>
+                <Form.Label className="text-light">Business Description:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Business Description" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="latitude" onChange={handleChange}>
+                <Form.Label className="text-light">Business Latitude:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Business Latitude" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="longitude" onChange={handleChange}>
+                <Form.Label className="text-light">Business Longitude:</Form.Label>
+                <Form.Control type="text" placeholder="Enter Business Longitude" />
+              </Form.Group>
+              <Button variant="sap" type="submit">Submit</Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
   )
 }
 
