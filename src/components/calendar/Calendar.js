@@ -1,13 +1,15 @@
+import React, { Component } from 'react';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
 /*
 * Author: Thomas Cotter
 * A react component to display to the calendar section of the sappenin application
 */
 
+// At some point we might need two calendars - one for a user and one for a business owner?
 
-import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 class Calendar extends Component {
 

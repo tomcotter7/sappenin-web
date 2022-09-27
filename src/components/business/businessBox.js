@@ -2,6 +2,11 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 
+/**
+ * Author: Thomas Cotter
+ * A stateless react component to display a single business.
+ **/
+
 const BusinessBox = (props) => {
 
   return (
