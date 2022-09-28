@@ -21,7 +21,7 @@ const dealReducer = (state = initState, action) => {
     case 'NO_NEARBY_DEALS':
       return {
         deals: [],
-        dealsFound: false
+        dealsFound: true
       }
     default:
       return state;

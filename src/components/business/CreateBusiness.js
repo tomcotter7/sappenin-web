@@ -1,30 +1,31 @@
-/*
-* Author: Thomas Cotter
-* A react component to handle the creation of a new business
-*/
-
-
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { createBusiness } from '../../store/actions/businessActions'
 import { Redirect } from 'react-router-dom'
-
 import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
 import CreateBusinessForm from '../forms/CreateBusinessForm'
 
-
+/**
+ * A functional component handle changes in the CreateBusinessForm component. This component will also dispatch the data when submit is clicked.
+ * 
+ * TODO: Add checking - make sure all input data is correct.
+ * @author Thomas Cotter
+ * @component
+*/
 const CreateBusiness = (props) => {
+	
+	// Store the current state of the input fields.
   const initState = {
     name: '',
     description: '',
     latitude: '',
     longitude: ''
   }
+	
   const [business, setBusiness] = useState(initState);
 
 
@@ -40,7 +41,6 @@ const CreateBusiness = (props) => {
     props.createBusiness(business);
   }
 
-  console.log("props:", props);
   const { auth } = props;
   if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 

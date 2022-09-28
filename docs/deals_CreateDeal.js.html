@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> deals/CreateDeal.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>deals/CreateDeal.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { createDeal } from '../../store/actions/dealActions'
+import { Redirect } from 'react-router-dom'
+import { firestoreConnect } from 'react-redux-firebase'
+import CreateDealForm from '../forms/CreateDealForm'
+import Loader from '../layout/Loader'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
+/**
+ * Function to convert the places array in props to a nicely formatted array for use throughout the component
+ * @param places
+ * @author Thomas Cotter
+*/
+function convertPlaces(places) {
+
+  var newPlaces = []
+  for (var place in places) {
+    var newOption = {value: place, label: places[place].name};
+    newPlaces.push(newOption);
+  }
+	return newPlaces;
+}
+
+/**
+ * A functional component to allow the user to input data about a new deal, and then submit this data to be added to firebase.
+ * @author Thomas Cotter
+ * @component
+*/
+
+const CreateDeal = (props) => {
+	
+	// convert input places into easy to use format.
+	var { auth, places } = props;
+	if (places != undefined) {
+		places = convertPlaces(places);
+	}
+	
+	// If authentication is loaded from firebase, yet no-one is signed in, redirect.
+	if (auth.isLoaded &amp;&amp; !auth.uid) return &lt;Redirect to='/sign-in' />
+	
+	// If places are undefined, display a loading animation.
+	if (places === undefined) {
+		return &lt;Loader />	
+	}
+
+
+	// If places are loaded, yet no places exist, display and error telling user to create a business first.
+	
+	if (places === null) {
+      return (
+        &lt;Container className="bg-dark" fluid>
+          &lt;br />
+          &lt;Row className="justify-content-md-center" style={{height: "100vh"}}>
+            &lt;h4 className="text-light text-center">Please create a business first !&lt;/h4>
+          &lt;/Row>
+        &lt;/Container>
+      )
+    }
+	
+	// If normal, just return the create deal form.
+  return (
+      &lt;CreateDealForm places={places} createDeal={(deal) => this.props.createDeal(deal)} history={props.history} />
+  )
+
+
+}
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    places: state.firestore.data.places
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createDeal: (deal) => dispatch(createDeal(deal))
+  }
+}
+
+export default compose(
+  connect(state => ({ id: state.firebase.auth.uid })),
+  firestoreConnect(props => {
+      const { id } = props;
+      if (id) {
+        return [
+          {
+            collection: "places",
+            where: [
+              ['owner', '==', id]
+            ]
+          }
+        ]
+      } else {
+        return [
+          {
+            collection: "places",
+            where: [
+              ['name', '==', 'default']
+            ]
+          }
+        ]
+      }
+  }),
+  connect(mapStateToProps, mapDispatchToProps)
+)(CreateDeal);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

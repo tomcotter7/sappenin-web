@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component to handle the creation of a deal
-*/
-
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -14,33 +9,47 @@ import Loader from '../layout/Loader'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-
+/**
+ * Function to convert the places array in props to a nicely formatted array for use throughout the component
+ * @param {array} places An array of unformatted places
+ * @author Thomas Cotter
+*/
 function convertPlaces(places) {
+
   var newPlaces = []
   for (var place in places) {
     var newOption = {value: place, label: places[place].name};
     newPlaces.push(newOption);
   }
-
-  return newPlaces;
+	return newPlaces;
 }
 
-class CreateDeal extends Component {
+/**
+ * A functional component to allow the user to input data about a new deal, and then submit this data to be added to firebase.
+ * @author Thomas Cotter
+ * @component
+*/
 
-  render() {
-    var { auth, places } = this.props;
-    if (places != undefined) {
-      places = convertPlaces(places);
-    }
+const CreateDeal = (props) => {
+	
+	// convert input places into easy to use format.
+	var { auth, places } = props;
+	if (places != undefined) {
+		places = convertPlaces(places);
+	}
+	
+	// If authentication is loaded from firebase, yet no-one is signed in, redirect.
+	if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
+	
+	// If places are undefined, display a loading animation.
+	if (places === undefined) {
+		return <Loader />	
+	}
 
-    if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
-    if (places == undefined) {
-      <Loader />
-    }
-
-
-    if (places && Object.keys(places).length == 0){
+	// If places are loaded, yet no places exist, display and error telling user to create a business first.
+	
+	if (places === null) {
       return (
         <Container className="bg-dark" fluid>
           <br />
@@ -50,12 +59,13 @@ class CreateDeal extends Component {
         </Container>
       )
     }
+	
+	// If normal, just return the create deal form.
+  return (
+      <CreateDealForm places={places} createDeal={(deal) => this.props.createDeal(deal)} history={props.history} />
+  )
 
-    return (
 
-      <CreateDealForm places={places} createDeal={(deal) => this.props.createDeal(deal)} history={this.props.history} />
-    )
-  }
 }
 
 const mapStateToProps = (state) => {

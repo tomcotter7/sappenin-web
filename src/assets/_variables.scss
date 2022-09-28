@@ -26,3 +26,7 @@ $theme-colors: (
   sap: $sap,
 // now bg-accent,btn-accent,etc.. can be called
 );
+
+
+$nav-pills-link-active-bg : $sap;
+$form-select-focus-border-color : $info;

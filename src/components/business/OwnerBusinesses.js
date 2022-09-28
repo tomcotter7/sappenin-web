@@ -10,6 +10,11 @@ import { firestoreConnect } from 'react-redux-firebase'
 
 
 
+/**
+ * A functional component to display all of the currently logged in users businesses
+ * @author Thomas Cotter
+ * @component
+*/
 const OwnerBusinesses = (props) => {
 
   const { businesses } = props

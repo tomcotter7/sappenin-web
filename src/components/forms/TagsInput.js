@@ -1,8 +1,8 @@
-import React, { Component, KeyboardEventHandler, useState} from 'react';
-import CreatableSelect from 'react-select/creatable';
-import { ActionMeta, OnChangeValue } from 'react-select';
+import React, { Component, KeyboardEventHandler, useState} from 'react'
+import CreatableSelect from 'react-select/creatable'
+import { ActionMeta, OnChangeValue } from 'react-select'
 
-const createOption = (label: string) => ({
+const createOption = (label) => ({
   label,
   value: label,
 });
@@ -11,6 +11,7 @@ const components = {
   DropdownIndicator: null,
 };
 
+/*
 interface Option {
   label: string;
   value: string;
@@ -20,26 +21,26 @@ interface State {
   inputValue: string;
   value: Option[];
 }
+*/
 
+/*
+ * @author: Thomas Cotter
+ * @component
+ */
 const TagsInput = (props) => {
 
   const [inputValue, setInputValue] = useState('')
   const [value, setValue] = useState([])
 
-  const handleChange = (value: OnChangeValue<Option, true>, actionMeta: ActionMeta<Option>) => {
-    console.group("Value Changed")
-    console.log(value)
-    console.log('action: ${actionMeta.action}')
-    console.groupEnd()
+  const handleChange = (value, actionMeta) => {
     setValue(value)
   };
 
-  const handleInputChange = (inputValue: string) => {
-    console.log(inputValue)
+  const handleInputChange = (inputValue) => {
     setInputValue(inputValue)
   }
 
-  const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
+  const handleKeyDown = (event) => {
     if (!inputValue) return;
     switch (event.key) {
       case 'Enter':
