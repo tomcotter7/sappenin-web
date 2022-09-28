@@ -10,14 +10,14 @@ import { createDeal } from '../../store/actions/dealActions'
 import TagsInput from './TagsInput'
 
 const selectStyles = {
-  option: (provided, state) => ({
+  /*option: (provided, state) => ({
     ...provided,
     backgroundColor: 'white',
-    padding: 20
+    border: 'red'
   }),
   control: (base, state) => ({
     ...base,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
   }),
   dropdownIndicator: (base, state) => ({
     ...base,
@@ -26,10 +26,10 @@ const selectStyles = {
   indicatorSeparator: (base, state) => ({
     ...base,
     display: 'none'
-  }),
+  }),*/
   placeholder: (base, state) => ({
     ...base,
-    fontSize: '1.25vh'
+    fontSize: '1rem'
   })
 
 }
@@ -99,9 +99,9 @@ const CreateDealForm = (props) => {
   return (
     <Container className="bg-dark" fluid>
       <br />
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-sm-center" style={{height: "100vh"}}>
         <h5 className="text-light text-center">Create new deal</h5>
-        <Col xs lg="2" style={{height : "100vh"}}>
+        <Col sm lg="6">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="title" onChange={handleChange}>
               <Form.Label className="text-light">Title:</Form.Label>
@@ -113,7 +113,7 @@ const CreateDealForm = (props) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="startNow" onChange={(e) => setStartNow(e.target.checked)}>
               <Form.Label className="text-light">Start Date/Time:</Form.Label>
-              <Form.Check type="checkbox" label="Start now" />
+              <Form.Check className="text-light" type="checkbox" label="Start now" />
               {startNow ? null : <MyDateTime expiry={false} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} /> }
             </Form.Group>
             <Form.Group className="mb-3" controlId="expiry_date">
@@ -131,17 +131,19 @@ const CreateDealForm = (props) => {
               <Form.Label className="text-light">Add some tags</Form.Label>
               <TagsInput />
             </Form.Group>
-            <Select
-                id="business"
-                options={props.places}
-                isMulti
-                styles={selectStyles}
-                name="business"
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder="Select a business"
-                onChange={handleChange}
-              />
+            <Form.Group className="mb-3" controlId="businessses">
+              <Form.Label className="text-light">Select a business for this deal</Form.Label>
+              <Select
+                  id="business"
+                  options={props.places}
+                  isMulti
+                  styles={selectStyles}
+                  name="business"
+                  classNamePrefix="select"
+                  placeholder="Select a business"
+                  onChange={handleChange}
+                />
+            </Form.Group>
             <br/>
             <Button variant="sap" type="submit">Submit</Button>
           </Form>

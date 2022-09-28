@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component to handle the display of a specific deal which takes up the entire page
-*/
-
 import { firestoreConnect } from 'react-redux-firebase'
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
@@ -17,7 +12,11 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 
-
+/*
+* Author: Thomas Cotter
+* A react component to handle the display of a specific deal which takes up the entire page
+* Once someone clicks on a 'DealBox', this component will display.
+*/
 const DealPage = (props) => {
 
   const { deal, auth } = props;

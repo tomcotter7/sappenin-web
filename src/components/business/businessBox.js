@@ -1,6 +1,14 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
+
+/**
+ * A functional component to display a single business
+ * @author Thomas Cotter
+ * @component
+*/
 
 const BusinessBox = (props) => {
 
@@ -15,3 +23,21 @@ const BusinessBox = (props) => {
   )
 
 }
+
+BusinessBox.propTypes = {
+	/**
+	 * Name of the business
+	*/
+	name: PropTypes.string.isRequired,
+	/**
+	 * Description of the business
+	*/ 
+	desc: PropTypes.string.isRequired,
+	/**
+	 * ID of business - might be needed in the future for querying....
+	*/ 
+	id: PropTypes.string
+
+}
+
+export default BusinessBox
