@@ -99,9 +99,9 @@ const CreateDealForm = (props) => {
   return (
     <Container className="bg-dark" fluid>
       <br />
-      <Row className="justify-content-sm-center">
+      <Row className="justify-content-sm-center" style={{height: "100vh"}}>
         <h5 className="text-light text-center">Create new deal</h5>
-        <Col sm lg="6" style={{height : "100vh"}}>
+        <Col sm lg="6">
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="title" onChange={handleChange}>
               <Form.Label className="text-light">Title:</Form.Label>

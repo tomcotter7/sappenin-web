@@ -14,7 +14,7 @@ import OwnerBusinesses from './components/business/OwnerBusinesses'
 
 
 function App() {
-  return (
+  return (	
     <BrowserRouter>
       <div className="App">
         <MyNavBar />
