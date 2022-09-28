@@ -3,24 +3,22 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-/*
-* Author: Thomas Cotter
-* A react component to display to the calendar section of the sappenin application
+/**
+ * A functional component to display a calendar showing upcoming events.
+ * @author Thoams Cotter
+ * @component
 */
 
 // At some point we might need two calendars - one for a user and one for a business owner?
 
+const Calendar = (props) => {
 
-class Calendar extends Component {
+  return (
 
-  render() {
-    return (
-
-      <Container className="bg-dark fluid text-light">
-        <h3> Calendar </h3>
-      </Container>  
-    )
-  }
+		<Container className="bg-dark fluid text-light">
+			<h3> Calendar </h3>
+		</Container>  
+  )
 }
 
 export default Calendar;

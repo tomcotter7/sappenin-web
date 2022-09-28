@@ -9,9 +9,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import CreateBusinessForm from '../forms/CreateBusinessForm'
 
-/*
-* Author: Thomas Cotter
-* A react component to handle the creation of a new business
+/**
+ * A functional component handle changes in the CreateBusinessForm component. This component will also dispatch the data when submit is clicked.
+ * 
+ * TODO: Add checking - make sure all input data is correct.
+ * @author Thomas Cotter
+ * @component
 */
 const CreateBusiness = (props) => {
 	

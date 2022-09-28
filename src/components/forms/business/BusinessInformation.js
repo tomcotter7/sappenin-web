@@ -3,8 +3,10 @@ import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import { CountryDropdown, RegionDropdown } from 'react-country-region-selector';
 
-
-
+/*
+ * Author: Thoams Cotter
+ * Purpose: A React component to allow the user to input any information about the new business
+*/
 const BusinessInformation = (props) => {
 
   const [country, setCountry] = useState("")

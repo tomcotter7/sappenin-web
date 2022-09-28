@@ -9,9 +9,10 @@ import Loader from '../layout/Loader'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-/*
- * Author: Thomas Cotter
+/**
  * Function to convert the places array in props to a nicely formatted array for use throughout the component
+ * @param {array} places An array of unformatted places
+ * @author Thomas Cotter
 */
 function convertPlaces(places) {
 
@@ -23,9 +24,10 @@ function convertPlaces(places) {
 	return newPlaces;
 }
 
-/*
-* Author: Thomas Cotter
-* A react component to handle the creation of a deal
+/**
+ * A functional component to allow the user to input data about a new deal, and then submit this data to be added to firebase.
+ * @author Thomas Cotter
+ * @component
 */
 
 const CreateDeal = (props) => {

@@ -8,10 +8,13 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-/*
-* Author: Thomas Cotter
-* A react component for signing a user into the sappenin application
+/**
+ * A functional component that allows the user to input their email & password, and then submit this to log in using firebase auth.
+ * This component uses mapDispatchToProps and mapStateToProps to pass in the current state of firebase auth, and a function to log in with to the component.
+ * @author Thomas Cotter
+ * @component
 */
+
 const SignIn = (props) => {
 	
 	// Store the input email and password.
@@ -23,7 +26,6 @@ const SignIn = (props) => {
 
 	const [details, setDetails] = useState(initState);
 	
-	// Update the component's state when typing into the input boxes.
   const handleChange = (e) => {
 		setDetails({
 			...details,
@@ -31,7 +33,6 @@ const SignIn = (props) => {
 		}) 
   }
 
-	// On submit, call the Google Auth function.
   const handleSubmit = (e) => {
     e.preventDefault();
 		props.signIn(details)
@@ -66,7 +67,7 @@ const SignIn = (props) => {
     )
 }
 
-// Map the firebase auth status to props.
+
 const mapStateToProps = (state) => {
 
   return {
@@ -76,7 +77,6 @@ const mapStateToProps = (state) => {
 
 }
 
-// Map the sign in function to props.
 const mapDispatchToProps = (dispatch) => {
 
   return {

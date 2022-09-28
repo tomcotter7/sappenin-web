@@ -9,9 +9,11 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-/*
-* Author: Thomas Cotter
-* A react component to add a new user to the sappenin application
+/**
+ * A functional component to provide a form for the user to sign up, and then submit this information.
+ * This component uses mapDispatchToProps & mapStateToProps to pass in any required information.
+ * @author Thomas Cotter
+ * @component
 */
 const SignUp = (props) => {	
 	
@@ -26,7 +28,6 @@ const SignUp = (props) => {
 
 	const [userDetails, setUserDetails] = useState(initState)
 	
-	// Handle a change in one of the input boxes.
 	const handleChange = (e) => {
 		try {
 			setUserDetails({
@@ -34,6 +35,7 @@ const SignUp = (props) => {
 				[e.target.id]: e.target.value
 			})
 		} catch {
+			// userType will not be e.target.id so will fail in the try block.
 			setUserDetails({
 				...userDetails,
 				userType: e.value
@@ -41,7 +43,6 @@ const SignUp = (props) => {
 		}
 	} 
 	
-	// Handle a click of the submit button.
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		props.signUp(userDetails)
