@@ -1,12 +1,13 @@
-/*
-* Author: Thomas Cotter
-* A react component for the Map section of the sappenin application
-*/
-
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+
+/**
+ * A class component to display a map with nearby deals.
+ * @author Thomas Cotter
+ * @component
+*/ 
 
 class Map extends Component {
 

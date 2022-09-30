@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component for the nav bar
-*/
-
 import React from 'react';
 import SignedOutLinks from './SignedOutLinks'
 import SignedInLinks from './SignedInLinks'
@@ -13,6 +8,11 @@ import Container from 'react-bootstrap/Container'
 import { firestoreConnect } from 'react-redux-firebase'
 import SearchBar from '../location/SearchBar'
 
+/**
+ * A functional component to show the NavBar. A different navbar will be show depending on whether the user is signed in or not.
+ * @author Thomas Cotter
+ * @component
+*/ 
 
 const MyNavBar = (props) => {
   const { auth } = props;

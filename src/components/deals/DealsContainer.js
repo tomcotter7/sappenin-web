@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import DealBox from './DealBox'
 import { Link } from 'react-router-dom'
 
-/*
-* Author: Thomas Cotter
-* A react component to hold all the deal boxes
+/**
+ * A functional component to hold all the deal boxes
+ * @author Thomas Cotter
+ * @component
 */
 const DealsContainer = (props) => {
 

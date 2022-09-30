@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component for the home page of the sappenin application
-*/
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DealsContainer from '../deals/DealsContainer'
@@ -16,6 +11,12 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Loader from '../layout/Loader'
+
+/**
+ * A class to display the home page of this Application. Within the home page is a DealsContainer. It might be worth in the future to look at turning this into a functional component, but also maybe not possible due to GeoFirestoreConnect()
+ * @author Thomas Cotter
+ * @component
+*/
 
 class Home extends Component {
 

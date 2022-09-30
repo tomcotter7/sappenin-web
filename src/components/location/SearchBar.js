@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component for auto-complete places search bar to update the users location
-*/
-
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
@@ -15,7 +10,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 
-
+/**
+ * A functional component to allow people to search for areas, which will update the users location.
+ * @author Thomas Cotter
+ * @component
+*/ 
 
 const SearchBar = (props) => {
 

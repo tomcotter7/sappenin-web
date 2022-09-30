@@ -26,13 +26,10 @@ const BusinessBox = (props) => {
 
 BusinessBox.propTypes = {
 	/**
-	 * Name of the business
+	 * Data about the business.
+	 * This includes things like descriptions & titles.
 	*/
-	name: PropTypes.string.isRequired,
-	/**
-	 * Description of the business
-	*/ 
-	desc: PropTypes.string.isRequired,
+	data: PropTypes.array.isRequired,
 	/**
 	 * ID of business - might be needed in the future for querying....
 	*/ 

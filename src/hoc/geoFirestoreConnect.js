@@ -20,6 +20,14 @@ function errors(err) {
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
+/**
+ * A functional higher-order component. This wraps any input component to allow it to periodically update and request any nearby places / deals / notifications.
+ * If Home is your component, you could do this:
+ * ```
+ * export default compose(geoFirestoreConnect({collection: "places"}))(Home)
+ * ```
+ * @author Thomas Cotter
+*/ 
 
 export const geoFirestoreConnect = (data) => {
   var gc = GeoFirestore.collection(data.collection);
@@ -117,3 +125,5 @@ export const geoFirestoreConnect = (data) => {
 
   return transformComponent
 }
+
+export default geoFirestoreConnect

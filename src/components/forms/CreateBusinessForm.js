@@ -11,6 +11,11 @@ import BusinessInformation from './business/BusinessInformation'
 // import PersonalInformation from './business_forms/PersonalInformation'
 
 
+/**
+ * A functional component to display a form for the user to enter information about a new business that they would like to create. This component would also need to send off some trigger to check that this business is definitely real before creating it!
+ * @author Thomas Cotter
+ * @component
+*/
 
 const CreateBusinessForm = (props) => {
 

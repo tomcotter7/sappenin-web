@@ -35,6 +35,11 @@ const selectStyles = {
 }
 
 
+/**
+ * A functional component to allow the user to create a new deal for any one of their businesses.
+ * @author Thomas Cotter
+ * @component
+*/ 
 const CreateDealForm = (props) => {
 
   const [dealTitle, setDealTitle] = useState("")

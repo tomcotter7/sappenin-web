@@ -7,6 +7,12 @@ import { compose } from 'redux'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+/**
+ * A functional component to display the correct links for a signed in user, (not a business owner).
+ * @author Thomas Cotter
+ * @component
+*/ 
+
 const UserSignedInLinks = (props) => {
   const { profile } = props;
 

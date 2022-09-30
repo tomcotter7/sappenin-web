@@ -1,10 +1,12 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-/*
-* Author: Thomas Cotter
-* A react component to display the deal information on the home page
+/**
+ * A functional component to display a single deal on the home page of the application.
+ * @author Thoams Cotter
+ * @component
 */
 const DealBox = (deal) => {
 
@@ -29,6 +31,19 @@ const DealBox = (deal) => {
       </Card.Footer>
     </Card>
   )
+}
+
+DealBox.propTypes = {
+	/**
+	 * Data about the deal.
+	 * This includes things like, start+end dates, descriptions & titles.
+	*/
+	data: PropTypes.array.isRequired,
+	/**
+	 * Deal id
+	*/ 
+	id: PropTypes.string.isRequired
+
 }
 
 

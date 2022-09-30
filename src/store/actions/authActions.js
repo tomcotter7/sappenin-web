@@ -1,3 +1,10 @@
+
+/**
+ * Function to sign into firebase auth
+ * @param {array} An array of the input email and password.
+ * @author Thomas Cotter
+*/ 
+
 export const signIn = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
@@ -12,6 +19,10 @@ export const signIn = (credentials) => {
   }
 }
 
+/**
+ * Function to sign out of firebase auth.
+ * @author Thomas Cotter
+*/ 
 
 export const signOut = () => {
   return (dispatch, getState, {getFirebase}) => {
@@ -22,6 +33,11 @@ export const signOut = () => {
   }
 }
 
+/**
+ * Function to create an account in firebase auth.
+ * @param {array} An array containing all of the information needed to create a new user.
+ * @author Thomas Cotter
+ */
 
 export const signUp = (newUser) => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {

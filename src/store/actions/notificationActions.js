@@ -1,3 +1,10 @@
+
+/**
+ * Function to get all the notications about the places in the array passed into the function.
+ * @param {array} An array containing all the places you'd like to look for.
+ * @author Thomas Cotter
+*/ 
+
 export const getNotis = (places) => {
   if (places.length > 0) {
     return (dispatch, getState, { getFirestore, getFirebase }) => {

@@ -2,6 +2,12 @@ import DatePicker from 'sassy-datepicker'
 import TimePicker from 'react-time-picker'
 import React, { useState } from 'react'
 
+/**
+ * A functional component to wrap up DatePicker and TimePicker into one component as I did not like the DateTimePicker that had already been built
+ * @author Thomas Cotter
+ * @component
+*/
+
 const MyDateTime = (props) => {
 
   const [date, setDate] = useState()

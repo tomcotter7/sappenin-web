@@ -1,14 +1,15 @@
-/*
-* Author: Thomas Cotter
-* A react component to show links to user when they are signed in
-*/
-
 import React from 'react'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import OwnerSignedInLinks from './OwnerSignedInLinks'
 import UserSignedInLinks from './UserSignedInLinks'
+
+/**
+ * A functional component to display the correct links to the user in the NavBar when they are signed in.
+ * @author Thomas Cotter
+ * @component
+*/ 
 
 const SignedInLinks = (props) => {
 

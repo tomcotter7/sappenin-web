@@ -12,10 +12,13 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 
-/*
-* Author: Thomas Cotter
-* A react component to handle the display of a specific deal which takes up the entire page
-* Once someone clicks on a 'DealBox', this component will display.
+/**
+ * A functional component to display one deal, more extensive than the DealBox component as it will take up an entire page. When 'DealBox' is clicked this component will display.
+ * @author Thomas Cotter
+ * @component
+ * @example
+ * // To get to a deal page, you would need to do something like this:
+ * <Link key={id} to={'/deals/' + id}> <Button>Go To Deal Page</Button></Link>
 */
 const DealPage = (props) => {
 

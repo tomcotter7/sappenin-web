@@ -1,10 +1,11 @@
-/*
-* Author: Thomas Cotter
-* A component for the links displayed when the user is not signed in
-*/
-
 import React from 'react';
 import Nav from 'react-bootstrap/Nav'
+
+/**
+ * A functional component to display the correct links in the navbar when a user is signed out.
+ * @author Thomas Cotter
+ * @component
+*/ 
 
 const SignedOutLinks = () => {
   return (

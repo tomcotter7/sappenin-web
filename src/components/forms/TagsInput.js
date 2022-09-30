@@ -23,8 +23,9 @@ interface State {
 }
 */
 
-/*
- * @author: Thomas Cotter
+/**
+ * A functional component to allow the user to input some "tags" (such as beer / italian) to associate with their deal.
+ * @author Thomas Cotter
  * @component
  */
 const TagsInput = (props) => {

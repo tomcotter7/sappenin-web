@@ -5,6 +5,12 @@ import Carousel from 'react-bootstrap/Carousel'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+/**
+ * A functional component to show an initial landing page for users who access the site without being logged in.
+ * @author Thomas Cotter
+ * @component
+*/ 
+
 const SplashScreen = (props) => {
 
     return (

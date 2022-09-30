@@ -1,8 +1,3 @@
-/*
-* Author: Thomas Cotter
-* A react component for the links displayed when a business owner is signed in
-*/
-
 import React from 'react'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
@@ -11,12 +6,14 @@ import { compose } from 'redux'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
+/**
+ * A functional component to display the correct links in the NavBar for a business owner.
+ * @author Thomas Cotter
+ * @component
+*/
 
 const OwnerSignedInLinks = (props) => {
   const { profile, auth } = props;
-
-  console.log(auth.uid)
-
 
   return (
 
