@@ -8,7 +8,7 @@ import Tab from 'react-bootstrap/Tab'
 import Nav from 'react-bootstrap/Nav'
 
 import BusinessInformation from './business/BusinessInformation'
-import PersonalInformation from './business_forms/PersonalInformation'
+import PersonalInformation from './business/PersonalInformation'
 
 
 /**
