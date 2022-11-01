@@ -65,5 +65,8 @@ If you encounter any auth errors - chuck me an email - thomascotter00@gmail.com
 
 This section details all of the next tasks that need to be accomplished:
 
-    - Update README to show details of how to deploy to firebase!
-    - Finish the CreateDeal.js component to allow the user to create a new deal at one of their businesses.
+    - Continue work on new business form, to flesh this out and make sure that it works.
+Long-Term:
+  - Map + Calendar Section.
+  - Aesthetic Improvments.
+  - Make deal pages more exciting.
