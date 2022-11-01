@@ -45,8 +45,9 @@ const CreateBusiness = (props) => {
   if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
   return (
-
-    <Container className="bg-dark" fluid>
+		<CreateBusinessForm />
+		
+    /*<Container className="bg-dark" fluid>
         <br />
         <Row className="justify-content-md-center">
           <h5 className="text-light text-center"> Create new business </h5>
@@ -72,7 +73,7 @@ const CreateBusiness = (props) => {
             </Form>
           </Col>
         </Row>
-      </Container>
+      </Container>*/
   )
 }
 
