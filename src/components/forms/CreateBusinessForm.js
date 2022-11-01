@@ -8,7 +8,7 @@ import Tab from 'react-bootstrap/Tab'
 import Nav from 'react-bootstrap/Nav'
 
 import BusinessInformation from './business/BusinessInformation'
-// import PersonalInformation from './business_forms/PersonalInformation'
+import PersonalInformation from './business_forms/PersonalInformation'
 
 
 /**
@@ -32,6 +32,7 @@ const CreateBusinessForm = (props) => {
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
                     <h4 class="text-light">Personal Information</h4>
+										<PersonalInformation />
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
                     <h4 class="text-light">Business Information</h4>
