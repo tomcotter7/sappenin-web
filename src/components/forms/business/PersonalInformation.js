@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row'
 const PersonalInformation = (props) => {
 	
 	return (
-		<h5 class="text-danger">Please ensure that this is the business owners information. If your account and the business owners information do not match up, we will ask for more information. </h5>
+		<h5 className="text-danger">Please ensure that this is the business owners information. If your account and the business owners information do not match up, we will ask for more information. </h5>
 	)
 }
 

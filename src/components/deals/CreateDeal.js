@@ -8,6 +8,7 @@ import CreateDealForm from '../forms/CreateDealForm'
 import Loader from '../layout/Loader'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import NoBusinessDealPage from './NoBusinessDealPage.js'
 
 /**
  * Function to convert the places array in props to a nicely formatted array for use throughout the component
@@ -50,14 +51,7 @@ const CreateDeal = (props) => {
 	// If places are loaded, yet no places exist, display and error telling user to create a business first.
 	
 	if (places === null) {
-      return (
-        <Container className="bg-dark" fluid>
-          <br />
-          <Row className="justify-content-md-center" style={{height: "100vh"}}>
-            <h4 className="text-light text-center">Please create a business first !</h4>
-          </Row>
-        </Container>
-      )
+      return <NoBusinessDealPage />
     }
 	
 	// If normal, just return the create deal form.

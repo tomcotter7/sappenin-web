@@ -31,15 +31,15 @@ const CreateBusinessForm = (props) => {
               <Row>
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
-                    <h4 class="text-light">Personal Information</h4>
+                    <h4 className="text-light">Personal Information</h4>
 										<PersonalInformation />
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
-                    <h4 class="text-light">Business Information</h4>
+                    <h4 className="text-light">Business Information</h4>
                     <BusinessInformation />
                   </Tab.Pane>
                   <Tab.Pane>
-                    <h4 class="text-light">Submit</h4>
+                    <h4 className="text-light">Submit</h4>
                   </Tab.Pane>
                 </Tab.Content>
               </Row>
