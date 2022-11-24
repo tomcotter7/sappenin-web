@@ -19,7 +19,7 @@ import PersonalInformation from './business/PersonalInformation'
 
 const CreateBusinessForm = (props) => {
 
-  const [ownerNames, setOwnerNames] = useState("")
+	
 
   return (
     <Container className="bg-dark" fluid>
@@ -32,7 +32,7 @@ const CreateBusinessForm = (props) => {
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
                     <h4 className="text-light">Personal Information</h4>
-										<PersonalInformation />
+										<PersonalInformation/>	
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
                     <h4 className="text-light">Business Information</h4>
