@@ -3,9 +3,9 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import Nav from 'react-bootstrap/Nav'
+import Alert from 'react-bootstrap/Alert'
+import Form from 'react-bootstrap/Form'
+import Badge from 'react-bootstrap/Badge'
 
 import BusinessInformation from './business/BusinessInformation'
 import PersonalInformation from './business/PersonalInformation'
@@ -19,46 +19,36 @@ import PersonalInformation from './business/PersonalInformation'
 
 const CreateBusinessForm = (props) => {
 
+	const [validated, setValidated] = useState(false);
 	
-
+	const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    setValidated(true);
+  };
+	
   return (
     <Container className="bg-dark" fluid>
       <br />
-      <Row className="justify-content-md-center">
         <h4 className="text-light text-center"> Create a new business </h4>
-          <Col sm={6}>
-            <Tab.Container id="business-form" defaultActiveKey="first">
-              <Row>
-                <Tab.Content>
-                  <Tab.Pane eventKey="first">
-                    <h4 className="text-light">Personal Information</h4>
-										<PersonalInformation/>	
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    <h4 className="text-light">Business Information</h4>
-                    <BusinessInformation />
-                  </Tab.Pane>
-                  <Tab.Pane>
-                    <h4 className="text-light">Submit</h4>
-                  </Tab.Pane>
-                </Tab.Content>
-              </Row>
-              <Row>
-                <Nav variant="pills" className="justify-content-end">
-                  <Nav.Item>
-                    <Nav.Link className="text-light border border-sap" eventKey="first"> Personal Information </Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className="text-light border border-sap" eventKey="second"> Business Information </Nav.Link>
-                  </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link className="text-light border border-sap" eventKey="third">Confirm & Submit</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-              </Row>
-            </Tab.Container>
-          </Col>
-      </Row>
+				<Form noValidate validated={validated} onSubmit={handleSubmit}>
+					<Row className="mb-3 justify-content-md-center">
+						<Col sm={6}>
+							<Badge pill bg="sap" style={{marginBottom:25}}> Personal Information </Badge>
+							
+							<Alert key='danger' variant='danger'> Please ensure that this is the business owners information. We will likely contact you for documents in the case that we can't verify the owner of the business.</Alert>
+						</Col>
+
+					</Row>
+					<Row className="mb-3 justify-content-md-center">
+						<Col sm={6}>
+							<Badge pill bg="sap" style={{marginBottom:25}}> Business Information </Badge>
+						</Col>
+					</Row>
+				</Form>
     </Container>
   )
 }
