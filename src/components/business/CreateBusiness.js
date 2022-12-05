@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import CreateBusinessForm from '../forms/CreateBusinessForm'
+import Loader from '../layout/Loader'
 
 /**
  * A functional component handle changes in the CreateBusinessForm component. This component will also dispatch the data when submit is clicked.
@@ -41,44 +42,24 @@ const CreateBusiness = (props) => {
     props.createBusiness(business);
   }
 
-  const { auth } = props;
+
+	const { users, auth } = props
+	var user = users ? users[auth.uid] : "None"
+
   if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
+
   return (
-		<CreateBusinessForm />
+		<>
+			{users ? <CreateBusinessForm user={user}/> : <Loader/>}
+		</>
 		
-    /*<Container className="bg-dark" fluid>
-        <br />
-        <Row className="justify-content-md-center">
-          <h5 className="text-light text-center"> Create new business </h5>
-          <Col xs lg="2" style={{height:"100vh"}}>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3" controlId="name" onChange={handleChange}>
-                <Form.Label className="text-light">Business Name:</Form.Label>
-                <Form.Control type="text" placeholder="Enter Business Name"/>
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="description" onChange={handleChange}>
-                <Form.Label className="text-light">Business Description:</Form.Label>
-                <Form.Control type="text" placeholder="Enter Business Description" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="latitude" onChange={handleChange}>
-                <Form.Label className="text-light">Business Latitude:</Form.Label>
-                <Form.Control type="text" placeholder="Enter Business Latitude" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="longitude" onChange={handleChange}>
-                <Form.Label className="text-light">Business Longitude:</Form.Label>
-                <Form.Control type="text" placeholder="Enter Business Longitude" />
-              </Form.Group>
-              <Button variant="sap" type="submit">Submit</Button>
-            </Form>
-          </Col>
-        </Row>
-      </Container>*/
   )
 }
 
 const mapStateToProps = (state) => {
   return {
+		users: state.firestore.data.users,
     auth: state.firebase.auth
   }
 }

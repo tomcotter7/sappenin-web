@@ -7,8 +7,9 @@ import Alert from 'react-bootstrap/Alert'
 import Form from 'react-bootstrap/Form'
 import Badge from 'react-bootstrap/Badge'
 
-import BusinessInformation from './business/BusinessInformation'
-import PersonalInformation from './business/PersonalInformation'
+import { connect } from 'react-redux'
+import * as yup from 'yup';
+import { Formik } from 'formik'
 
 
 /**
@@ -17,41 +18,70 @@ import PersonalInformation from './business/PersonalInformation'
  * @component
 */
 
-const CreateBusinessForm = (props) => {
+const schema = yup.object().shape({
+	firstName: yup.string().required()
+})
 
-	const [validated, setValidated] = useState(false);
+const CreateBusinessForm = (props) => {
 	
-	const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
-  };
-	
+	const { user } = props	
+		
   return (
     <Container className="bg-dark" fluid>
       <br />
         <h4 className="text-light text-center"> Create a new business </h4>
-				<Form noValidate validated={validated} onSubmit={handleSubmit}>
-					<Row className="mb-3 justify-content-md-center">
-						<Col sm={6}>
-							<Badge pill bg="sap" style={{marginBottom:25}}> Personal Information </Badge>
-							
-							<Alert key='danger' variant='danger'> Please ensure that this is the business owners information. We will likely contact you for documents in the case that we can't verify the owner of the business.</Alert>
-						</Col>
-
-					</Row>
-					<Row className="mb-3 justify-content-md-center">
-						<Col sm={6}>
-							<Badge pill bg="sap" style={{marginBottom:25}}> Business Information </Badge>
-						</Col>
-					</Row>
-				</Form>
+				<Formik
+					validationSchema={schema}
+					onSubmit={console.log}
+					initialValues={{
+						firstName: user.firstName
+					}}
+				>
+					{({
+						handleSubmit,
+						handleChange,
+						handleBlur,
+						values,
+						touched,
+						isValid,
+						errors
+					}) => (
+						<Form noValidate onSubmit={handleSubmit}>
+							<Row className="mb-3 justify-content-md-center">
+								<Col sm={6}>
+									<Badge pill bg="sap" style={{marginBottom:25}}> Personal Information </Badge>
+									
+									<Alert key='danger' variant='danger'> Please ensure that this is the business owners information. We will likely contact you for documents in the case that we can't verify the owner of the business.</Alert>
+								</Col>
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+								<Form.Group as={Col} md="2" controlId="firstName">
+									<Form.Label>First Name:</Form.Label>
+									<Form.Control 
+										type="text"
+										placeholder="First name"
+										defaultValue={user.firstName}
+										onChange={handleChange}
+										isValid={!errors.firstName}
+										isInvalid={!!errors.firstName}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.firstName}</Form.Control.Feedback>
+								</Form.Group>	
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+								<Col sm={6}>
+									<Badge pill bg="sap" style={{marginBottom:25}}> Business Information </Badge>
+								</Col>
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+							</Row>
+							<Button type="submit">Submit form</Button>
+						</Form>
+					)}
+				</Formik>
     </Container>
   )
 }
-
 
 export default CreateBusinessForm
