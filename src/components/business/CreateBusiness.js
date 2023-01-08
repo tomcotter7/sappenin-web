@@ -48,10 +48,9 @@ const CreateBusiness = (props) => {
 
   if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
 
-
   return (
 		<>
-			{users ? <CreateBusinessForm user={user}/> : <Loader/>}
+			{users ? <CreateBusinessForm user={user} auth={auth}/> : <Loader/>}
 		</>
 		
   )

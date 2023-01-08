@@ -19,12 +19,18 @@ import { Formik } from 'formik'
 */
 
 const schema = yup.object().shape({
-	firstName: yup.string().required()
+	firstName: yup.string().required("First name is required!"),
+	lastName: yup.string().required("Last name is required!"),
+	email: yup.string().email("Enter a valid email!"),
+	businessName: yup.string().required("A business name is required!"),
+	businessAddress: yup.string().required("A business address is required!"),
+	postcode: yup.string().required("A postcode is required").matches('^[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1} {0,1}[0-9][A-Za-z]{2}', 'Postcode is not in correct format')
+
 })
 
 const CreateBusinessForm = (props) => {
 	
-	const { user } = props	
+	const { user, auth } = props	
 		
   return (
     <Container className="bg-dark" fluid>
@@ -34,7 +40,12 @@ const CreateBusinessForm = (props) => {
 					validationSchema={schema}
 					onSubmit={console.log}
 					initialValues={{
-						firstName: user.firstName
+						firstName: user.firstName,
+						lastName: user.lastName,
+						email: auth.email,
+						businessName: '',
+						businessAddress: '',
+						postcode: ''
 					}}
 				>
 					{({
@@ -56,10 +67,10 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="2" controlId="firstName">
-									<Form.Label>First Name:</Form.Label>
+									<Form.Label className="text-light">First Name:</Form.Label>
 									<Form.Control 
 										type="text"
-										placeholder="First name"
+										placeholder="John"
 										defaultValue={user.firstName}
 										onChange={handleChange}
 										isValid={!errors.firstName}
@@ -67,7 +78,35 @@ const CreateBusinessForm = (props) => {
 									/>
 									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
 									<Form.Control.Feedback type="invalid">{errors.firstName}</Form.Control.Feedback>
-								</Form.Group>	
+								</Form.Group>
+								<Form.Group as={Col} md="2" controlId="lastName">
+									<Form.Label className="text-light">Last Name:</Form.Label>
+									<Form.Control 
+										type="text"
+										placeholder="Smith"
+										defaultValue={user.lastName}
+										onChange={handleChange}
+										isValid={!errors.lastName}
+										isInvalid={!!errors.lastName}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.lastName}</Form.Control.Feedback>
+								</Form.Group>
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+								<Form.Group as={Col} md="4" controlId="email">
+									<Form.Label className="text-light">Email:</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="example@example.com"
+										onChange={handleChange}
+										defaultValue={auth.email}
+										isValid={!errors.email}
+										isInvalid={!!errors.email}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+								</Form.Group>
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Col sm={6}>
@@ -75,8 +114,61 @@ const CreateBusinessForm = (props) => {
 								</Col>
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
+								<Form.Group as={Col} md="4" controlId="businessName">
+									<Form.Label className="text-light">Name of business:</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="'The Kings Head'"
+										onChange={handleChange}
+										isValid={touched.businessName && !errors.businessName}
+										isInvalid={!!errors.businessName}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.businessName}</Form.Control.Feedback>
+								</Form.Group>
 							</Row>
-							<Button type="submit">Submit form</Button>
+							<Row className="mb-3 justify-content-md-center">
+								<Form.Group as={Col} md="3" controlId="businessAddress">
+									<Form.Label className="text-light">Address Line 1:</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="'1A Example Street'"
+										onChange={handleChange}
+										isValid={touched.businessAddress && !errors.businessAddress}
+										isInvalid={!!errors.businessAddress}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.businessAddress}</Form.Control.Feedback>
+								</Form.Group>
+								<Form.Group as={Col} md="1" controlId="postcode">
+								<Form.Label className="text-light">Postcode:</Form.Label>
+									<Form.Control
+										type="text"
+										placeholder="'SW6 1PF'"
+										onChange={handleChange}
+										isValid={touched.postcode && !errors.postcode}
+										isInvalid={!!errors.postcode}
+									/>
+									<Form.Control.Feedback type="valid">Looks good!</Form.Control.Feedback>	
+									<Form.Control.Feedback type="invalid">{errors.postcode}</Form.Control.Feedback>
+								</Form.Group>
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+								<Form.Group as={Col} md="4" controlId="businessType">
+									<Form.Label className="text-light">Type of business:</Form.Label>
+									<Form.Select onChange={handleChange} isMulti>
+										<option> Restaurant </option>
+										<option> Bar </option>
+										<option> Pub </option>
+										<option> Club </option>
+									</Form.Select>
+								</Form.Group>
+							</Row>
+							<Row className="mb-3 justify-content-md-center">
+							</Row>
+							<Row className="mb-3 justify-content-center">
+									<Button variant="sap" type="submit" style={{width:"10vh"}}>Submit form</Button>
+							</Row>
 						</Form>
 					)}
 				</Formik>
