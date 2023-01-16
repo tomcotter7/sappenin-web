@@ -14,10 +14,10 @@ import Col from 'react-bootstrap/Col'
 const SplashScreen = (props) => {
 
     return (
-      <Row className="justify-content-md-center bg-dark">
+      <Row className="justify-content-md-center bg-dark">	
         <Col className="bg-dark" xs="4" lg="8">
           <Carousel fade>
-            <Carousel.Item>
+            <Carousel.Item interval={3000}>
               <img
                 className = "d-block w-100"
                 src = { splashImg1 }
@@ -26,6 +26,7 @@ const SplashScreen = (props) => {
               <Carousel.Caption>
                 <h3>Welcome To Sappenin</h3>
                 <p> The first choice for all your money saving needs </p>
+								<p> Click the button below to get started </p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>

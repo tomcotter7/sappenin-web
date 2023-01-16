@@ -50,7 +50,7 @@ const CreateBusiness = (props) => {
 
   return (
 		<>
-			{users ? <CreateBusinessForm user={user} auth={auth}/> : <Loader/>}
+			{users ? <CreateBusinessForm user={user} auth={auth} createBusiness={(business) => props.createBusiness(business)} history={props.history}/> : <Loader/>}
 		</>
 		
   )

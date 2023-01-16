@@ -56,7 +56,7 @@ const CreateDeal = (props) => {
 	
 	// If normal, just return the create deal form.
   return (
-      <CreateDealForm places={places} createDeal={(deal) => this.props.createDeal(deal)} history={props.history} />
+      <CreateDealForm places={places} createDeal={(deal) => props.createDeal(deal)} history={props.history} />
   )
 
 

@@ -7,6 +7,8 @@ import Alert from 'react-bootstrap/Alert'
 import Form from 'react-bootstrap/Form'
 import Badge from 'react-bootstrap/Badge'
 
+import { getLatLngFromPostcode } from '../../services/postcode_api.js'
+
 import { connect } from 'react-redux'
 import * as yup from 'yup';
 import { Formik } from 'formik'
@@ -29,6 +31,25 @@ const schema = yup.object().shape({
 })
 
 const CreateBusinessForm = (props) => {
+
+	const handleSumbit = (values) => {
+		getLatLngFromPostcode(values.postcode).then((data) => {
+			var latlng = data
+			var business = {
+				"name": values.businessName,
+				"address": values.businessAddress,
+				"postcode": values.postcode,
+				"lat": latlng[0],
+				"lng": latlng[1],
+				"businessEmail": values.email,
+				"description": "Lorem Ipsum",
+				"ownerFirstName": values.firstName,
+				"ownerLastName": values.lastName,
+			}
+			props.createBusiness(business)
+			props.history.push('/')
+		})
+	}
 	
 	const { user, auth } = props	
 		
@@ -38,7 +59,7 @@ const CreateBusinessForm = (props) => {
         <h4 className="text-light text-center"> Create a new business </h4>
 				<Formik
 					validationSchema={schema}
-					onSubmit={console.log}
+					onSubmit={(values) => handleSumbit(values)}
 					initialValues={{
 						firstName: user.firstName,
 						lastName: user.lastName,
@@ -167,7 +188,7 @@ const CreateBusinessForm = (props) => {
 							<Row className="mb-3 justify-content-md-center">
 							</Row>
 							<Row className="mb-3 justify-content-center">
-									<Button variant="sap" type="submit" style={{width:"10vh"}}>Submit form</Button>
+									<Button variant="sap" type="submit" style={{width:"20vh"}}>Submit form</Button>
 							</Row>
 						</Form>
 					)}

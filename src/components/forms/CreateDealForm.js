@@ -98,7 +98,7 @@ const CreateDealForm = (props) => {
       }
       props.createDeal(deal)
     }
-    props.history.push('/') // will this work ??
+    props.history.push('/')
   }
 
   return (
