@@ -65,7 +65,11 @@ If you encounter any auth errors - chuck me an email - thomascotter00@gmail.com
 
 This section details all of the next tasks that need to be accomplished:
 
-    - Continue work on new business form, to flesh this out and make sure that it works.
+- Bug fixes  
+- More aesthetic splash screen
+- Client page
+- Tests
+
 Long-Term:
   - Map + Calendar Section.
   - Aesthetic Improvments.
