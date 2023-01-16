@@ -8,7 +8,7 @@ import { GeoFirestore } from '../../config/firebaseConfig'
 */ 
 
 export const createBusiness = (business) => {
-  const loc = new firebase.firestore.GeoPoint(parseFloat(business["latitude"]),parseFloat(business["longitude"]));
+  const loc = new firebase.firestore.GeoPoint(parseFloat(business["lat"]),parseFloat(business["lng"]));
   return (dispatch, getState, { getFirestore, getFirebase }) => {
 
     const owner = getState().firebase.auth.uid;
@@ -17,7 +17,12 @@ export const createBusiness = (business) => {
       name: business["name"],
       description: business["description"],
       coordinates: loc,
-      owner: owner,
+			postcode: business["postcode"],
+			address: business["address"],
+			email: business['businessEmail'],
+			ownerFirstName: business["ownerFirstName"],
+			ownerLastName: business["ownerLastName"],
+      associatedAccount: owner,
       createAt: new Date()
     }).then(() => {
       dispatch({ type: 'CREATE_BUSINESS', business: business});
