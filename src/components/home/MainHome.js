@@ -22,13 +22,7 @@ const MainHome = (props) => {
     return (
 
       <Container className="bg-dark" style={{ height: "100vh" }} fluid>
-        <br />
-        <Row className="justify-content-md-center position-sticky">
-          <Col className="text-center">
-            <SearchBar />
-          </Col>
-        </Row>
-        <br />
+        <br /> 
         {!auth.isLoaded ? <Loader /> : <SplashScreen /> }
       </Container>
 
