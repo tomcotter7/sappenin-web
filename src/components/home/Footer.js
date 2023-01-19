@@ -3,6 +3,12 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
+/**
+ * A functional component that acts as a footer for for all pages, displaying the name of the website and the 'contact us information'.
+ * @returns {JSX.Element} A footer component.
+ * @component
+ * @author Thomas Cotter
+*/
 
 const Footer = () => {
   return (
