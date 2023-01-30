@@ -2,9 +2,10 @@ import React from "react";
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Nav from 'react-bootstrap/Nav'
 
 /**
- * A functional component that acts as a footer for for all pages, displaying the name of the website and the 'contact us information'.
+ * A functional component that acts as a footer for for all pages. It provides convenient links to the contact page, about page, and privacy policy page.
  * @returns {JSX.Element} A footer component.
  * @component
  * @author Thomas Cotter
@@ -19,15 +20,11 @@ const Footer = () => {
 				</h3>
 				<Container>
 					<Row>
-						<Col className="text-center border">
-							<p> About Us </p>
-						</Col>
-						<Col xs={6} className="text-center border">
-							<p> Contact Us </p>
-						</Col>
-						<Col className="text-center border">
-							<p> Terms of Service </p>
-						</Col>
+                        <Nav fill variant="pills" className="mx-auto"> 
+                            <Nav.Link href="/contact" className="text-light border rounded bg-dark">Contact Us</Nav.Link>
+                            <Nav.Link href="/about" className="text-light border rounded bg-dark">About Us</Nav.Link>
+                            <Nav.Link href="/privacy" className="text-light border rounded bg-dark">Privacy Policy</Nav.Link>
+                        </Nav>
 					</Row>
 				</Container>
 			</Container>

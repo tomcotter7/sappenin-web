@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Alert from 'react-bootstrap/Alert'
 
 /**
  * A functional component that allows the user to input their email & password, and then submit this to log in using firebase auth.
@@ -58,8 +59,9 @@ const SignIn = (props) => {
               </Form.Group>
               <Button variant="sap" type="submit">Submit</Button>
             </Form>
-            <div className="text-danger">
-              { authError ? <p> { authError } </p>: null}
+            <br />
+            <div>
+              { authError ? <Alert key='danger' variant='danger'> { authError }. Please check your email and password. </Alert>: null}
             </div>
           </Col>
         </Row>
