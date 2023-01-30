@@ -16,7 +16,7 @@ const DealsContainer = (props) => {
 				<h3 className="text-light" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
 					{deals && deals.map(deal => {
             return (
-              <DealBox key={deal['id']} data={deal['data']} id={deal['id']} />
+              <DealBox key={deal['id']} data={deal['data']} id={deal['id']} featured={true} />
             )
           })}
 		</div>

@@ -65,6 +65,8 @@ export const geoFirestoreConnect = (data) => {
         var thus = this;
         if (navigator.geolocation && this.props.type === 'Device') {
           navigator.permissions.query({ name: "geolocation" }).then(function (result) {
+
+            console.log(result)
             if (result.state === "granted") {
               //If granted then you can directly call your function here
               navigator.geolocation.getCurrentPosition((pos) => {
@@ -80,10 +82,10 @@ export const geoFirestoreConnect = (data) => {
                   thus.tick();
                 }, errors, options);
               } else if (result.state === "denied") {
-								alert('Please allow location services or use built-in search bar')
+				alert('Please allow location services or use built-in search bar')
                 //If denied then you have to show instructions to enable location
-								this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)})
-								this.tick();
+				this.setState({userLoc: new firebase.firestore.GeoPoint(this.props.lat, this.props.lon)})
+				this.tick();
               }
               result.onchange = function () {console.log(result.state);};
           });
