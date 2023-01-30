@@ -12,23 +12,22 @@ import Badge from 'react-bootstrap/Badge'
 const DealBox = (deal) => {
 
   const { data, id, featured } = deal;
-  console.log(data);
+  var time = 10;
   return (
-    <Card border="sap rounded " className="bg-dark">
+    <Card border="light rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
       {/*<Card.Img variant="top" src="{data.img}"/>*/}
-			{/*Only display 'Featured Deal', if the deal is actually being featured.*/}
-      {featured ? <Card.Header as="h5"><Badge bg="success"> Featured Deal! </Badge></Card.Header> : null}
+      {featured ? <Card.Header as="h5" className="border"><Badge bg="success"> Featured Deal! </Badge></Card.Header> : null}
       <Card.Body>
-        <Card.Title className="text-light"> {data.title} </Card.Title>
-        {/*<Card.Subtitle className="mb-2 text-muted"> {data.date} </Card.Subtitle>*/}
+        <Card.Title as="h3" className="text-light"> {data.title} @ {data.placeID} </Card.Title>
+        <Card.Subtitle className="mb-2 text-light"> {data.date} </Card.Subtitle>
         <Card.Text className="text-light"> {data.description} </Card.Text>
         <Link key={id} to={'/deals/' + id}>
-          <Button variant="sap" className="border-light">Go To Deal</Button>
+          <Button variant="sap" className="text-light border-rounded border-light" style={{borderWidth: "0.4vh"}}>Go To Deal</Button>
         </Link>
       </Card.Body>
-      <Card.Footer style={{color: "white", borderColor: "#6500b2"}}>
-				{/*We also want to actually calculated the walk time!*/}
-        A 2 min walk! *Open in Google Maps*
+      <Card.Footer className="text-light border">
+		{/*We also want to actually calculated the walk time!*/}
+        Approximately a {time} min walk! <Button variant="sap" className="text-light border-rounded border-light" style={{borderWidth: "0.4vh"}}>Get Directions</Button>
         {/*Have a  link that takes you to google maps from  here*/}
       </Card.Footer>
     </Card>

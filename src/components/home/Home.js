@@ -48,7 +48,7 @@ class Home extends Component {
           <Col style={{height: "100vh"}}>
             {dealFound ? <DealsContainer deals={deals} /> : <Loader />}
           </Col>
-          <Col xs="4" lg="4">
+          <Col xs="5" lg="5">
             {notisFound ? <NewsHome notis={notis} /> : <Loader />}
           </Col>
         </Row>
