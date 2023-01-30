@@ -13,7 +13,6 @@ import Loader from '../layout/Loader'
 /**
  * A functional component handle changes in the CreateBusinessForm component. This component will also dispatch the data when submit is clicked.
  * 
- * TODO: Add checking - make sure all input data is correct.
  * @author Thomas Cotter
  * @component
 */
