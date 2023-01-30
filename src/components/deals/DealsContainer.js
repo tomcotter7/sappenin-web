@@ -13,13 +13,15 @@ const DealsContainer = (props) => {
 
   return (
     <div className="bg-dark">
-				<h3 className="text-light" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
-					{deals && deals.map(deal => {
-            return (
-              <DealBox key={deal['id']} data={deal['data']} id={deal['id']} featured={true} />
-            )
-          })}
-		</div>
+	    <h3 className="text-light" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
+		    {deals && deals.map(deal => {
+
+                
+                return (
+                    <DealBox key={deal['id']} data={deal['data']} id={deal['id']} featured={true} />
+                )
+            })}
+	</div>
   );
 }
 

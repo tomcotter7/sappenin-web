@@ -9,6 +9,8 @@ import firebase from 'firebase/app'
 import { connect } from 'react-redux'
 import { getDeals } from '../store/actions/dealActions'
 import { getNotis } from '../store/actions/notificationActions'
+import { updateLocationDevice } from '../store/actions/locationActions'
+
 
 var options = {
 		enableHighAccuracy: true,
@@ -37,17 +39,18 @@ export const geoFirestoreConnect = (data) => {
     const mapDispatchToProps = (dispatch) => {
       return {
         getDeals: (placeIDs) => dispatch(getDeals(placeIDs)),
-				getNotis: (placeIDs) => dispatch(getNotis(placeIDs))
+		getNotis: (placeIDs) => dispatch(getNotis(placeIDs)),
+        updateLocationDevice: (loc) => dispatch(updateLocationDevice(loc))
       }
     }
 
-		const mapStateToProps = (state) => {
-			return {
-				type: state.location.type,
-				lat: state.location.lat,
-				lon: state.location.lon
-			}
+	const mapStateToProps = (state) => {
+		return {
+			type: state.location.type,
+			lat: state.location.lat,
+			lon: state.location.lon
 		}
+	}
 
     class newComponent extends Component {
       constructor(props) {
@@ -66,7 +69,6 @@ export const geoFirestoreConnect = (data) => {
         if (navigator.geolocation && this.props.type === 'Device') {
           navigator.permissions.query({ name: "geolocation" }).then(function (result) {
 
-            console.log(result)
             if (result.state === "granted") {
               //If granted then you can directly call your function here
               navigator.geolocation.getCurrentPosition((pos) => {
@@ -109,8 +111,9 @@ export const geoFirestoreConnect = (data) => {
         query.get().then((snapshot) => {
           const ids = snapshot.docs.map((doc) => doc.id);
           this.props.getDeals(ids);
-					this.props.getNotis(ids);
+		  this.props.getNotis(ids);
         })
+        this.props.updateLocationDevice(this.state.userLoc);
       }
 
       componentWillUnmount() {

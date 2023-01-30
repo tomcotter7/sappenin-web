@@ -11,7 +11,6 @@ import Badge from 'react-bootstrap/Badge'
 const Notifications = (noti) => {
 
   const { data } = noti
-  console.log("Notification Data:", data)
   var desc = ""
   var color = ""
   if (data.content == "New Place") {

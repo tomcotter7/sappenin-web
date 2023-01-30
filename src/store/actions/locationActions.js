@@ -20,6 +20,6 @@ export const updateLocationSearch = (address, loc) => {
 
 export const updateLocationDevice = (loc) => {
   return (dispatch) => {
-    dispatch({type: 'UPDATE_LOCATION_DEVICE', lat: loc.latitude, lon: loc.longitude})
+    dispatch({type: 'UPDATE_LOCATION_DEVICE', lat: loc._lat, lon: loc._long})
   }
 }
