@@ -20,7 +20,8 @@ const getTimeBetweenTwoPoints = (lat1, lon1, lat2, lon2) => {
     var d = R * c; // Distance in km
     var averageWalkingSpeed = 5; // km/h
     var time = d / averageWalkingSpeed;
-    return time;
+    var time = time * 60; // Convert to minutes
+    return time.toFixed(0);
 }
 
 const deg2rad = (deg) => {
@@ -34,20 +35,18 @@ const deg2rad = (deg) => {
 */
 const DealBox = (deal) => {
 
-  const { place, data, id, featured } = deal;
-  //console.log("DB, PLACE:", place)
-  //console.log("DB, DATA:", data)
-
-  var placeId = data.placeId
+  const { place, loc, data, id, featured } = deal;
   var name = "Loading..."
+  var time = "??";
   
-  console.log(place)
-  //place == undefined ? name = "Loading..." : name = place[data.placeId]['name']
+    if (place != undefined) {
+        name = place[data.placeID]["name"];
+
+        time = getTimeBetweenTwoPoints(place[data.placeID]["coordinates"]["_lat"], place[data.placeID]["coordinates"]["_long"], loc.lat, loc.lon);
+
+    }
+  place == undefined ? name = "Loading..." : name = place[data.placeID]["name"]
   
-  console.log(name)
-
-
-  var time = 10;
   return (
     <Card border="light rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
       {/*<Card.Img variant="top" src="{data.img}"/>*/}
@@ -92,7 +91,8 @@ const DealBox = (deal) => {
 
 const mapStateToProps = (state) => {
     return {
-        place: state.firestore.data.places
+        place: state.firestore.data.places,
+        loc: state.location
     }
 }
 

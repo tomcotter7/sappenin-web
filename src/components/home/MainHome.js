@@ -21,7 +21,7 @@ const MainHome = (props) => {
 
     return (
 
-      <Container className="bg-dark" style={{ height: "100vh" }} fluid>
+      <Container style={{ height: "100vh" }} fluid>
         <br /> 
         {!auth.isLoaded ? <Loader /> : <SplashScreen /> }
       </Container>

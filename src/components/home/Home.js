@@ -31,15 +31,15 @@ class Home extends Component {
 
   render() {
 
-    const { deals, dealFound, notis, notisFound, loc, auth } = this.props;
+    const { deals, dealFound, notis, notisFound, auth } = this.props;
 
-    console.log("Home.js: ", loc);
+    //console.log("Home.js: ", loc);
 
 
     if (!auth.uid) return <Redirect to="/"/>
 
     return (
-      <Container className="bg-dark" fluid>
+      <Container fluid>
         <br />
         <Row className="justify-content-md-center position-sticky">
           <Col className="text-center">
@@ -66,7 +66,6 @@ const mapStateToProps = (state) => {
     dealFound: state.deal.dealsFound,
     notis: state.notifications.notis,
     notisFound: state.notifications.notisFound,
-    loc: state.location,
     auth: state.firebase.auth
   }
 }
