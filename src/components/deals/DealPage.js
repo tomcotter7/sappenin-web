@@ -28,11 +28,11 @@ const DealPage = (props) => {
   if (deal) {
     var loadedDeal = deal[props.match.params.id];
     return(
-      <Container className="bg-dark" fluid>>
+      <Container fluid>>
         <br />
         <Row className="justify-content-md-center">
-          <h3 className="text-light text-center">{loadedDeal.title}</h3>
-          <p className="text-light text-center">{loadedDeal.description}</p>
+          <h3 className="text-dark text-center">{loadedDeal.title}</h3>
+          <p className="text-dark text-center">{loadedDeal.description}</p>
         </Row>
         <Row className="justify-content-md-center">
           <Carousel>

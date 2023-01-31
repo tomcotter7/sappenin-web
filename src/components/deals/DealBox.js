@@ -48,20 +48,20 @@ const DealBox = (deal) => {
   place == undefined ? name = "Loading..." : name = place[data.placeID]["name"]
   
   return (
-    <Card border="light rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
+    <Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
       {/*<Card.Img variant="top" src="{data.img}"/>*/}
-      {featured ? <Card.Header as="h5" className="border"><Badge bg="success"> Featured Deal! </Badge></Card.Header> : null}
+      {featured ? <Card.Header as="h5" className="border-saplight"><Badge bg="sapred"> Featured Deal! </Badge></Card.Header> : null}
       <Card.Body>
         <Card.Title as="h3" className="text-light"> {data.title} @ {name} </Card.Title>
         <Card.Subtitle className="mb-2 text-light"> {data.date} </Card.Subtitle>
         <Card.Text className="text-light"> {data.description} </Card.Text>
         <Link key={id} to={'/deals/' + id}>
-          <Button variant="sap" className="text-light border-rounded border-dark" style={{borderWidth: "0.4vh"}}>Go To Deal</Button>
+          <Button variant="sapdark" className="text-light" style={{borderWidth: "0.4vh"}}>Go To Deal</Button>
         </Link>
       </Card.Body>
-      <Card.Footer className="text-light border">
+      <Card.Footer className="text-light border-saplight">
 		{/*We also want to actually calculated the walk time!*/}
-        Approximately a {time} min walk! <Button variant="sap" className="text-light border-rounded border-dark" style={{borderWidth: "0.4vh"}}>Get Directions</Button>
+        Approximately a {time} min walk! <Button variant="sapdark" className="text-light" style={{borderWidth: "0.4vh"}}>Get Directions</Button>
         {/*Have a  link that takes you to google maps from  here*/}
       </Card.Footer>
     </Card>

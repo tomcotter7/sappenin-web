@@ -16,14 +16,11 @@ const NewsHome = (props) => {
   const notis = props.notis;
 
   return (
-		<div className="bg-dark">
-			<h3 className="text-light" style={{textAlign : "center"}}> News </h3>
+		<div>
+			<h3 className="text-dark" style={{textAlign : "center"}}> News </h3>
                 {notis && notis.map(noti => {
                     return (
-                        <>
-                            <Notifications key={noti['id']} data={noti['data']} />
-                            <br />
-                        </>
+                        <Notifications key={noti['id']} data={noti['data']} />
                     )
                 })}
                 <Notifications key={1} data={{title: "Test", content: "Test"}} />

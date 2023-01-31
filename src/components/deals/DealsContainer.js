@@ -12,8 +12,8 @@ const DealsContainer = (props) => {
   const deals = props.deals;
 
   return (
-    <div className="bg-dark">
-	    <h3 className="text-light" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
+    <div>
+	    <h3 className="text-dark" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
 		    {deals && deals.map(deal => {
 
                 
