@@ -16,6 +16,9 @@ import OutlinedInput from '@mui/material/OutlinedInput';
  * @component
 */ 
 
+const sapcolor = "#c780fa"
+const sapdarkcolor = "#6f1ab6"
+
 const SearchBar = (props) => {
 
   const [address, setAddress] = useState("");
@@ -41,10 +44,10 @@ const SearchBar = (props) => {
 
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
-          <OutlinedInput style={{width: '60vh', border: "none", borderBottom: "1px solid"}} endAdornment={<InputAdornment position="end"><SearchIcon style={{color: "white"}}/></InputAdornment>}
+          <OutlinedInput style={{width: '60vh'}} endAdornment={<InputAdornment position="end"><SearchIcon style={{color: sapdarkcolor}}/></InputAdornment>}
             {...getInputProps({
               placeholder: 'Search Places ...',
-              className: 'location-search-input bg-dark text-light',
+              className: 'location-search-input text-dark',
             })}
           />
         <div className="autocomplete-dropdown-container">
@@ -55,8 +58,8 @@ const SearchBar = (props) => {
                 : 'suggestion-item';
               // inline style for demonstration purpose
               const style = suggestion.active
-                ? { backgroundColor: '#6500b2', cursor: 'pointer' }
-                : { backgroundColor: '#6500b2', cursor: 'pointer' };
+                ? { backgroundColor: sapdarkcolor, cursor: 'pointer', width : '60vh', margin: 'auto'}
+                : { backgroundColor: sapcolor, cursor: 'pointer', width : '60vh', margin: 'auto'};
               return (
                 <div
                     {...getSuggestionItemProps(suggestion, {

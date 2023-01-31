@@ -54,9 +54,9 @@ const CreateBusinessForm = (props) => {
 	const { user, auth } = props	
 		
   return (
-    <Container className="bg-dark" fluid>
+    <Container fluid>
       <br />
-        <h4 className="text-light text-center"> Create a new business </h4>
+        <h4 className="text-sap text-center"> Create a new business </h4>
 				<Formik
 					validationSchema={schema}
 					onSubmit={(values) => handleSumbit(values)}
@@ -88,7 +88,7 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="2" controlId="firstName">
-									<Form.Label className="text-light">First Name:</Form.Label>
+									<Form.Label className="text-dark">First Name:</Form.Label>
 									<Form.Control 
 										type="text"
 										placeholder="John"
@@ -101,7 +101,7 @@ const CreateBusinessForm = (props) => {
 									<Form.Control.Feedback type="invalid">{errors.firstName}</Form.Control.Feedback>
 								</Form.Group>
 								<Form.Group as={Col} md="2" controlId="lastName">
-									<Form.Label className="text-light">Last Name:</Form.Label>
+									<Form.Label className="text-dark">Last Name:</Form.Label>
 									<Form.Control 
 										type="text"
 										placeholder="Smith"
@@ -116,7 +116,7 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="4" controlId="email">
-									<Form.Label className="text-light">Email:</Form.Label>
+									<Form.Label className="text-dark">Email:</Form.Label>
 									<Form.Control
 										type="text"
 										placeholder="example@example.com"
@@ -136,7 +136,7 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="4" controlId="businessName">
-									<Form.Label className="text-light">Name of business:</Form.Label>
+									<Form.Label className="text-dark">Name of business:</Form.Label>
 									<Form.Control
 										type="text"
 										placeholder="'The Kings Head'"
@@ -150,7 +150,7 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="3" controlId="businessAddress">
-									<Form.Label className="text-light">Address Line 1:</Form.Label>
+									<Form.Label className="text-dark">Address Line 1:</Form.Label>
 									<Form.Control
 										type="text"
 										placeholder="'1A Example Street'"
@@ -162,7 +162,7 @@ const CreateBusinessForm = (props) => {
 									<Form.Control.Feedback type="invalid">{errors.businessAddress}</Form.Control.Feedback>
 								</Form.Group>
 								<Form.Group as={Col} md="1" controlId="postcode">
-								<Form.Label className="text-light">Postcode:</Form.Label>
+								<Form.Label className="text-dark">Postcode:</Form.Label>
 									<Form.Control
 										type="text"
 										placeholder="'SW6 1PF'"
@@ -176,7 +176,7 @@ const CreateBusinessForm = (props) => {
 							</Row>
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="4" controlId="businessType">
-									<Form.Label className="text-light">Type of business:</Form.Label>
+									<Form.Label className="text-dark">Type of business:</Form.Label>
 									<Form.Select onChange={handleChange} isMulti>
 										<option> Restaurant </option>
 										<option> Bar </option>

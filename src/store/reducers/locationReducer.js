@@ -8,7 +8,6 @@ const initState = {
 const locationReducer = (state = initState, action) => {
   switch (action.type) {
     case 'UPDATE_LOCATION_SEARCH':
-      console.log('updated location', action)
       return {
         name: action.name,
         type: 'Search',
@@ -16,7 +15,6 @@ const locationReducer = (state = initState, action) => {
         lon: action.lon
       };
     case 'UPDATE_LOCATION_DEVICE':
-      console.log('updated location', action)
       return {
         name : '',
         type: 'Device',

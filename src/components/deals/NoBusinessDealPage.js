@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button'
 const NoBusinessDealPage = (props) => {
 
 	return (
-		<Container className="bg-dark" fluid>
+		<Container fluid>
 			<br />
 			<Row className="justify-content-center">
 				<h4 className="text-sap text-center"> No businesses are associated with this account! Please create a new business or sign in with a different account</h4>

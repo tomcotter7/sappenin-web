@@ -10,7 +10,12 @@ $light: #f8f9fa;
 $dark: #090909;
 
 //custom color to be mapped
-$sap : #6500b2;
+$sap : #c780fa;
+$saplight : #ffcefe;
+$sapdark : #6f1ab6;
+$sapturq : #aae3e2;
+$saporange : #ef9a53;
+$sapred : #ff0032;
 
 // this is used to map colors. change accordingly.
 $theme-colors: (
@@ -24,6 +29,11 @@ $theme-colors: (
   dark: $dark,
 // add any additional color below
   sap: $sap,
+  saplight: $saplight,
+  sapdark: $sapdark,
+  sapturq: $sapturq,
+  saporange: $saporange,
+  sapred : $sapred
 // now bg-accent,btn-accent,etc.. can be called
 );
 
