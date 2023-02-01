@@ -16,7 +16,8 @@ import NoBusinessDealPage from '../deals/NoBusinessDealPage'
 const OwnerBusinesses = (props) => {
 
   const { businesses } = props
-    
+
+     
   if (businesses == null) {
     return ( <NoBusinessDealPage /> )
   }
@@ -36,7 +37,7 @@ const OwnerBusinesses = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    businesses : state.firestore.data.places
+    businesses : state.firestore.data.places,
   }
 }
 

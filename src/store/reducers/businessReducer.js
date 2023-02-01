@@ -1,5 +1,5 @@
 const initState = {
-  places: []
+  places: [],
 }
 
 const businessReducer = (state = initState, action) => {
