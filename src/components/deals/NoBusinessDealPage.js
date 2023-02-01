@@ -22,7 +22,7 @@ const NoBusinessDealPage = (props) => {
 				<br />
 				<Col className="d-flex justify-content-center">
 					<Link to="/new-business">
-						<Button variant="sap" size="lg">Create a business here!</Button>
+						<Button variant="outline-sap" size="lg">Create a business here!</Button>
 					</Link>
 				</Col>
 			</Row>

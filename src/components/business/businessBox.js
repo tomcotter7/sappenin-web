@@ -12,28 +12,32 @@ import PropTypes from 'prop-types'
 
 const BusinessBox = (props) => {
 
+  const { business } = props
+
+  console.log(business)
+
   return (
-    <Card border="sap rounded" className="bg-dark">
-      {/*<Card.Img variant="top" src="{data.img}"/>*/}
-      <Card.Body>
-        <Card.Title className="text-light"></Card.Title>
-        <Card.Text className="text-light"></Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+        <Card border="saplight rounded" className="bg-sap" style={{borderWidth: '0.5vh'}}>
+          {/*<Card.Img variant="top" src="{data.img}"/>*/}
+          <Card.Body>
+            <Card.Title className="text-light"><b>{business.name}</b></Card.Title>
+            <Card.Text className="text-light">
+                {business.description} 
+                <br />
+                <br />
+                <b> {business.address}, {business.postcode} </b>
+                <br />
+                Owned by: {business.ownerFirstName} {business.ownerLastName} ({business.email})
+          </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <Button variant="sapdark" className="text-light"> Edit </Button>
+          </Card.Footer>
+        </Card>
+        <br />
+    </>
   )
-
-}
-
-BusinessBox.propTypes = {
-	/**
-	 * Data about the business.
-	 * This includes things like descriptions & titles.
-	*/
-	data: PropTypes.array.isRequired,
-	/**
-	 * ID of business - might be needed in the future for querying....
-	*/ 
-	id: PropTypes.string
 
 }
 
