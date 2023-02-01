@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import NoBusinessDealPage from '../deals/NoBusinessDealPage'
+import Loader from '../layout/Loader'
 
 
 /**
@@ -15,9 +16,12 @@ import NoBusinessDealPage from '../deals/NoBusinessDealPage'
 */
 const OwnerBusinesses = (props) => {
 
-  const { businesses } = props
+  const { businesses, users } = props
 
-     
+  if (users == null) {
+    return <Loader />
+  }
+ 
   if (businesses == null) {
     return ( <NoBusinessDealPage /> )
   }
@@ -38,6 +42,7 @@ const OwnerBusinesses = (props) => {
 const mapStateToProps = (state, ownProps) => {
   return {
     businesses : state.firestore.data.places,
+    users: state.firestore.data.users
   }
 }
 
