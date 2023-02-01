@@ -1,13 +1,11 @@
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Loader from '../layout/Loader'
 import BusinessBox from './businessBox.js'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
-
+import NoBusinessDealPage from '../deals/NoBusinessDealPage'
 
 
 /**
@@ -18,12 +16,19 @@ import { firestoreConnect } from 'react-redux-firebase'
 const OwnerBusinesses = (props) => {
 
   const { businesses } = props
+    
+  if (businesses == null) {
+    return ( <NoBusinessDealPage /> )
+  }
 
   return (
 
-    <Container className="bg-dark" fluid>
+    <Container fluid>
       <br />
-      <h3 className="text-light"> for each business owned print a row </h3>
+      <h3 className="text-dark" style={{textAlign: "center"}}><b><u>Your Businesses</u></b></h3> 
+      { Object.keys(businesses).map((key) => {
+        return ( <BusinessBox key={key} business={businesses[key]} /> )
+       })}
     </Container>
 
   )
@@ -42,7 +47,7 @@ export default compose(
       collection: "places",
       where : [
         [
-          'owner',
+          'associatedAccount',
           '==',
           props.match.params.uid
         ]
