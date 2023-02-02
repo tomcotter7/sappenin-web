@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -97,12 +97,15 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 
+const sapcolor = "#c780fa"
+const sapdarkcolor = "#6f1ab6"
+
 /**
  * A functional component to allow people to search for areas, which will update the users location.
+ * This component uses the react-places-autocomplete library to allow the user to search for places.
  * @author Thomas Cotter
  * @component
 */ 
-
 const SearchBar = (props) => {
 
   const [address, setAddress] = useState("");
@@ -128,10 +131,10 @@ const SearchBar = (props) => {
 
       {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         &lt;div>
-          &lt;OutlinedInput style={{width: '60vh', border: "none", borderBottom: "1px solid"}} endAdornment={&lt;InputAdornment position="end">&lt;SearchIcon style={{color: "white"}}/>&lt;/InputAdornment>}
+          &lt;OutlinedInput style={{width: '60vh'}} endAdornment={&lt;InputAdornment position="end">&lt;SearchIcon style={{color: sapdarkcolor}}/>&lt;/InputAdornment>}
             {...getInputProps({
               placeholder: 'Search Places ...',
-              className: 'location-search-input bg-dark text-light',
+              className: 'location-search-input text-dark',
             })}
           />
         &lt;div className="autocomplete-dropdown-container">
@@ -142,8 +145,8 @@ const SearchBar = (props) => {
                 : 'suggestion-item';
               // inline style for demonstration purpose
               const style = suggestion.active
-                ? { backgroundColor: '#6500b2', cursor: 'pointer' }
-                : { backgroundColor: '#6500b2', cursor: 'pointer' };
+                ? { backgroundColor: sapdarkcolor, cursor: 'pointer', width : '60vh', margin: 'auto'}
+                : { backgroundColor: sapcolor, cursor: 'pointer', width : '60vh', margin: 'auto'};
               return (
                 &lt;div
                     {...getSuggestionItemProps(suggestion, {

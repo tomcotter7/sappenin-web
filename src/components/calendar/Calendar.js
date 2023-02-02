@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 /**
  * A functional component to display a calendar showing upcoming events.
+ * At the momemnt, this is just a placeholder.
+ * @todo Implement a calendar.
  * @author Thoams Cotter
  * @component
 */
 
-// At some point we might need two calendars - one for a user and one for a business owner?
 
 const Calendar = (props) => {
 

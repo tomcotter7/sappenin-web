@@ -11,7 +11,8 @@ import Alert from 'react-bootstrap/Alert'
 
 /**
  * A functional component that allows the user to input their email & password, and then submit this to log in using firebase auth.
- * This component uses mapDispatchToProps and mapStateToProps to pass in the current state of firebase auth, and a function to log in with to the component.
+ * mapDispatchToProps allows the component to call the signIn function, which is passed in from the authActions.js file.
+ * mapStateToProps allows the component to access the current state of firebase auth, and the authError.
  * @author Thomas Cotter
  * @component
 */
@@ -25,7 +26,7 @@ const SignIn = (props) => {
     password: ''
   }
 
-	const [details, setDetails] = useState(initState);
+  const [details, setDetails] = useState(initState);
 	
   const handleChange = (e) => {
 		setDetails({
@@ -35,8 +36,8 @@ const SignIn = (props) => {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-		props.signIn(details)
+        e.preventDefault();
+	    props.signIn(details)
   }
 
   const { authError, auth } = props;

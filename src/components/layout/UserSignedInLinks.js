@@ -1,9 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
-import OwnerSignedInLinks from './OwnerSignedInLinks'
 //import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
 import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 

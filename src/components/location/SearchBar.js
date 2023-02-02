@@ -10,15 +10,15 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 
-/**
- * A functional component to allow people to search for areas, which will update the users location.
- * @author Thomas Cotter
- * @component
-*/ 
-
 const sapcolor = "#c780fa"
 const sapdarkcolor = "#6f1ab6"
 
+/**
+ * A functional component to allow people to search for areas, which will update the users location.
+ * This component uses the react-places-autocomplete library to allow the user to search for places.
+ * @author Thomas Cotter
+ * @component
+*/ 
 const SearchBar = (props) => {
 
   const [address, setAddress] = useState("");

@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -89,11 +89,10 @@
 import SignedOutLinks from './SignedOutLinks'
 import SignedInLinks from './SignedInLinks'
 import { connect } from 'react-redux'
-import { compose } from 'redux'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
-import { firestoreConnect } from 'react-redux-firebase'
-import SearchBar from '../location/SearchBar'
+//import { firestoreConnect } from 'react-redux-firebase'
+import logo1 from '../../assets/images/logo.jpg'
 
 /**
  * A functional component to show the NavBar. A different navbar will be show depending on whether the user is signed in or not.
@@ -107,7 +106,16 @@ const MyNavBar = (props) => {
   return (
     &lt;Navbar bg="sap" expand="lg" sticky="top">
       &lt;Container>
-      &lt;Navbar.Brand href="/home"> Sappenin &lt;/Navbar.Brand>
+      &lt;Navbar.Brand href="/home">
+				&lt;img
+					alt=""
+					src={logo1}
+					width="30"
+					height="30"
+					className="d-inline-block align-top"
+				/>{' '}
+				&lt;span className="text-light">Sappenin'&lt;/span>
+			&lt;/Navbar.Brand>
       &lt;Navbar.Toggle aria-controls="basic-navbar-nav"/>
       &lt;Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           {auth.isLoaded &amp;&amp; links}

@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -86,21 +86,20 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import { firestoreConnect } from 'react-redux-firebase'
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import fb  from '../../config/firebaseConfig'
-import firebase from 'firebase/app'
+//import fb  from '../../config/firebaseConfig'
+//import firebase from 'firebase/app'
 
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 
 /**
  * A functional component to display one deal, more extensive than the DealBox component as it will take up an entire page. When 'DealBox' is clicked this component will display.
+ * This component uses mapStateToProps to get the currently logged in user, and the deal to be displayed. The deal is returned from firestoreConnect.
  * @author Thomas Cotter
  * @component
  * @example
@@ -115,11 +114,11 @@ const DealPage = (props) => {
   if (deal) {
     var loadedDeal = deal[props.match.params.id];
     return(
-      &lt;Container className="bg-dark" fluid>>
+      &lt;Container fluid>>
         &lt;br />
         &lt;Row className="justify-content-md-center">
-          &lt;h3 className="text-light text-center">{loadedDeal.title}&lt;/h3>
-          &lt;p className="text-light text-center">{loadedDeal.description}&lt;/p>
+          &lt;h3 className="text-dark text-center">{loadedDeal.title}&lt;/h3>
+          &lt;p className="text-dark text-center">{loadedDeal.description}&lt;/p>
         &lt;/Row>
         &lt;Row className="justify-content-md-center">
           &lt;Carousel>

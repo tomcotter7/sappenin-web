@@ -1,11 +1,10 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 
 /**
  * A functional component to display a single business
+ * This uses the ReactBootstrap Card component to display the business.
  * @author Thomas Cotter
  * @component
 */

@@ -7,6 +7,7 @@ import UserSignedInLinks from './UserSignedInLinks'
 
 /**
  * A functional component to display the correct links to the user in the NavBar when they are signed in.
+ * The links displayed will depend on whether the user is a business owner or a regular user.
  * @author Thomas Cotter
  * @component
 */ 
@@ -16,7 +17,7 @@ const SignedInLinks = (props) => {
   const { user, user_id } = props;
 	console.log(user)
   var user_details = user ? user[user_id] : "None"
-  const links = user_details.userType == "Owner" ? <OwnerSignedInLinks /> : <UserSignedInLinks />
+  const links = user_details.userType === "Owner" ? <OwnerSignedInLinks /> : <UserSignedInLinks />
   return (links)
 
 }

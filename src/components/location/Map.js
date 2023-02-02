@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 /**
  * A class component to display a map with nearby deals.
+ * @todo Add a map to the page.
  * @author Thomas Cotter
  * @component
 */ 

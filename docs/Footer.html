@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/forms/CreateDealForm.js</title>
+  <title> Footer</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -75,167 +73,196 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>components/forms/CreateDealForm.js</h1>
+                    <p>Components</p>
+                    <h1>Footer</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
-import Select from 'react-select'
-import MyDateTime from '../forms/MyDateTime'
-import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-//import { createDeal } from '../../store/actions/dealActions'
-import TagsInput from './TagsInput'
+        <h2>
+            &ltFooter  /&gt
+        </h2>
+        
+    
+</header>
 
-const selectStyles = {
-    placeholder: (base, state) => ({
-    ...base,
-    fontSize: '1rem'
-  })
-
-}
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
 
-/**
- * A functional component to allow the user to create a new deal for any one of their businesses.
- * @todo Add validation to the form. (yup)
- * @author Thomas Cotter
- * @component
-*/ 
-const CreateDealForm = (props) => {
+    
+    <h4 class="name" id="Footer">
+        <a class="href-link" href="#Footer">#</a>
+        
+        <span class="code-name">
+            
+                &ltFooter  /&gt
+            
+        </span>
+    </h4>
+    
 
-  const [dealTitle, setDealTitle] = useState("")
-  const [dealDescription, setDealDescription] = useState("")
-  const [dealExpiryDate, setExpiryDate] = useState("")
-  const [dealStartDate, setStartDate] = useState("")
-  const [startNow, setStartNow] = useState(false)
-  const [placesIDs, setPlaceIDs] = useState([])
-
-  const handleDateTimeChange = (expiry, date, time) => {
-    var actual_date = date
-    if (time) {
-      const hour = time[0]
-      const minute = time[1]
-      actual_date = new Date(date.getYear(), date.getMonth(), date.getDate(), hour, minute)
-    }
-    if (expiry) {
-      setExpiryDate(actual_date)
-    } else {
-      setStartDate(actual_date)
-    }
-  }
-
-  const handleChange = (e) => {
-    console.log(startNow)
-    try {
-      switch (e.target.id) {
-        case "title":
-          setDealTitle(e.target.value)
-          break;
-        case "description":
-          setDealDescription(e.target.value)
-          break
-        default:
-          console.log("going default")
-      }
-    } catch {
-      var selectedPlaces = []
-      for (var place in e) {
-        selectedPlaces.push(e[place].value);
-      }
-      setPlaceIDs(selectedPlaces)
-    }
-  }
+    
+    
+    <div class="description">
+        <p>A functional component that acts as a footer for for all pages. It provides convenient links to the contact page, about page, and privacy policy page.</p>
+    </div>
+    
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    for (let id in placesIDs) {
-      var deal = {
-        title: dealTitle,
-        description: dealDescription,
-        startDate: dealStartDate,
-        expiryDate: dealExpiryDate,
-        placeID: placesIDs[id]
-      }
-      props.createDeal(deal)
-    }
-    props.history.push('/')
-  }
-
-  return (
-    &lt;Container fluid>
-      &lt;br />
-      &lt;Row className="justify-content-sm-center" style={{height: "100vh"}}>
-        &lt;h5 className="text-sap text-center">Create new deal&lt;/h5>
-        &lt;Col sm lg="6">
-          &lt;Form onSubmit={handleSubmit}>
-            &lt;Form.Group className="mb-3" controlId="title" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Title:&lt;/Form.Label>
-              &lt;Form.Control type="text" placeholder="Enter Deal Title" />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="description" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Description:&lt;/Form.Label>
-              &lt;Form.Control as="textarea" rows={3} placeholder="Enter Deal Description" />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="startNow" onChange={(e) => setStartNow(e.target.checked)}>
-              &lt;Form.Label className="text-light">Start Date/Time:&lt;/Form.Label>
-              &lt;Form.Check className="text-light" type="checkbox" label="Start now" />
-              {startNow ? null : &lt;MyDateTime expiry={false} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} /> }
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="expiry_date">
-              &lt;Form.Label className="text-light">Expiry Date/Time:&lt;/Form.Label>
-              &lt;MyDateTime expiry={true} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="type">
-              &lt;Form.Label className="text-light">Food or Drink?&lt;/Form.Label>
-              &lt;Form.Select>
-                &lt;option>Food&lt;/option>
-                &lt;option>Drink&lt;/option>
-              &lt;/Form.Select>
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="tags">
-              &lt;Form.Label className="text-light">Add some tags&lt;/Form.Label>
-              &lt;TagsInput />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="businessses">
-              &lt;Form.Label className="text-light">Select a business for this deal&lt;/Form.Label>
-              &lt;Select
-                  id="business"
-                  options={props.places}
-                  isMulti
-                  styles={selectStyles}
-                  name="business"
-                  classNamePrefix="select"
-                  placeholder="Select a business"
-                  onChange={handleChange}
-                />
-            &lt;/Form.Group>
-            &lt;br/>
-            &lt;Button variant="sap" type="submit">Submit&lt;/Button>
-          &lt;/Form>
-        &lt;/Col>
-      &lt;/Row>
-
-    &lt;/Container>
-  )
-
-}
 
 
-export default CreateDealForm
-</code></pre>
-        </article>
-    </section>
+
+
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Thomas Cotter</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_home_Footer.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_home_Footer.js.html">components/home/Footer.js</a>, <a href="components_home_Footer.js.html#line13">line 13</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>A footer component.</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">JSX.Element</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+        
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

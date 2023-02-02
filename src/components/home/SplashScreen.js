@@ -1,7 +1,3 @@
-import splashImg1 from '../../assets/images/splash_screen.jpg'
-import splashImg2 from '../../assets/images/splash_screen_2.jpg'
-import Container from 'react-bootstrap/Container'
-import Carousel from 'react-bootstrap/Carousel'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'

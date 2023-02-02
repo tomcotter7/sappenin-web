@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -86,13 +86,12 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import Notifications from './Notifications'
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect'
+import React from 'react'
+//import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect'
 
 /**
  * A functional component to display any news about nearby deals / places
+ * Each individual notification is mapped to a Notifications component.
  * @author Thomas Cotter
  * @component
 */ 
@@ -102,13 +101,14 @@ const NewsHome = (props) => {
   const notis = props.notis;
 
   return (
-		&lt;div className="bg-dark">
-			&lt;h3 className="text-light" style={{textAlign : "center"}}> News &lt;/h3>
-				{notis &amp;&amp; notis.map(noti => {
-					return (
-						&lt;Notifications key={noti['id']} data={noti['data']} />
-					)
-				})}
+		&lt;div>
+			&lt;h3 className="text-dark" style={{textAlign : "center"}}> News &lt;/h3>
+                {notis &amp;&amp; notis.map(noti => {
+                    return (
+                        &lt;Notifications key={noti['id']} data={noti['data']} />
+                    )
+                })}
+                &lt;Notifications key={1} data={{title: "Test", content: "Test"}} />
 		&lt;/div>
 	)
 }

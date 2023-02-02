@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -85,70 +85,207 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, {useState} from 'react';
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import Nav from 'react-bootstrap/Nav'
+import Alert from 'react-bootstrap/Alert'
+import Form from 'react-bootstrap/Form'
+import Badge from 'react-bootstrap/Badge'
 
-import BusinessInformation from './business/BusinessInformation'
-// import PersonalInformation from './business_forms/PersonalInformation'
+import { getLatLngFromPostcode } from '../../services/postcode_api.js'
 
+//import { connect } from 'react-redux'
+import * as yup from 'yup';
+import { Formik } from 'formik'
+
+
+
+
+const schema = yup.object().shape({
+	firstName: yup.string().required("First name is required!"),
+	lastName: yup.string().required("Last name is required!"),
+	email: yup.string().email("Enter a valid email!"),
+	businessName: yup.string().required("A business name is required!"),
+	businessAddress: yup.string().required("A business address is required!"),
+	postcode: yup.string().required("A postcode is required").matches('^[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1} {0,1}[0-9][A-Za-z]{2}', 'Postcode is not in correct format')
+
+})
 
 /**
- * A functional component to display a form for the user to enter information about a new business that they would like to create. This component would also need to send off some trigger to check that this business is definitely real before creating it!
+ * This component is used to display a form for creating a new business. It uses a yup schema for validation.
+ * @todo Add validation to the form. (Confirm that the business really exists)
  * @author Thomas Cotter
  * @component
 */
 
 const CreateBusinessForm = (props) => {
 
-  const [ownerNames, setOwnerNames] = useState("")
-
+	const handleSumbit = (values) => {
+		getLatLngFromPostcode(values.postcode).then((data) => {
+			var latlng = data
+			var business = {
+				"name": values.businessName,
+				"address": values.businessAddress,
+				"postcode": values.postcode,
+				"lat": latlng[0],
+				"lng": latlng[1],
+				"businessEmail": values.email,
+				"description": "Lorem Ipsum",
+				"ownerFirstName": values.firstName,
+				"ownerLastName": values.lastName,
+			}
+			props.createBusiness(business)
+			props.history.push('/')
+		})
+	}
+	
+	const { user, auth } = props	
+		
   return (
-    &lt;Container className="bg-dark" fluid>
+    &lt;Container fluid>
       &lt;br />
-      &lt;Row className="justify-content-md-center">
-        &lt;h4 className="text-light text-center"> Create a new business &lt;/h4>
-          &lt;Col sm={6}>
-            &lt;Tab.Container id="business-form" defaultActiveKey="first">
-              &lt;Row>
-                &lt;Tab.Content>
-                  &lt;Tab.Pane eventKey="first">
-                    &lt;h4 class="text-light">Personal Information&lt;/h4>
-                  &lt;/Tab.Pane>
-                  &lt;Tab.Pane eventKey="second">
-                    &lt;h4 class="text-light">Business Information&lt;/h4>
-                    &lt;BusinessInformation />
-                  &lt;/Tab.Pane>
-                  &lt;Tab.Pane>
-                    &lt;h4 class="text-light">Submit&lt;/h4>
-                  &lt;/Tab.Pane>
-                &lt;/Tab.Content>
-              &lt;/Row>
-              &lt;Row>
-                &lt;Nav variant="pills" className="justify-content-end">
-                  &lt;Nav.Item>
-                    &lt;Nav.Link className="text-light border border-sap" eventKey="first"> Personal Information &lt;/Nav.Link>
-                  &lt;/Nav.Item>
-                  &lt;Nav.Item>
-                    &lt;Nav.Link className="text-light border border-sap" eventKey="second"> Business Information &lt;/Nav.Link>
-                  &lt;/Nav.Item>
-                    &lt;Nav.Item>
-                      &lt;Nav.Link className="text-light border border-sap" eventKey="third">Confirm &amp; Submit&lt;/Nav.Link>
-                    &lt;/Nav.Item>
-                &lt;/Nav>
-              &lt;/Row>
-            &lt;/Tab.Container>
-          &lt;/Col>
-      &lt;/Row>
+        &lt;h4 className="text-sap text-center"> Create a new business &lt;/h4>
+				&lt;Formik
+					validationSchema={schema}
+					onSubmit={(values) => handleSumbit(values)}
+					initialValues={{
+						firstName: user.firstName,
+						lastName: user.lastName,
+						email: auth.email,
+						businessName: '',
+						businessAddress: '',
+						postcode: ''
+					}}
+				>
+					{({
+						handleSubmit,
+						handleChange,
+						handleBlur,
+						values,
+						touched,
+						isValid,
+						errors
+					}) => (
+						&lt;Form noValidate onSubmit={handleSubmit}>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Col sm={6}>
+									&lt;Badge pill bg="sap" style={{marginBottom:25}}> Personal Information &lt;/Badge>
+									
+									&lt;Alert key='danger' variant='danger'> Please ensure that this is the business owners information. We will likely contact you for documents in the case that we can't verify the owner of the business.&lt;/Alert>
+								&lt;/Col>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Form.Group as={Col} md="2" controlId="firstName">
+									&lt;Form.Label className="text-dark">First Name:&lt;/Form.Label>
+									&lt;Form.Control 
+										type="text"
+										placeholder="John"
+										defaultValue={user.firstName}
+										onChange={handleChange}
+										isValid={!errors.firstName}
+										isInvalid={!!errors.firstName}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.firstName}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+								&lt;Form.Group as={Col} md="2" controlId="lastName">
+									&lt;Form.Label className="text-dark">Last Name:&lt;/Form.Label>
+									&lt;Form.Control 
+										type="text"
+										placeholder="Smith"
+										defaultValue={user.lastName}
+										onChange={handleChange}
+										isValid={!errors.lastName}
+										isInvalid={!!errors.lastName}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.lastName}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Form.Group as={Col} md="4" controlId="email">
+									&lt;Form.Label className="text-dark">Email:&lt;/Form.Label>
+									&lt;Form.Control
+										type="text"
+										placeholder="example@example.com"
+										onChange={handleChange}
+										defaultValue={auth.email}
+										isValid={!errors.email}
+										isInvalid={!!errors.email}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.email}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Col sm={6}>
+									&lt;Badge pill bg="sap" style={{marginBottom:25}}> Business Information &lt;/Badge>
+								&lt;/Col>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Form.Group as={Col} md="4" controlId="businessName">
+									&lt;Form.Label className="text-dark">Name of business:&lt;/Form.Label>
+									&lt;Form.Control
+										type="text"
+										placeholder="'The Kings Head'"
+										onChange={handleChange}
+										isValid={touched.businessName &amp;&amp; !errors.businessName}
+										isInvalid={!!errors.businessName}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.businessName}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Form.Group as={Col} md="3" controlId="businessAddress">
+									&lt;Form.Label className="text-dark">Address Line 1:&lt;/Form.Label>
+									&lt;Form.Control
+										type="text"
+										placeholder="'1A Example Street'"
+										onChange={handleChange}
+										isValid={touched.businessAddress &amp;&amp; !errors.businessAddress}
+										isInvalid={!!errors.businessAddress}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.businessAddress}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+								&lt;Form.Group as={Col} md="1" controlId="postcode">
+								&lt;Form.Label className="text-dark">Postcode:&lt;/Form.Label>
+									&lt;Form.Control
+										type="text"
+										placeholder="'SW6 1PF'"
+										onChange={handleChange}
+										isValid={touched.postcode &amp;&amp; !errors.postcode}
+										isInvalid={!!errors.postcode}
+									/>
+									&lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>	
+									&lt;Form.Control.Feedback type="invalid">{errors.postcode}&lt;/Form.Control.Feedback>
+								&lt;/Form.Group>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+								&lt;Form.Group as={Col} md="4" controlId="businessType">
+									&lt;Form.Label className="text-dark">Type of business:&lt;/Form.Label>
+									&lt;Form.Select onChange={handleChange} isMulti>
+										&lt;option> Restaurant &lt;/option>
+										&lt;option> Bar &lt;/option>
+										&lt;option> Pub &lt;/option>
+										&lt;option> Club &lt;/option>
+									&lt;/Form.Select>
+								&lt;/Form.Group>
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-md-center">
+							&lt;/Row>
+							&lt;Row className="mb-3 justify-content-center">
+									&lt;Button variant="sap" type="submit" style={{width:"20vh"}}>Submit form&lt;/Button>
+							&lt;/Row>
+						&lt;/Form>
+					)}
+				&lt;/Formik>
     &lt;/Container>
   )
 }
-
 
 export default CreateBusinessForm
 </code></pre>

@@ -1,19 +1,18 @@
 import { firestoreConnect } from 'react-redux-firebase'
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import fb  from '../../config/firebaseConfig'
-import firebase from 'firebase/app'
+//import fb  from '../../config/firebaseConfig'
+//import firebase from 'firebase/app'
 
 import Container from 'react-bootstrap/Container'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Carousel from 'react-bootstrap/Carousel'
 
 /**
  * A functional component to display one deal, more extensive than the DealBox component as it will take up an entire page. When 'DealBox' is clicked this component will display.
+ * This component uses mapStateToProps to get the currently logged in user, and the deal to be displayed. The deal is returned from firestoreConnect.
  * @author Thomas Cotter
  * @component
  * @example

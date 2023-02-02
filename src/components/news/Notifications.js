@@ -1,19 +1,20 @@
-/*
-* Author: Thomas Cotter
-* A react component for rendering specific Notifications
-*/
+
 
 import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Badge from 'react-bootstrap/Badge'
 
-
+/*
+ * A functional component to display any news about nearby deals / places
+ * @author Thomas Cotter
+ * @component
+ */
 const Notifications = (noti) => {
 
   const { data } = noti
   var desc = ""
   var color = ""
-  if (data.content == "New Place") {
+  if (data.content === "New Place") {
     desc = "A new place is now on Sappenin' in your area! " + data.name + " is open for business, check it out now!"
     color = "sapturq"
   } else {

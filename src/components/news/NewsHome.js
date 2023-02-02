@@ -1,12 +1,10 @@
 import Notifications from './Notifications'
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { compose } from 'redux'
-import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect'
-import Col from 'react-bootstrap/Col'
+import React from 'react'
+//import { geoFirestoreConnect } from '../../hoc/geoFirestoreConnect'
 
 /**
  * A functional component to display any news about nearby deals / places
+ * Each individual notification is mapped to a Notifications component.
  * @author Thomas Cotter
  * @component
 */ 

@@ -68,7 +68,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="BusinessInformation.html">BusinessInformation</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li></ul></div>
                 
             </nav>
         </div>
@@ -88,53 +88,108 @@
             <pre class="prettyprint source linenums"><code>import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
+import Badge from 'react-bootstrap/Badge'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { connect } from 'react-redux'
+
+/**
+ * A function to calculate the time between two points.
+ * @param {number} lat1 - The latitude of the first point.
+ * @param {number} lon1 - The longitude of the first point.
+ * @param {number} lat2 - The latitude of the second point.
+ * @param {number} lon2 - The longitude of the second point.
+ * @returns {number} The time between the two points in minutes.
+ * @author Github Copilot :)
+ * @function
+ */
+const getTimeBetweenTwoPoints = (lat1, lon1, lat2, lon2) => {
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = deg2rad(lon2-lon1); 
+    var a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+        ; 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var d = R * c; // Distance in km
+    var averageWalkingSpeed = 5; // km/h
+    var time = d / averageWalkingSpeed;
+    time = time * 60; // Convert to minutes
+    return time.toFixed(0);
+}
+
+/**
+ * A function to convert degrees to radians.
+ * @param {number} deg The number of degrees to convert to radians.
+ * @author Thomas Cotter
+ * @returns {number} The number of radians.
+ * @function
+ */
+const deg2rad = (deg) => {
+    return deg * (Math.PI/180)
+}
 
 /**
  * A functional component to display a single deal on the home page of the application.
+ * This component uses firestoreConnect to connect to the firestore database, and query the place the deal is for.
+ * This component uses mapStateToProps to get the currently logged in user, and the location the deal is at (returned from firestoreConnect).
  * @author Thoams Cotter
  * @component
 */
 const DealBox = (deal) => {
 
-  const { data, id } = deal;
+  const { place, loc, data, id, featured } = deal;
+  var name = "Loading..."
+  var time = "??";
+  
+  if (place !== undefined) {
+    name = place[data.placeID]["name"];
+
+    time = getTimeBetweenTwoPoints(place[data.placeID]["coordinates"]["_lat"], place[data.placeID]["coordinates"]["_long"], loc.lat, loc.lon);
+
+  }
+
+  place === undefined ? name = "Loading..." : name = place[data.placeID]["name"]
+  
   return (
-    &lt;Card border="sap rounded" className="bg-dark">
+    &lt;Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
       {/*&lt;Card.Img variant="top" src="{data.img}"/>*/}
-			{/*Only display 'Featured Deal', if the deal is actually being featured.*/}
-      &lt;Card.Header as="h5" style={{color: "red", borderColor: "#6500b2"}}>Featured Deal!&lt;/Card.Header>
+      {featured ? &lt;Card.Header as="h5" className="border-saplight">&lt;Badge bg="sapred"> Featured Deal! &lt;/Badge>&lt;/Card.Header> : null}
       &lt;Card.Body>
-        &lt;Card.Title className="text-light"> {data.title} &lt;/Card.Title>
-        {/*&lt;Card.Subtitle className="mb-2 text-muted"> {data.date} &lt;/Card.Subtitle>*/}
+        &lt;Card.Title as="h3" className="text-light"> {data.title} @ {name} &lt;/Card.Title>
+        &lt;Card.Subtitle className="mb-2 text-light"> {data.date} &lt;/Card.Subtitle>
         &lt;Card.Text className="text-light"> {data.description} &lt;/Card.Text>
         &lt;Link key={id} to={'/deals/' + id}>
-          &lt;Button variant="sap">Go To Deal&lt;/Button>
+          &lt;Button variant="sapdark" className="text-light" style={{borderWidth: "0.4vh"}}>Go To Deal&lt;/Button>
         &lt;/Link>
       &lt;/Card.Body>
-      &lt;Card.Footer style={{color: "white", borderColor: "#6500b2"}}>
-				{/*We also want to actually calculated the walk time!*/}
-        A 2 min walk! *Open in Google Maps*
+      &lt;Card.Footer className="text-light border-saplight">
+		{/*We also want to actually calculated the walk time!*/}
+        Approximately a {time} min walk! &lt;Button variant="sapdark" className="text-light" style={{borderWidth: "0.4vh"}}>Get Directions&lt;/Button>
         {/*Have a  link that takes you to google maps from  here*/}
       &lt;/Card.Footer>
     &lt;/Card>
   )
 }
 
-DealBox.propTypes = {
-	/**
-	 * Data about the deal.
-	 * This includes things like, start+end dates, descriptions &amp; titles.
-	*/
-	data: PropTypes.array.isRequired,
-	/**
-	 * Deal id
-	*/ 
-	id: PropTypes.string.isRequired
-
+const mapStateToProps = (state) => {
+    return {
+        place: state.firestore.data.places,
+        loc: state.location
+    }
 }
 
-
-export default DealBox;
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect((props) => [
+        {
+            collection: 'places',
+            doc: props.data.placeID
+        }
+    ])
+)(DealBox);
 </code></pre>
         </article>
     </section>

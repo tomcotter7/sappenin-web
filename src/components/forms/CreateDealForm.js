@@ -6,28 +6,11 @@ import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { createDeal } from '../../store/actions/dealActions'
+//import { createDeal } from '../../store/actions/dealActions'
 import TagsInput from './TagsInput'
 
 const selectStyles = {
-  /*option: (provided, state) => ({
-    ...provided,
-    backgroundColor: 'white',
-    border: 'red'
-  }),
-  control: (base, state) => ({
-    ...base,
-    backgroundColor: 'white',
-  }),
-  dropdownIndicator: (base, state) => ({
-    ...base,
-    color: 'white'
-  }),
-  indicatorSeparator: (base, state) => ({
-    ...base,
-    display: 'none'
-  }),*/
-  placeholder: (base, state) => ({
+    placeholder: (base, state) => ({
     ...base,
     fontSize: '1rem'
   })
@@ -37,6 +20,7 @@ const selectStyles = {
 
 /**
  * A functional component to allow the user to create a new deal for any one of their businesses.
+ * @todo Add validation to the form. (yup)
  * @author Thomas Cotter
  * @component
 */ 
@@ -57,9 +41,9 @@ const CreateDealForm = (props) => {
       actual_date = new Date(date.getYear(), date.getMonth(), date.getDate(), hour, minute)
     }
     if (expiry) {
-      setExpiryDate(date)
+      setExpiryDate(actual_date)
     } else {
-      setStartDate(date)
+      setStartDate(actual_date)
     }
   }
 

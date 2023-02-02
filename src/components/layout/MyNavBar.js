@@ -2,11 +2,9 @@ import React from 'react';
 import SignedOutLinks from './SignedOutLinks'
 import SignedInLinks from './SignedInLinks'
 import { connect } from 'react-redux'
-import { compose } from 'redux'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
-import { firestoreConnect } from 'react-redux-firebase'
-import SearchBar from '../location/SearchBar'
+//import { firestoreConnect } from 'react-redux-firebase'
 import logo1 from '../../assets/images/logo.jpg'
 
 /**

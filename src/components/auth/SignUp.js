@@ -11,7 +11,8 @@ import Col from 'react-bootstrap/Col'
 
 /**
  * A functional component to provide a form for the user to sign up, and then submit this information.
- * This component uses mapDispatchToProps & mapStateToProps to pass in any required information.
+ * mapDispatchToProps allows the component to call the signUp function, which is passed in from the authActions.js file.
+ * mapStateToProps allows the component to access the current state of firebase auth, and the authError.
  * @author Thomas Cotter
  * @component
 */

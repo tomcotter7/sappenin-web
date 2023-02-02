@@ -1,6 +1,5 @@
-import React, { Component, KeyboardEventHandler, useState} from 'react'
+import React, { useState} from 'react'
 import CreatableSelect from 'react-select/creatable'
-import { ActionMeta, OnChangeValue } from 'react-select'
 
 const createOption = (label) => ({
   label,
@@ -10,18 +9,6 @@ const createOption = (label) => ({
 const components = {
   DropdownIndicator: null,
 };
-
-/*
-interface Option {
-  label: string;
-  value: string;
-}
-
-interface State {
-  inputValue: string;
-  value: Option[];
-}
-*/
 
 /**
  * A functional component to allow the user to input some "tags" (such as beer / italian) to associate with their deal.
@@ -52,6 +39,9 @@ const TagsInput = (props) => {
         setValue([...value, createOption(inputValue)])
         setInputValue('')
         event.preventDefault()
+        break;
+      default:
+        break;
     }
   }
 

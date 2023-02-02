@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
@@ -9,16 +9,12 @@ import Badge from 'react-bootstrap/Badge'
 
 import { getLatLngFromPostcode } from '../../services/postcode_api.js'
 
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 import * as yup from 'yup';
 import { Formik } from 'formik'
 
 
-/**
- * A functional component to display a form for the user to enter information about a new business that they would like to create. This component would also need to send off some trigger to check that this business is definitely real before creating it!
- * @author Thomas Cotter
- * @component
-*/
+
 
 const schema = yup.object().shape({
 	firstName: yup.string().required("First name is required!"),
@@ -29,6 +25,13 @@ const schema = yup.object().shape({
 	postcode: yup.string().required("A postcode is required").matches('^[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1} {0,1}[0-9][A-Za-z]{2}', 'Postcode is not in correct format')
 
 })
+
+/**
+ * This component is used to display a form for creating a new business. It uses a yup schema for validation.
+ * @todo Add validation to the form. (Confirm that the business really exists)
+ * @author Thomas Cotter
+ * @component
+*/
 
 const CreateBusinessForm = (props) => {
 

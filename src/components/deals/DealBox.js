@@ -1,12 +1,21 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import Badge from 'react-bootstrap/Badge'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 
+/**
+ * A function to calculate the time between two points.
+ * @param {number} lat1 - The latitude of the first point.
+ * @param {number} lon1 - The longitude of the first point.
+ * @param {number} lat2 - The latitude of the second point.
+ * @param {number} lon2 - The longitude of the second point.
+ * @returns {number} The time between the two points in minutes.
+ * @author Github Copilot :)
+ * @function
+ */
 const getTimeBetweenTwoPoints = (lat1, lon1, lat2, lon2) => {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -20,16 +29,25 @@ const getTimeBetweenTwoPoints = (lat1, lon1, lat2, lon2) => {
     var d = R * c; // Distance in km
     var averageWalkingSpeed = 5; // km/h
     var time = d / averageWalkingSpeed;
-    var time = time * 60; // Convert to minutes
+    time = time * 60; // Convert to minutes
     return time.toFixed(0);
 }
 
+/**
+ * A function to convert degrees to radians.
+ * @param {number} deg The number of degrees to convert to radians.
+ * @author Thomas Cotter
+ * @returns {number} The number of radians.
+ * @function
+ */
 const deg2rad = (deg) => {
     return deg * (Math.PI/180)
 }
 
 /**
  * A functional component to display a single deal on the home page of the application.
+ * This component uses firestoreConnect to connect to the firestore database, and query the place the deal is for.
+ * This component uses mapStateToProps to get the currently logged in user, and the location the deal is at (returned from firestoreConnect).
  * @author Thoams Cotter
  * @component
 */
@@ -39,13 +57,14 @@ const DealBox = (deal) => {
   var name = "Loading..."
   var time = "??";
   
-    if (place != undefined) {
-        name = place[data.placeID]["name"];
+  if (place !== undefined) {
+    name = place[data.placeID]["name"];
 
-        time = getTimeBetweenTwoPoints(place[data.placeID]["coordinates"]["_lat"], place[data.placeID]["coordinates"]["_long"], loc.lat, loc.lon);
+    time = getTimeBetweenTwoPoints(place[data.placeID]["coordinates"]["_lat"], place[data.placeID]["coordinates"]["_long"], loc.lat, loc.lon);
 
-    }
-  place == undefined ? name = "Loading..." : name = place[data.placeID]["name"]
+  }
+
+  place === undefined ? name = "Loading..." : name = place[data.placeID]["name"]
   
   return (
     <Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
@@ -67,27 +86,6 @@ const DealBox = (deal) => {
     </Card>
   )
 }
-
-//DealBox.propTypes = {
-    /**
-     * The place where the deal is happpening
-    */
-    //place: PropTypes.object,
-	/**
-	 * Data about the deal.
-	 * This includes things like, start+end dates, descriptions & titles.
-	*/
-	//data: PropTypes.array.isRequired,
-	/**
-	 * Deal id
-	*/ 
-	//id: PropTypes.string.isRequired,
-    /**
-     * Whether or not the deal is featured.
-     * If it is featured, we want to display a badge on the card.
-     */
-    //featured: PropTypes.bool.isRequired
-//}
 
 const mapStateToProps = (state) => {
     return {

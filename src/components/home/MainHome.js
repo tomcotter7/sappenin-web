@@ -1,14 +1,12 @@
-import SearchBar from '../location/SearchBar'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Loader from '../layout/Loader'
 import SplashScreen from './SplashScreen'
 
 /**
  * A functional component to decide whether to show the SplashScreen component or the Home component.
+ * The splash screen is displayed if the user is not logged in, otherwise the Home component is displayed.
  * @author Thomas Cotter
  * @component
 */

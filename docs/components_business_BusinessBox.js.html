@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> components/forms/CreateDealForm.js</title>
+  <title> components/business/BusinessBox.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -76,7 +76,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>components/forms/CreateDealForm.js</h1>
+                    <h1>components/business/BusinessBox.js</h1>
                 </header>
                 
 
@@ -85,154 +85,49 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react'
-import Select from 'react-select'
-import MyDateTime from '../forms/MyDateTime'
-import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
+            <pre class="prettyprint source linenums"><code>import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-//import { createDeal } from '../../store/actions/dealActions'
-import TagsInput from './TagsInput'
-
-const selectStyles = {
-    placeholder: (base, state) => ({
-    ...base,
-    fontSize: '1rem'
-  })
-
-}
 
 
 /**
- * A functional component to allow the user to create a new deal for any one of their businesses.
- * @todo Add validation to the form. (yup)
+ * A functional component to display a single business
+ * This uses the ReactBootstrap Card component to display the business.
  * @author Thomas Cotter
  * @component
-*/ 
-const CreateDealForm = (props) => {
+*/
 
-  const [dealTitle, setDealTitle] = useState("")
-  const [dealDescription, setDealDescription] = useState("")
-  const [dealExpiryDate, setExpiryDate] = useState("")
-  const [dealStartDate, setStartDate] = useState("")
-  const [startNow, setStartNow] = useState(false)
-  const [placesIDs, setPlaceIDs] = useState([])
+const BusinessBox = (props) => {
 
-  const handleDateTimeChange = (expiry, date, time) => {
-    var actual_date = date
-    if (time) {
-      const hour = time[0]
-      const minute = time[1]
-      actual_date = new Date(date.getYear(), date.getMonth(), date.getDate(), hour, minute)
-    }
-    if (expiry) {
-      setExpiryDate(actual_date)
-    } else {
-      setStartDate(actual_date)
-    }
-  }
+  const { business } = props
 
-  const handleChange = (e) => {
-    console.log(startNow)
-    try {
-      switch (e.target.id) {
-        case "title":
-          setDealTitle(e.target.value)
-          break;
-        case "description":
-          setDealDescription(e.target.value)
-          break
-        default:
-          console.log("going default")
-      }
-    } catch {
-      var selectedPlaces = []
-      for (var place in e) {
-        selectedPlaces.push(e[place].value);
-      }
-      setPlaceIDs(selectedPlaces)
-    }
-  }
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    for (let id in placesIDs) {
-      var deal = {
-        title: dealTitle,
-        description: dealDescription,
-        startDate: dealStartDate,
-        expiryDate: dealExpiryDate,
-        placeID: placesIDs[id]
-      }
-      props.createDeal(deal)
-    }
-    props.history.push('/')
-  }
+  console.log(business)
 
   return (
-    &lt;Container fluid>
-      &lt;br />
-      &lt;Row className="justify-content-sm-center" style={{height: "100vh"}}>
-        &lt;h5 className="text-sap text-center">Create new deal&lt;/h5>
-        &lt;Col sm lg="6">
-          &lt;Form onSubmit={handleSubmit}>
-            &lt;Form.Group className="mb-3" controlId="title" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Title:&lt;/Form.Label>
-              &lt;Form.Control type="text" placeholder="Enter Deal Title" />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="description" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Description:&lt;/Form.Label>
-              &lt;Form.Control as="textarea" rows={3} placeholder="Enter Deal Description" />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="startNow" onChange={(e) => setStartNow(e.target.checked)}>
-              &lt;Form.Label className="text-light">Start Date/Time:&lt;/Form.Label>
-              &lt;Form.Check className="text-light" type="checkbox" label="Start now" />
-              {startNow ? null : &lt;MyDateTime expiry={false} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} /> }
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="expiry_date">
-              &lt;Form.Label className="text-light">Expiry Date/Time:&lt;/Form.Label>
-              &lt;MyDateTime expiry={true} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="type">
-              &lt;Form.Label className="text-light">Food or Drink?&lt;/Form.Label>
-              &lt;Form.Select>
-                &lt;option>Food&lt;/option>
-                &lt;option>Drink&lt;/option>
-              &lt;/Form.Select>
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="tags">
-              &lt;Form.Label className="text-light">Add some tags&lt;/Form.Label>
-              &lt;TagsInput />
-            &lt;/Form.Group>
-            &lt;Form.Group className="mb-3" controlId="businessses">
-              &lt;Form.Label className="text-light">Select a business for this deal&lt;/Form.Label>
-              &lt;Select
-                  id="business"
-                  options={props.places}
-                  isMulti
-                  styles={selectStyles}
-                  name="business"
-                  classNamePrefix="select"
-                  placeholder="Select a business"
-                  onChange={handleChange}
-                />
-            &lt;/Form.Group>
-            &lt;br/>
-            &lt;Button variant="sap" type="submit">Submit&lt;/Button>
-          &lt;/Form>
-        &lt;/Col>
-      &lt;/Row>
-
-    &lt;/Container>
+    &lt;>
+        &lt;Card border="saplight rounded" className="bg-sap" style={{borderWidth: '0.5vh'}}>
+          {/*&lt;Card.Img variant="top" src="{data.img}"/>*/}
+          &lt;Card.Body>
+            &lt;Card.Title className="text-light">&lt;b>{business.name}&lt;/b>&lt;/Card.Title>
+            &lt;Card.Text className="text-light">
+                {business.description} 
+                &lt;br />
+                &lt;br />
+                &lt;b> {business.address}, {business.postcode} &lt;/b>
+                &lt;br />
+                Owned by: {business.ownerFirstName} {business.ownerLastName} ({business.email})
+          &lt;/Card.Text>
+          &lt;/Card.Body>
+          &lt;Card.Footer>
+            &lt;Button variant="sapdark" className="text-light"> Edit &lt;/Button>
+          &lt;/Card.Footer>
+        &lt;/Card>
+        &lt;br />
+    &lt;/>
   )
 
 }
 
-
-export default CreateDealForm
+export default BusinessBox
 </code></pre>
         </article>
     </section>

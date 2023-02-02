@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import DealBox from './DealBox'
-import { Link } from 'react-router-dom'
 
 /**
  * A functional component to hold all the deal boxes
