@@ -26,7 +26,8 @@ const MyDateTime = (props) => {
   return (
     <div className="justify-content-center">
       <DatePicker onChange={handleDateChange} />
-      <> <p className="text-light mt-2"> Select a time: </p> <TimePicker className="bg-light" onChange={handleTimeChange} value={time} maxDetail={"second"} amPmAriaLabel={"Select AM/PM"} disabled={!date}/> </>
+      { !date ? <p className="text-danger">Please select a date</p> : null }
+      <p className="mt-2"> Select a time: </p> <TimePicker className="bg-light" onChange={handleTimeChange} value={time} maxDetail={"second"} amPmAriaLabel={"Select AM/PM"} disabled={!date}/>
     </div>
   )
 

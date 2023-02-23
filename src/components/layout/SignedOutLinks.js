@@ -11,7 +11,7 @@ const SignedOutLinks = () => {
   return (
       <Nav className="ms-auto">
           <Nav.Link className="border rounded text-light"href="/sign-in">Sign In</Nav.Link>
-          <Nav.Link className="border rounded bg-dark text-light" href="/sign-up">Sign Up</Nav.Link>
+          <Nav.Link className="border rounded bg-sapdark text-light" href="/sign-up">Sign Up</Nav.Link>
       </Nav>
     )
 }

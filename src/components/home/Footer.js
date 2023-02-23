@@ -20,9 +20,9 @@ const Footer = () => {
 				<Container>
 					<Row>
                         <Nav fill variant="pills" className="mx-auto"> 
-                            <Nav.Link href="/contact" className="text-light border rounded bg-dark">Contact Us</Nav.Link>
-                            <Nav.Link href="/about" className="text-light border rounded bg-dark">About Us</Nav.Link>
-                            <Nav.Link href="/privacy" className="text-light border rounded bg-dark">Privacy Policy</Nav.Link>
+                            <Nav.Link href="/contact" className="text-light border rounded bg-sapdark">Contact Us</Nav.Link>
+                            <Nav.Link href="/about" className="text-light border rounded bg-sapdark">About Us</Nav.Link>
+                            <Nav.Link href="/privacy" className="text-light border rounded bg-sapdark">Privacy Policy</Nav.Link>
                         </Nav>
 					</Row>
 				</Container>
