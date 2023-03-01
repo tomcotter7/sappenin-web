@@ -5,6 +5,9 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@fullcalendar/core": "^6.1.4",
+    "@fullcalendar/daygrid": "^6.1.4",
+    "@fullcalendar/react": "^6.1.4",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.2",
@@ -45,7 +48,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "docs": "jsdoc -c jsdoc.conf.json"
+    "docs": "jsdoc --verbose -c jsdoc.conf.json"
   },
   "eslintConfig": {
     "extends": [

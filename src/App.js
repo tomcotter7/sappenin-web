@@ -11,6 +11,7 @@ import SignUp from './components/auth/SignUp'
 import NewsHome from './components/news/NewsHome'
 import MainHome from './components/home/MainHome'
 import OwnerBusinesses from './components/business/OwnerBusinesses'
+import Profile from './components/profile/Profile.js'
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path='/sign-up' component={SignUp} />
           <Route path='/news' component={NewsHome} />
           <Route path='/owner-businesses/:uid' component={OwnerBusinesses} />
+          <Route path='/profile' component={Profile} />
         </Switch>
       </div>
     </BrowserRouter>

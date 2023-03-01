@@ -42,6 +42,10 @@
         </a>
         <div class="logo">
             
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My Project</h1>
+                </a>
             
         </div>
         <div class="menu">
@@ -89,6 +93,8 @@
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Footer from './Footer'
+import Card from 'react-bootstrap/Card'
+
 
 /**
  * A functional component to show an initial landing page for users who access the site without being logged in.
@@ -101,20 +107,28 @@ const SplashScreen = (props) => {
     return (
 			&lt;>
 				&lt;Row>	
-						&lt;Col xs={6} style={{padding: "25vh"}}>
-							&lt;h1 className="text-light"> A place to find your next night out!&lt;/h1>
-							&lt;p className="text-light">
+						&lt;Col xs={6} style={{padding: "15vh"}}>
+							&lt;h1 className="text-sap"> A place to find your next night out!&lt;/h1>
+							&lt;p>
 								Find the best bars, restaurants, and events in your area.
 								&lt;br className="hidden"/>
 								Receive exclusive deals only here at Sappenin'!
 							&lt;/p>
 							&lt;Button className="border" variant="sap" href="/sign-up">Get Started!&lt;/Button>
 						&lt;/Col>
-						&lt;Col xs={6} style={{padding: "25vh"}}>
-							&lt;div className="bg-dark border">
-								&lt;p className="text-light"> Here we should have images of the home page &lt;/p>
-								&lt;p className="text-light"> Perhaps, a scrolling video of what the home page looks like &lt;/p>
-							&lt;/div>	
+						&lt;Col xs={6} style={{padding: "15vh"}}>
+                            &lt;p className="text-sap"> &lt;b>Example Deal:&lt;/b> &lt;/p>
+                            &lt;Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
+                                &lt;Card.Body>
+                                    &lt;Card.Title as="h3" className="text-light"> 2-4-1 Drinks @ AllBarOne &lt;/Card.Title>
+                                    &lt;Card.Subtitle className="mb-2 text-light"> {new Date().toISOString().split('T')[0]} @ 9pm &lt;/Card.Subtitle>
+                                    &lt;Card.Text className="text-light"> Get 2 for 1 drinks at your local AllBarOne! &lt;/Card.Text>
+                                    &lt;/Card.Body>
+                                &lt;Card.Footer className="text-light border-saplight">
+                                Approximately a 5 min walk!
+                                {/*Have a  link that takes you to google maps from  here*/}
+                                &lt;/Card.Footer>
+                            &lt;/Card>
 						&lt;/Col>
 				&lt;/Row>
 				&lt;Footer />

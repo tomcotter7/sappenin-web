@@ -4,7 +4,7 @@
     "dictionaries": ["jsdoc", "closure"]
   },
   "source": {
-    "include": ["src"],
+    "include": ["./src"],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
@@ -14,5 +14,10 @@
     "destination": "docs",
     "recurse": true,
     "readme": "README.md"
+  },
+  "templates": {
+      "better-docs" : {
+          "name": "My Project"
+      }
   }
 }
