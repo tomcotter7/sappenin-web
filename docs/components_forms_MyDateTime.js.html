@@ -42,6 +42,10 @@
         </a>
         <div class="logo">
             
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My Project</h1>
+                </a>
             
         </div>
         <div class="menu">
@@ -113,7 +117,8 @@ const MyDateTime = (props) => {
   return (
     &lt;div className="justify-content-center">
       &lt;DatePicker onChange={handleDateChange} />
-      &lt;> &lt;p className="text-light mt-2"> Select a time: &lt;/p> &lt;TimePicker className="bg-light" onChange={handleTimeChange} value={time} maxDetail={"second"} amPmAriaLabel={"Select AM/PM"} disabled={!date}/> &lt;/>
+      { !date ? &lt;p className="text-danger">Please select a date&lt;/p> : null }
+      &lt;p className="mt-2"> Select a time: &lt;/p> &lt;TimePicker className="bg-light" onChange={handleTimeChange} value={time} maxDetail={"second"} amPmAriaLabel={"Select AM/PM"} disabled={!date}/>
     &lt;/div>
   )
 

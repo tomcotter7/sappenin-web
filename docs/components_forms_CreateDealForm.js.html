@@ -42,6 +42,10 @@
         </a>
         <div class="logo">
             
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My Project</h1>
+                </a>
             
         </div>
         <div class="menu">
@@ -180,35 +184,35 @@ const CreateDealForm = (props) => {
         &lt;Col sm lg="6">
           &lt;Form onSubmit={handleSubmit}>
             &lt;Form.Group className="mb-3" controlId="title" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Title:&lt;/Form.Label>
+              &lt;Form.Label>Title:&lt;/Form.Label>
               &lt;Form.Control type="text" placeholder="Enter Deal Title" />
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="description" onChange={handleChange}>
-              &lt;Form.Label className="text-light">Description:&lt;/Form.Label>
+              &lt;Form.Label>Description:&lt;/Form.Label>
               &lt;Form.Control as="textarea" rows={3} placeholder="Enter Deal Description" />
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="startNow" onChange={(e) => setStartNow(e.target.checked)}>
-              &lt;Form.Label className="text-light">Start Date/Time:&lt;/Form.Label>
-              &lt;Form.Check className="text-light" type="checkbox" label="Start now" />
+              &lt;Form.Label>Start Date/Time:&lt;/Form.Label>
+              &lt;Form.Check type="checkbox" label="Start now" />
               {startNow ? null : &lt;MyDateTime expiry={false} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} /> }
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="expiry_date">
-              &lt;Form.Label className="text-light">Expiry Date/Time:&lt;/Form.Label>
+              &lt;Form.Label>Expiry Date/Time:&lt;/Form.Label>
               &lt;MyDateTime expiry={true} formOnChange={(expiry, date, time) => handleDateTimeChange(expiry, date, time)} />
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="type">
-              &lt;Form.Label className="text-light">Food or Drink?&lt;/Form.Label>
+              &lt;Form.Label>Food or Drink?&lt;/Form.Label>
               &lt;Form.Select>
                 &lt;option>Food&lt;/option>
                 &lt;option>Drink&lt;/option>
               &lt;/Form.Select>
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="tags">
-              &lt;Form.Label className="text-light">Add some tags&lt;/Form.Label>
+              &lt;Form.Label>Add some tags&lt;/Form.Label>
               &lt;TagsInput />
             &lt;/Form.Group>
             &lt;Form.Group className="mb-3" controlId="businessses">
-              &lt;Form.Label className="text-light">Select a business for this deal&lt;/Form.Label>
+              &lt;Form.Label>Select a business for this deal&lt;/Form.Label>
               &lt;Select
                   id="business"
                   options={props.places}

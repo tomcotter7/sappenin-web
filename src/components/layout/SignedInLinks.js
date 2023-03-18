@@ -15,7 +15,6 @@ import UserSignedInLinks from './UserSignedInLinks'
 const SignedInLinks = (props) => {
 
   const { user, user_id } = props;
-	console.log(user)
   var user_details = user ? user[user_id] : "None"
   const links = user_details.userType === "Owner" ? <OwnerSignedInLinks /> : <UserSignedInLinks />
   return (links)

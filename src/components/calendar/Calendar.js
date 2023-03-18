@@ -14,8 +14,8 @@ const Calendar = (props) => {
 
   return (
 
-		<Container className="bg-dark fluid text-light">
-			<h3> Calendar </h3>
+		<Container className="justify-content-center">
+			<h3 className="text-sap"> Calendar </h3>
 		</Container>  
   )
 }
