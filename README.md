@@ -59,6 +59,12 @@ Then to deploy, use:
 
 If you encounter any auth errors - chuck me an email - thomascotter00@gmail.com
 
+## PRs
+
+If you want to contribute to this project, please feel free to do so. I will review all PRs and merge them in if they are suitable.
+
+Please run 'npm run docs' and 'npm run build' before submitting a PR to ensure the documentation is up to date and the build is successful.
+
 
 
 ## TODO
