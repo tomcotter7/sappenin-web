@@ -52,12 +52,38 @@ export const signUp = (newUser) => {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: newUser.firstName[0] + newUser.lastName[0],
+        email: newUser.email,
         userType: newUser.userType
       })
     }).then(() => {
       dispatch({type: 'SIGN_UP_SUCCESS'});
     }).catch((err) => {
       dispatch({type: 'SIGN_UP_ERROR', err});
+    })
+  }
+}
+
+/**
+ * Function to update the user's profile information.
+ * @param {array} An array containing the user's new information.
+ * @author Thomas Cotter
+ */
+
+export const updateProfile = (newInfo) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firebase = getFirebase();
+    const firestore = getFirestore();
+
+    console.log("Action: " + newInfo.firstName);
+
+    firestore.collection('users').doc(firebase.auth().currentUser.uid).update({
+      firstName: newInfo.firstName,
+      lastName: newInfo.lastName,
+      email: newInfo.email
+    }).then(() => {
+      dispatch({type: 'UPDATE_PROFILE_SUCCESS'});
+    }).catch((err) => {
+      dispatch({type: 'UPDATE_PROFILE_ERROR', err});
     })
   }
 }

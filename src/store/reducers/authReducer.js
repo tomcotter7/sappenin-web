@@ -30,6 +30,18 @@ const authReducer = (state = initState, action) => {
         ...state,
         authError: action.err.message
       }
+    case 'UPDATE_PROFILE_SUCCESS':
+      console.log("Profile Updated");
+      return {
+        ...state,
+        authError: null
+      }
+    case 'UPDATE_PROFILE_ERROR':
+      console.log(action.err.message);
+      return {
+        ...state,
+        authError: action.err.message
+      }
     default:
       return state;
   }
