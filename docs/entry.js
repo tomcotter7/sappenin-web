@@ -82,26 +82,29 @@ reactComponents['OwnerBusinesses'] = Component18;
 import Component19 from '../src/components/layout/OwnerSignedInLinks.js';
 reactComponents['OwnerSignedInLinks'] = Component19;
 
-import Component20 from '../src/components/location/SearchBar.js';
-reactComponents['SearchBar'] = Component20;
+import Component20 from '../src/components/profile/Profile.js';
+reactComponents['Profile'] = Component20;
 
-import Component21 from '../src/components/layout/SignedInLinks.js';
-reactComponents['SignedInLinks'] = Component21;
+import Component21 from '../src/components/location/SearchBar.js';
+reactComponents['SearchBar'] = Component21;
 
-import Component22 from '../src/components/layout/SignedOutLinks.js';
-reactComponents['SignedOutLinks'] = Component22;
+import Component22 from '../src/components/layout/SignedInLinks.js';
+reactComponents['SignedInLinks'] = Component22;
 
-import Component23 from '../src/components/auth/SignIn.js';
-reactComponents['SignIn'] = Component23;
+import Component23 from '../src/components/layout/SignedOutLinks.js';
+reactComponents['SignedOutLinks'] = Component23;
 
-import Component24 from '../src/components/auth/SignUp.js';
-reactComponents['SignUp'] = Component24;
+import Component24 from '../src/components/auth/SignIn.js';
+reactComponents['SignIn'] = Component24;
 
-import Component25 from '../src/components/home/SplashScreen.js';
-reactComponents['SplashScreen'] = Component25;
+import Component25 from '../src/components/auth/SignUp.js';
+reactComponents['SignUp'] = Component25;
 
-import Component26 from '../src/components/forms/TagsInput.js';
-reactComponents['TagsInput'] = Component26;
+import Component26 from '../src/components/home/SplashScreen.js';
+reactComponents['SplashScreen'] = Component26;
 
-import Component27 from '../src/components/layout/UserSignedInLinks.js';
-reactComponents['UserSignedInLinks'] = Component27;
+import Component27 from '../src/components/forms/TagsInput.js';
+reactComponents['TagsInput'] = Component27;
+
+import Component28 from '../src/components/layout/UserSignedInLinks.js';
+reactComponents['UserSignedInLinks'] = Component28;

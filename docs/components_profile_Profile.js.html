@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> components/profile/Profile.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">My Project</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Components</h3><ul><li><a href="BusinessBox.html">BusinessBox</a></li><li><a href="Calendar.html">Calendar</a></li><li><a href="CreateBusiness.html">CreateBusiness</a></li><li><a href="CreateBusinessForm.html">CreateBusinessForm</a></li><li><a href="CreateDeal.html">CreateDeal</a></li><li><a href="CreateDealForm.html">CreateDealForm</a></li><li><a href="DealBox.html">DealBox</a></li><li><a href="DealPage.html">DealPage</a></li><li><a href="DealsContainer.html">DealsContainer</a></li><li><a href="Footer.html">Footer</a></li><li><a href="Home.html">Home</a></li><li><a href="Loader.html">Loader</a></li><li><a href="MainHome.html">MainHome</a></li><li><a href="Map.html">Map</a></li><li><a href="MyDateTime.html">MyDateTime</a></li><li><a href="MyNavBar.html">MyNavBar</a></li><li><a href="NewsHome.html">NewsHome</a></li><li><a href="NoBusinessDealPage.html">NoBusinessDealPage</a></li><li><a href="OwnerBusinesses.html">OwnerBusinesses</a></li><li><a href="OwnerSignedInLinks.html">OwnerSignedInLinks</a></li><li><a href="Profile.html">Profile</a></li><li><a href="SearchBar.html">SearchBar</a></li><li><a href="SignedInLinks.html">SignedInLinks</a></li><li><a href="SignedOutLinks.html">SignedOutLinks</a></li><li><a href="SignIn.html">SignIn</a></li><li><a href="SignUp.html">SignUp</a></li><li><a href="SplashScreen.html">SplashScreen</a></li><li><a href="TagsInput.html">TagsInput</a></li><li><a href="UserSignedInLinks.html">UserSignedInLinks</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertPlaces">convertPlaces</a></li><li><a href="global.html#createBusiness">createBusiness</a></li><li><a href="global.html#createDeal">createDeal</a></li><li><a href="global.html#deg2rad">deg2rad</a></li><li><a href="global.html#geoFirestoreConnect">geoFirestoreConnect</a></li><li><a href="global.html#getDeals">getDeals</a></li><li><a href="global.html#getNotis">getNotis</a></li><li><a href="global.html#getTimeBetweenTwoPoints">getTimeBetweenTwoPoints</a></li><li><a href="global.html#signIn">signIn</a></li><li><a href="global.html#signOut">signOut</a></li><li><a href="global.html#signUp">signUp</a></li><li><a href="global.html#updateLocationDevice">updateLocationDevice</a></li><li><a href="global.html#updateLocationSearch">updateLocationSearch</a></li><li><a href="global.html#updateProfile">updateProfile</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/profile/Profile.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { connect } from 'react-redux';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Redirect } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Loader from '../layout/Loader.js'
+import { updateProfile } from '../../store/actions/authActions.js';
+
+import * as yup from 'yup'
+import { Formik } from 'formik'
+
+const schema = yup.object().shape({
+  firstName: yup.string().required("First name is required!"),
+  lastName: yup.string().required("Last name is required!"),
+  email: yup.string().email("Invalid email!").required("Email is required!"),
+
+})
+
+/**
+ * Display the users profile page. This could be split out into more classes, however for now it'll all be here.
+ * @author Thomas Cotter
+ * @component
+ */
+
+const Profile = (props) => {
+  const { user, auth } = props;
+
+  const [edit, setEdit] = useState(false);
+  const [init, setInit] = useState(true);
+  
+
+  const [userDetails, setUserDetails] = useState({});
+
+
+  if (!user.isLoaded || !auth.isLoaded) return &lt;Loader />
+
+  if (auth.isLoaded &amp;&amp; !auth.uid) return &lt;Redirect to='/sign-in' />
+
+  if (user.isLoaded &amp;&amp; auth.isLoaded &amp;&amp; init) {
+    setInit(false)
+    const initState = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+    }
+    setUserDetails(initState)
+  }
+  
+  const handleSubmit = (values, { resetForm }) => {
+    setUserDetails(values)
+    props.updateProfile(values)
+    setEdit(false)
+    resetForm()
+  }
+
+  const handleCancelOrEdit = (resetForm) => { 
+
+      if (edit) {
+        // reset form
+        document.getElementById("profile-info").reset();
+        resetForm()
+      }
+
+      setEdit(!edit);
+  }
+
+  const buttonColor = edit ? "sapdark" : "saplight"
+  const editCancelColor = edit ? "dark" : "sapdark"
+
+  return (
+      &lt;Container>
+        &lt;Row className="justify-content-md-center pt-2">
+          &lt;Col xs lg="6">
+            &lt;h1 className="text-sapdark text-center">&lt;u>{user.firstName} {user.lastName}&lt;/u>&lt;/h1>
+          &lt;/Col>
+        &lt;/Row>
+        &lt;Row className="justify-content-center pt-1">
+          &lt;Col xs lg="6">
+            &lt;div className="text-center border border-sap border-2 rounded">
+              &lt;h3 className="text-sapdark pt-3">&lt;u>Personal Information&lt;/u>&lt;/h3>
+              &lt;Formik
+                validationSchema={schema}
+                onSubmit={handleSubmit}
+                initialValues={{
+                  firstName: user.firstName,
+                  lastName: user.lastName,
+                  email: user.email
+                }}
+              >
+                {({
+                  handleSubmit,
+                  handleChange,
+                  values,
+                  touched,
+                  isValid,
+                  errors,
+                  resetForm,
+                }) => (
+                  &lt;Form noValidate onSubmit={handleSubmit} className="pt-2" id="profile-info">
+                    &lt;fieldset disabled={!edit}>
+                      &lt;Form.Group as={Row} className="mb-2" controlId="firstName">
+                        &lt;Form.Label className="text-sap" column sm={6}>First Name:&lt;/Form.Label>
+                          &lt;Col sm="5">
+                            &lt;Form.Control 
+                              type="text"
+                              placeholder="Enter first name"
+                              defaultValue={userDetails.firstName}
+                              column="sm"
+                              onChange={handleChange}
+                              isValid={touched.firstName &amp;&amp; !errors.firstName}
+                              isInvalid={!!errors.firstName}/>
+                            &lt;Form.Control.Feedback type="invalid">{errors.firstName}&lt;/Form.Control.Feedback>
+                            &lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>
+                          &lt;/Col>
+                      &lt;/Form.Group>
+                      &lt;Form.Group as={Row} className="mb-2" controlId="lastName">
+                        &lt;Form.Label className="text-sap" column sm={6}>Last Name:&lt;/Form.Label>
+                          &lt;Col sm="5">
+                            &lt;Form.Control
+                              type="text"
+                              placeholder="Enter last name:"
+                              defaultValue={userDetails.lastName}
+                              column="sm"
+                              onChange={handleChange}
+                              isValid={touched.lastName &amp;&amp; !errors.lastName}
+                              isInvalid={!!errors.lastName}/>
+                            &lt;Form.Control.Feedback type="invalid">{errors.lastName}&lt;/Form.Control.Feedback>
+                            &lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>
+                          &lt;/Col>
+                      &lt;/Form.Group>
+                      &lt;Form.Group as={Row} className="mb-2" controlId="email">
+                        &lt;Form.Label className="text-sap" column sm={6}>Email:&lt;/Form.Label>
+                          &lt;Col sm="5">
+                            &lt;Form.Control
+                              type="email"
+                              placeholder="Enter email"
+                              defaultValue={userDetails.email}
+                              column="sm"
+                              onChange={handleChange}
+                              isValid={touched.email &amp;&amp; !errors.email}
+                              isInvalid={!!errors.email}/>
+                            &lt;Form.Control.Feedback type="invalid">{errors.email}&lt;/Form.Control.Feedback>
+                            &lt;Form.Control.Feedback type="valid">Looks good!&lt;/Form.Control.Feedback>
+                          &lt;/Col>
+                      &lt;/Form.Group>
+                    &lt;Row className="justify-content-end pb-2">
+                      &lt;Col xs lg="4">
+                        &lt;Button variant={buttonColor} className="text-light" type="submit">Save&lt;/Button>
+                      &lt;/Col>
+                    &lt;/Row>
+                    &lt;/fieldset>
+                    &lt;Row className="justify-content-end pb-2">
+                      &lt;Col xs lg="4">
+                        &lt;Button variant={editCancelColor} className="text-light" onClick={() => handleCancelOrEdit(() => {resetForm()})}>{edit ? "Cancel" : "Edit"}&lt;/Button>
+                      &lt;/Col>
+                    &lt;/Row>
+
+                  &lt;/Form>
+                )}
+              &lt;/Formik>
+            &lt;/div>
+          &lt;/Col>
+        &lt;/Row>
+      &lt;/Container>
+  );
+}
+
+
+const mapStateToProps = (state) => {
+    return {
+        user: state.firebase.profile,
+        auth: state.firebase.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateProfile: (newInfo) => dispatch(updateProfile(newInfo))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

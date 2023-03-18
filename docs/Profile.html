@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> store/actions/businessActions.js</title>
+  <title> Profile</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -79,52 +77,171 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Source</p>
-                    <h1>store/actions/businessActions.js</h1>
+                    <p>Components</p>
+                    <h1>Profile</h1>
                 </header>
                 
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import firebase from 'firebase/app'
-import { GeoFirestore } from '../../config/firebaseConfig'
+        <h2>
+            &ltProfile  /&gt
+        </h2>
+        
+    
+</header>
 
-/**
- * Function to create a business in the places table
- * @param {array} An array containing information about the new business.
- * @author Thomas Cotter
-*/ 
+<article>
+    <div class="container-overview">
+    
+        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
-export const createBusiness = (business) => {
-  const loc = new firebase.firestore.GeoPoint(parseFloat(business["lat"]),parseFloat(business["lng"]));
-  return (dispatch, getState, { getFirestore, getFirebase }) => {
 
-    const owner = getState().firebase.auth.uid;
+    
+    <h4 class="name" id="Profile">
+        <a class="href-link" href="#Profile">#</a>
+        
+        <span class="code-name">
+            
+                &ltProfile  /&gt
+            
+        </span>
+    </h4>
+    
 
-    GeoFirestore.collection("places").add({
-      name: business["name"],
-      description: business["description"],
-      coordinates: loc,
-			postcode: business["postcode"],
-			address: business["address"],
-			email: business['businessEmail'],
-			ownerFirstName: business["ownerFirstName"],
-			ownerLastName: business["ownerLastName"],
-      associatedAccount: owner,
-      createAt: new Date()
-    }).then(() => {
-      dispatch({ type: 'CREATE_BUSINESS', business: business});
-    }).catch((err) => {
-      dispatch({ type: 'CREATE_BUSINESS_ERROR', err: err});
-    })
-  }
-}
-</code></pre>
-        </article>
-    </section>
+    
+    
+    <div class="description">
+        <p>Display the users profile page. This could be split out into more classes, however for now it'll all be here.</p>
+    </div>
+    
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Thomas Cotter</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_profile_Profile.js.html" class="button">View Source</a>
+            <span>
+                <a href="components_profile_Profile.js.html">components/profile/Profile.js</a>, <a href="components_profile_Profile.js.html#line28">line 28</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        
+    
+    </div>
+    
+        
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
