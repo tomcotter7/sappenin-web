@@ -12,11 +12,12 @@ import { updateProfile } from '../../store/actions/authActions.js';
 import * as yup from 'yup'
 import { Formik } from 'formik'
 
+
+
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required!"),
   lastName: yup.string().required("Last name is required!"),
-  email: yup.string().email("Invalid email!").required("Email is required!"),
-
+  email: yup.string().email("Invalid email!").required("Email is required!")
 })
 
 /**
@@ -26,6 +27,7 @@ const schema = yup.object().shape({
  */
 
 const Profile = (props) => {
+
   const { user, auth } = props;
 
   const [edit, setEdit] = useState(false);

@@ -180,7 +180,7 @@ const CreateBusinessForm = (props) => {
 							<Row className="mb-3 justify-content-md-center">
 								<Form.Group as={Col} md="4" controlId="businessType">
 									<Form.Label className="text-dark">Type of business:</Form.Label>
-									<Form.Select onChange={handleChange} isMulti>
+									<Form.Select onChange={handleChange} ismulti="true">
 										<option> Restaurant </option>
 										<option> Bar </option>
 										<option> Pub </option>
