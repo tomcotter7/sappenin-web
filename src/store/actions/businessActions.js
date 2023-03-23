@@ -13,6 +13,7 @@ export const createBusiness = (business) => {
 
     const owner = getState().firebase.auth.uid;
 
+
     GeoFirestore.collection("places").add({
       name: business["name"],
       description: business["description"],

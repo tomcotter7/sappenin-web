@@ -52,19 +52,22 @@ const deg2rad = (deg) => {
  * @component
 */
 const DealBox = (deal) => {
-
+  
   const { place, loc, data, id, featured } = deal;
+  
+  console.log("DB:", deal)
+
   var name = "Loading..."
   var time = "??";
   
   if (place !== undefined) {
-    name = place[data.placeID]["name"];
+    name = place["name"];
 
-    time = getTimeBetweenTwoPoints(place[data.placeID]["coordinates"]["_lat"], place[data.placeID]["coordinates"]["_long"], loc.lat, loc.lon);
+    time = getTimeBetweenTwoPoints(place["coordinates"]["_lat"], place["coordinates"]["_long"], loc.lat, loc.lon);
 
   }
 
-  place === undefined ? name = "Loading..." : name = place[data.placeID]["name"]
+  place === undefined ? name = "Loading..." : name = place["name"]
   
   return (
     <Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
@@ -89,17 +92,8 @@ const DealBox = (deal) => {
 
 const mapStateToProps = (state) => {
     return {
-        place: state.firestore.data.places,
         loc: state.location
     }
 }
 
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect((props) => [
-        {
-            collection: 'places',
-            doc: props.data.placeID
-        }
-    ])
-)(DealBox);
+export default connect(mapStateToProps)(DealBox);

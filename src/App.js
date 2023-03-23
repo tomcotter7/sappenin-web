@@ -12,6 +12,7 @@ import NewsHome from './components/news/NewsHome'
 import MainHome from './components/home/MainHome'
 import OwnerBusinesses from './components/business/OwnerBusinesses'
 import Profile from './components/profile/Profile.js'
+import UpcomingDealsBase from './components/calendar/UpcomingDealsBase.js'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path='/news' component={NewsHome} />
           <Route path='/owner-businesses/:uid' component={OwnerBusinesses} />
           <Route path='/profile' component={Profile} />
+          <Route path='/upcoming-deals/:uid' component={UpcomingDealsBase} />
         </Switch>
       </div>
     </BrowserRouter>

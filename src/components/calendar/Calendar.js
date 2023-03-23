@@ -1,5 +1,7 @@
-import React from 'react';
 import Container from 'react-bootstrap/Container'
+import { Calendar, momentLocalizer } from 'react-big-calendar'
+import moment from 'moment'
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
 /**
  * A functional component to display a calendar showing upcoming events.
@@ -9,15 +11,31 @@ import Container from 'react-bootstrap/Container'
  * @component
 */
 
+const localizer = momentLocalizer(moment)
 
-const Calendar = (props) => {
+const MyCalendar = (props) => {
+
+  const initEvent = [
+    {
+      title: 'My event',
+      start: moment().toDate(),
+      end: moment().add(1, 'days').toDate(),
+    }
+  ]
 
   return (
-
-		<Container className="justify-content-center">
-			<h3 className="text-sap"> Calendar </h3>
-		</Container>  
+    <>
+      <Calendar
+        localizer={localizer}
+        events={initEvent}
+        defaultView="month"
+        defaultDate={new Date()}
+        style={{ height: "100vh" }}
+      />
+    </>
+        
+		
   )
 }
 
-export default Calendar;
+export default MyCalendar;

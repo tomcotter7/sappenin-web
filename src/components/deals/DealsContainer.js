@@ -1,6 +1,21 @@
 import React from 'react'
 import DealBox from './DealBox'
 
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { connect } from 'react-redux'
+
+import firebase from 'firebase/app'
+
+import Loader from '../layout/Loader.js'
+
+const createDealBoxes = (deal, places) => {
+
+    return <DealBox key={deal['id']} data={deal['data']}
+                    id={deal['id']} featured={true}
+                    place={places[deal['data']['placeID']]}/>
+}
+
 /**
  * A functional component to hold all the deal boxes
  * @author Thomas Cotter
@@ -8,21 +23,39 @@ import DealBox from './DealBox'
 */
 const DealsContainer = (props) => {
 
-  const deals = props.deals;
-
+  const { places, deals } = props;
+  
+  if (places === undefined || deals === undefined) {
+    return (
+      <Loader />
+    )
+  }
+   
   return (
     <div>
 	    <h3 className="text-dark" style={{textAlign: "center"}}> Nearby Deals Tonight </h3>
-		    {deals && deals.map(deal => {
-
-                
-                return (
-                    <DealBox key={deal['id']} data={deal['data']} id={deal['id']} featured={true} />
-                )
-            })}
-	</div>
+		    {deals && deals.map(deal => createDealBoxes(deal, places))}
+      </div>
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    places: state.firestore.data.places,
+  }
+}
 
-export default DealsContainer;
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect((props) => [
+    {
+      collection: 'places',
+      where : 
+      [
+        firebase.firestore.FieldPath.documentId(),
+        'in',
+        [...props.deals].map(deal => deal.data.placeID)
+      ]
+    }
+  ])
+)(DealsContainer);

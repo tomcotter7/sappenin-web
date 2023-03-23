@@ -39,6 +39,8 @@ const CreateDeal = (props) => {
 	if (places !== undefined) {
 		places = convertPlaces(places);
 	}
+
+  console.log(places)
 	
 	// If authentication is loaded from firebase, yet no-one is signed in, redirect.
 	if (auth.isLoaded && !auth.uid) return <Redirect to='/sign-in' />
@@ -85,7 +87,7 @@ export default compose(
           {
             collection: "places",
             where: [
-              ['owner', '==', id]
+              ['associatedAccount', '==', id]
             ]
           }
         ]

@@ -21,7 +21,7 @@ const OwnerSignedInLinks = (props) => {
       <Nav.Link className="text-light" href="/new-deal">New Deal</Nav.Link>
       <Nav.Link className="text-light" href="/new-business">New Business</Nav.Link>
       <Nav.Link className="text-light" href={'/owner-businesses/' + auth.uid}>Current Businesses</Nav.Link>
-      <Nav.Link className="text-light" href={'/owner-deals/' + auth.uid}>Upcoming Deals</Nav.Link>
+      <Nav.Link className="text-light" href={'/upcoming-deals/' + auth.uid}>Upcoming Deals</Nav.Link>
       <NavDropdown className="border border-sapdark rounded" title={profile.initials} id="basic-nav-dropdown">
         <NavDropdown.Item href="/profile">Your Profile</NavDropdown.Item>
         <NavDropdown.Divider />
