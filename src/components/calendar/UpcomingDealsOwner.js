@@ -6,12 +6,13 @@ import Loader from '../layout/Loader.js'
 
 const dealToEvent = (deal) => {
   
-  var end = new Date();
-  end.setSeconds(deal.expiryDate.seconds);
+  var end = deal.expiryDate.toDate()
+  
 
   var start = new Date();
-  // start.setSeconds(deal.startDate.seconds);
-  // start.setNanoSeconds(deal.startDate.nanoseconds);
+  if ( deal.startDate != "" ) {
+    start = deal.startDate.toDate()
+  }
 
   return [
     {
@@ -28,6 +29,7 @@ const UpcomingDealsOwner = (props) => {
   
   const { deals } = props;
 
+
   if (deals === undefined) { return <Loader /> }
 
   var events = [];
@@ -37,7 +39,6 @@ const UpcomingDealsOwner = (props) => {
   }
 
   console.log(events);
-
 
   return (
     <>

@@ -15,19 +15,11 @@ const localizer = momentLocalizer(moment)
 
 const MyCalendar = (props) => {
 
-  const initEvent = [
-    {
-      title: 'My event',
-      start: moment().toDate(),
-      end: moment().add(1, 'days').toDate(),
-    }
-  ]
-
   return (
     <>
       <Calendar
         localizer={localizer}
-        events={initEvent}
+        events={props.events}
         defaultView="month"
         defaultDate={new Date()}
         style={{ height: "100vh" }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
 import MyDateTime from '../forms/MyDateTime'
 import Form from 'react-bootstrap/Form'
@@ -33,13 +33,22 @@ const CreateDealForm = (props) => {
   const [startNow, setStartNow] = useState(false)
   const [placesIDs, setPlaceIDs] = useState([])
 
+  useEffect(() => {
+    setStartDate(new Date())
+  }, [startNow])
+
   const handleDateTimeChange = (expiry, date, time) => {
     var actual_date = date
     if (time) {
+      console.log("TIME:", time)
+      if (time == "0:00") {
+        time = time.split(":")
+      }
       const hour = time[0]
       const minute = time[1]
-      actual_date = new Date(date.getYear(), date.getMonth(), date.getDate(), hour, minute)
+      actual_date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute)
     }
+    console.log("AD:", actual_date)
     if (expiry) {
       setExpiryDate(actual_date)
     } else {
@@ -48,7 +57,6 @@ const CreateDealForm = (props) => {
   }
 
   const handleChange = (e) => {
-    console.log(startNow)
     try {
       switch (e.target.id) {
         case "title":
@@ -80,9 +88,10 @@ const CreateDealForm = (props) => {
         expiryDate: dealExpiryDate,
         placeID: placesIDs[id]
       }
-      props.createDeal(deal)
+      console.log(deal)
+      // props.createDeal(deal)
     }
-    props.history.push('/')
+    // props.history.push('/')
   }
 
   return (
