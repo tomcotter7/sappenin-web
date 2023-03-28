@@ -1,3 +1,5 @@
+// @import 'react-big-calendar/lib/sass/styles';
+
 // Override default variables before the import
 // you can open the bootstrap.scss module and check any available variables.
 $primary: #362ec4;
@@ -40,3 +42,7 @@ $theme-colors: (
 
 $nav-pills-link-active-bg : $sap;
 $form-select-focus-border-color : $info;
+$event-bg : $sap;
+$event-color : $sapdark;
+$event-border : $sapturq;
+$event-outline : $saporange;

@@ -8,9 +8,10 @@ const UpcomingDealsBase = (props) => {
   const { user } = props;
 
 
-  if ( user.userType === 'Owner' ) { return <UpcomingDealsOwner uid={uid}/> }
 
-  return ( <UpcomingDealsUser uid={uid} /> )
+  if ( user.userType === 'Owner' ) { return <UpcomingDealsOwner uid={uid} history={props.history}/> }
+
+  return ( <UpcomingDealsUser uid={uid} history={props.history}/> )
 
 }
 

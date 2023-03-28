@@ -88,10 +88,9 @@ const CreateDealForm = (props) => {
         expiryDate: dealExpiryDate,
         placeID: placesIDs[id]
       }
-      console.log(deal)
-      // props.createDeal(deal)
+      props.createDeal(deal)
     }
-    // props.history.push('/')
+    props.history.push('/')
   }
 
   return (
