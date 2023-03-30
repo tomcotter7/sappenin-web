@@ -39,9 +39,9 @@ class Home extends Component {
 
   render() {
 
-    const { deals, dealFound, notis, notisFound, auth } = this.props;
+    const { deals, dealFound, notis, notisFound, auth, state } = this.props;
 
-    //console.log("Home.js: ", loc);
+
 
 
     if (!auth.uid) return <Redirect to="/"/>
@@ -76,7 +76,7 @@ const mapStateToProps = (state) => {
     dealFound: state.deal.dealsFound,
     notis: state.notifications.notis,
     notisFound: state.notifications.notisFound,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   }
 }
 

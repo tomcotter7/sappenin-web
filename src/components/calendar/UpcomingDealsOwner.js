@@ -66,6 +66,6 @@ export default compose(
       where : [
         'ownerID', '==', props.uid
       ]
-    }
+    }, 
   ])
 )(UpcomingDealsOwner);

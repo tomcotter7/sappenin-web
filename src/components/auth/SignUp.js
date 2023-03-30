@@ -55,32 +55,32 @@ const SignUp = (props) => {
 
   return (
 
-      <Container className="bg-dark" fluid>
+      <Container fluid>
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="2" style={{height: " 100vh "}}>
             <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="email" onChange={handleChange}>
-              <Form.Label className="text-light">Email Address:</Form.Label>
+              <Form.Label className="text-dark">Email Address:</Form.Label>
               <Form.Control type="email" placeholder="Enter email" />
               <Form.Text className="text-muted">
                 Don't worry, We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
             <Form.Group className="mb-3" controlId="password" onChange={handleChange}>
-              <Form.Label className="text-light">Password:</Form.Label>
+              <Form.Label className="text-dark">Password:</Form.Label>
               <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="firstName" onChange={handleChange}>
-              <Form.Label className="text-light">First Name:</Form.Label>
+              <Form.Label className="text-dark">First Name:</Form.Label>
               <Form.Control type="text" placeholder="First Name" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="lastName" onChange={handleChange}>
-              <Form.Label className="text-light">Last Name:</Form.Label>
+              <Form.Label className="text-dark">Last Name:</Form.Label>
               <Form.Control type="text" placeholder="Last Name" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="check">
-              <Form.Check type="checkbox" label="Would you like to receive emails about your local area?" className="text-light"/>
+              <Form.Check type="checkbox" label="Would you like to receive emails about your local area?" className="text-dark"/>
             </Form.Group>
             <Select id="userType"
                     options={[{value: "User", label: "User"}, {value: "Owner", label: "Business Owner"}]}
@@ -89,7 +89,7 @@ const SignUp = (props) => {
                     onChange={handleChange}
                     />
             <br />
-            <Button variant="sap" type="submit">Submit</Button>
+            <Button variant="sapdark" type="submit">Submit</Button>
           </Form>
           <div className="text-danger">
             { authError ? <p> { authError } </p>: null}

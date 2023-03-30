@@ -45,20 +45,20 @@ const SignIn = (props) => {
   if (auth.uid) return <Redirect to='/home' />
 		
   return (
-      <Container className="bg-dark" fluid>
+      <Container fluid>
         <br />
         <Row className="justify-content-md-center">
           <Col xs lg="2" style={{height: "100vh"}}>
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="email" onChange={handleChange}>
-                <Form.Label className="text-light">Email Address:</Form.Label>
+                <Form.Label className="text-dark">Email Address:</Form.Label>
                 <Form.Control type="email" placeholder="Enter email"/>
               </Form.Group>
               <Form.Group className="mb-3" controlId="password" onChange={handleChange}>
-                <Form.Label className="text-light">Password:</Form.Label>
+                <Form.Label className="text-dark">Password:</Form.Label>
                 <Form.Control type="password" placeholder="Password"/>
               </Form.Group>
-              <Button variant="sap" type="submit">Submit</Button>
+              <Button variant="sapdark" type="submit">Submit</Button>
             </Form>
             <br />
             <div>

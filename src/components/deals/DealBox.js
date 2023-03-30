@@ -5,6 +5,9 @@ import Badge from 'react-bootstrap/Badge'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { connect } from 'react-redux'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
+import { Heart, HeartFill } from 'react-bootstrap-icons'
 
 /**
  * A function to calculate the time between two points.
@@ -53,9 +56,8 @@ const deg2rad = (deg) => {
 */
 const DealBox = (deal) => {
   
-  const { place, loc, data, id, featured } = deal;
+  const { user, place, loc, data, id, featured, favourite } = deal;
   
-  console.log("DB:", deal)
 
   var name = "Loading..."
   var time = "??";
@@ -68,13 +70,23 @@ const DealBox = (deal) => {
   }
 
   place === undefined ? name = "Loading..." : name = place["name"]
+
+  const heart = favourite ? <HeartFill color="red" size={30} /> : <Heart color="red" size={30} />
   
   return (
     <Card border="saplight rounded" className="bg-sap" style={{borderWidth: "0.5vh"}}>
       {/*<Card.Img variant="top" src="{data.img}"/>*/}
       {featured ? <Card.Header as="h5" className="border-saplight"><Badge bg="sapred"> Featured Deal! </Badge></Card.Header> : null}
       <Card.Body>
-        <Card.Title as="h3" className="text-light"> {data.title} @ {name} </Card.Title>
+
+        <Row>
+          <Col xs lg="10">
+            <Card.Title as="h3" className="text-light"> {data.title} @ {name} </Card.Title>
+          </Col>
+          <Col xs lg="2">
+            <Button variant='saplight'>{heart}</Button>
+          </Col>
+        </Row>
         <Card.Subtitle className="mb-2 text-light"> {data.date} </Card.Subtitle>
         <Card.Text className="text-light"> {data.description} </Card.Text>
         <Link key={id} to={'/deals/' + id}>
@@ -92,6 +104,7 @@ const DealBox = (deal) => {
 
 const mapStateToProps = (state) => {
     return {
+        user: state.firebase.profile,
         loc: state.location
     }
 }

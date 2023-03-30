@@ -39,18 +39,18 @@ export const geoFirestoreConnect = (data) => {
     const mapDispatchToProps = (dispatch) => {
       return {
         getDeals: (placeIDs) => dispatch(getDeals(placeIDs)),
-		getNotis: (placeIDs) => dispatch(getNotis(placeIDs)),
+		    getNotis: (placeIDs) => dispatch(getNotis(placeIDs)),
         updateLocationDevice: (loc) => dispatch(updateLocationDevice(loc))
       }
     }
 
-	const mapStateToProps = (state) => {
-		return {
-			type: state.location.type,
-			lat: state.location.lat,
-			lon: state.location.lon
-		}
-	}
+    const mapStateToProps = (state) => {
+      return {
+        type: state.location.type,
+        lat: state.location.lat,
+        lon: state.location.lon
+      }
+    }
 
     class newComponent extends Component {
       constructor(props) {
@@ -107,7 +107,7 @@ export const geoFirestoreConnect = (data) => {
 			}
 
       tick() {
-        const query = (this.state.geoCollection).near({ center: this.state.userLoc, radius: 5});
+        const query = (this.state.geoCollection).near({ center: this.state.userLoc, radius: 10});
         query.get().then((snapshot) => {
           const ids = snapshot.docs.map((doc) => doc.id);
           this.props.getDeals(ids);
