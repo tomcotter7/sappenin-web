@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -36,7 +35,7 @@ const SignIn = (props) => {
   }
 
   const handleSubmit = (e) => {
-        e.preventDefault();
+      e.preventDefault();
 	    props.signIn(details)
   }
 
@@ -45,28 +44,26 @@ const SignIn = (props) => {
   if (auth.uid) return <Redirect to='/home' />
 		
   return (
-      <Container fluid>
-        <br />
-        <Row className="justify-content-md-center">
-          <Col xs lg="2" style={{height: "100vh"}}>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-3" controlId="email" onChange={handleChange}>
+      <>
+        <Row className="justify-content-md-center pt-5">
+          <Col xs lg="2">
+            <Form className="pb-3" onSubmit={handleSubmit}>
+              <Form.Group className="pb-3" controlId="email" onChange={handleChange}>
                 <Form.Label className="text-dark">Email Address:</Form.Label>
                 <Form.Control type="email" placeholder="Enter email"/>
               </Form.Group>
-              <Form.Group className="mb-3" controlId="password" onChange={handleChange}>
+              <Form.Group className="pb-3" controlId="password" onChange={handleChange}>
                 <Form.Label className="text-dark">Password:</Form.Label>
-                <Form.Control type="password" placeholder="Password"/>
+                <Form.Control type="password" placeholder="Enter password"/>
               </Form.Group>
               <Button variant="sapdark" type="submit">Submit</Button>
             </Form>
-            <br />
             <div>
               { authError ? <Alert key='danger' variant='danger'> { authError }. Please check your email and password. </Alert>: null}
             </div>
           </Col>
         </Row>
-      </Container>
+      </>
     )
 }
 

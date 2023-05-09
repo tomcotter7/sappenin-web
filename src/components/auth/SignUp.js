@@ -89,7 +89,7 @@ const SignUp = (props) => {
                     onChange={handleChange}
                     />
             <br />
-            <Button variant="sapdark" type="submit">Submit</Button>
+            <Button variant="sapdark" type="submit">Sign Up!</Button>
           </Form>
           <div className="text-danger">
             { authError ? <p> { authError } </p>: null}
